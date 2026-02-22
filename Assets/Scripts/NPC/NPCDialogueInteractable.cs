@@ -44,7 +44,7 @@ namespace FPTSim.NPC
 
             if (openMinigamePanel)
             {
-                dialogueUI.OpenMinigamePanel();
+               
                 return;
             }
 

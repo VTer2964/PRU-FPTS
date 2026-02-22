@@ -79,10 +79,5 @@ namespace FPTSim.UI
             onPlayMinigame = null;
         }
 
-        public void OpenMinigamePanel()
-        {
-            if (hudController != null)
-                hudController.OpenPanelFromWorld();
-        }
     }
 }
