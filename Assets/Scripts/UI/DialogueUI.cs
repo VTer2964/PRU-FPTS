@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 using FPTSim.Player;
 
 namespace FPTSim.UI
@@ -21,21 +22,22 @@ namespace FPTSim.UI
 
         [Header("Player Control")]
         [SerializeField] private MouseLook mouseLook;
-        [SerializeField] private MonoBehaviour playerMovement; // FirstPersonController
-
-        // Optional: nếu bạn muốn nút "Chơi minigame" mở panel chọn mini-game
-        [SerializeField] private HUDController hudController;
+        [SerializeField] private MonoBehaviour playerMovement;  // kéo script movement bạn đang dùng (FirstPersonController)
+        [SerializeField] private Interactor playerInteractor;   // ✅ đúng type Interactor
 
         private System.Action onTalk;
         private System.Action onPlayMinigame;
 
         private bool isOpen;
+        public bool IsOpen => isOpen;
 
         private void Awake()
         {
             if (talkButton) talkButton.onClick.AddListener(() => onTalk?.Invoke());
             if (playMinigameButton) playMinigameButton.onClick.AddListener(() => onPlayMinigame?.Invoke());
             if (exitButton) exitButton.onClick.AddListener(Close);
+
+            if (panel) panel.SetActive(false);
         }
 
         public void Open(
@@ -54,9 +56,17 @@ namespace FPTSim.UI
 
             if (panel) panel.SetActive(true);
 
-            // mở chuột + freeze movement
+            // đảm bảo panel nằm trên cùng (tránh bị UI khác che)
+            panel.transform.SetAsLastSibling();
+
+            // clear selection để tránh input UI frame đầu
+            if (EventSystem.current != null)
+                EventSystem.current.SetSelectedGameObject(null);
+
+            // ✅ khóa gameplay + hiện chuột
             if (mouseLook) mouseLook.LockCursor(false);
             if (playerMovement) playerMovement.enabled = false;
+            if (playerInteractor) playerInteractor.enabled = false;
         }
 
         public void SetBody(string body)
@@ -71,13 +81,14 @@ namespace FPTSim.UI
 
             if (panel) panel.SetActive(false);
 
-            // lock lại + bật movement
+            // ✅ bật lại gameplay + khóa chuột
             if (mouseLook) mouseLook.LockCursor(true);
             if (playerMovement) playerMovement.enabled = true;
+            if (playerInteractor) playerInteractor.enabled = true;
 
             onTalk = null;
             onPlayMinigame = null;
         }
-
+     
     }
 }

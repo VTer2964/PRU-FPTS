@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f277b67b0d94c46b41c912ae95f93e, type: 3}
+  m_Name: NPC_MrSus_Profile
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.NPC.NPCProfileSO
+  npcId: MrSus
+  displayName: Mr. Sus
+  interactPrompt: "N\xF3i chuy\u1EC7n v\u1EDBi"
+  firstLine: "M\xE0y h\u1ECFi c\xE1i ch\xF3 j"
+  talkLines:
+  - "Alo m\u1EA5y con g\xE0"
+  - "kh\u1EB7c kh\u1EA1c"
+  minigameSceneName: MG_SpaceSpam
