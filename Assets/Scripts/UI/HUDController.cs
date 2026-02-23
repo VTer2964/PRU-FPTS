@@ -7,8 +7,7 @@ namespace FPTSim.UI
     public class HUDController : MonoBehaviour
     {
         [Header("Top Info")]
-        [SerializeField] private TMP_Text dayText;       // "Day 1/7"
-        [SerializeField] private TMP_Text timeText;      // "23:45"
+        [SerializeField] private TMP_Text timeText;        // "17:59"
 
         [Header("Medals Count (numbers next to icons)")]
         [SerializeField] private TMP_Text goldCountText;
@@ -36,16 +35,16 @@ namespace FPTSim.UI
             var s = GameManager.I.State;
             var c = GameManager.I.Config;
 
-            if (dayText) dayText.text = $"Day {s.currentDay}/{c.totalDays}";
-
+            // Timer còn lại của run
             if (timeText)
             {
-                int totalSeconds = Mathf.CeilToInt(s.dayTimeLeft);
+                int totalSeconds = Mathf.CeilToInt(s.timeLeft);
                 int minutes = totalSeconds / 60;
                 int seconds = totalSeconds % 60;
                 timeText.text = $"{minutes:00}:{seconds:00}";
             }
 
+            // Medal hiện có
             if (goldCountText) goldCountText.text = s.gold.ToString();
             if (silverCountText) silverCountText.text = s.silver.ToString();
             if (bronzeCountText) bronzeCountText.text = s.bronze.ToString();

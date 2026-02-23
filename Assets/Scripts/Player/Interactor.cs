@@ -39,7 +39,7 @@ namespace FPTSim.Player
 
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, distance, mask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out RaycastHit hit, distance, mask, QueryTriggerInteraction.Collide))
             {
                 var it = hit.collider.GetComponentInParent<IInteractable>();
                 if (it != null)

@@ -39,19 +39,7 @@ namespace FPTSim.NPC
             {
                 Debug.LogError($"{name}: Missing DialogueUI reference!");
                 return;
-            }
-
-            // Nếu hết giờ ngày (timer = 0) thì không cho chơi nữa (tuỳ bạn)
-            if (GameManager.I != null && !GameManager.I.CanPlayMinigame())
-            {
-                dialogueUI.Open(
-                    speaker: profile.displayName,
-                    body: "Hôm nay hết giờ rồi. Mai quay lại nhé!",
-                    talkAction: OnTalk,
-                    playMinigameAction: OnPlayMinigame // bấm cũng sẽ không vào minigame (mình chặn bên dưới)
-                );
-                return;
-            }
+            }           
 
             dialogueUI.Open(
                 speaker: profile.displayName,
@@ -78,13 +66,6 @@ namespace FPTSim.NPC
         private void OnPlayMinigame()
         {
             if (profile == null || dialogueUI == null) return;
-
-            // Nếu hết giờ / không cho chơi -> chỉ đổi text
-            if (GameManager.I != null && !GameManager.I.CanPlayMinigame())
-            {
-                dialogueUI.SetBody("Hết giờ trong ngày rồi, không thể chơi minigame nữa!");
-                return;
-            }
 
             dialogueUI.Close();
 

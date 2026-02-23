@@ -5,29 +5,26 @@ namespace FPTSim.Core
     [Serializable]
     public class GameState
     {
-        public int currentDay = 1;
-
-        // Thời gian còn lại trong ngày (giây)
-        public float dayTimeLeft;
+        // Timer tổng còn lại (giây)
+        public float timeLeft;
 
         // Medals
         public int gold = 0;
         public int silver = 0;
         public int bronze = 0;
 
+        // kết quả run
+        public bool isGameOver = false;
+        public bool isWin = false;
 
-        public void Reset(float dayDurationSeconds)
+        public void Reset(float runDurationSeconds)
         {
-            currentDay = 1;
-            dayTimeLeft = dayDurationSeconds;
+            timeLeft = runDurationSeconds;
 
             gold = silver = bronze = 0;
 
-        }
-
-        public void StartNewDay(float dayDurationSeconds)
-        {
-            dayTimeLeft = dayDurationSeconds;
+            isGameOver = false;
+            isWin = false;
         }
     }
 }

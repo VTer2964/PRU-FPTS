@@ -7,16 +7,15 @@ namespace FPTSim.Core
     {
         public static GameManager I { get; private set; }
 
-        [Header("Config")]
         [SerializeField] private GameConfigSO config;
-
         public GameConfigSO Config => config;
+
         public GameState State { get; private set; } = new GameState();
         public GamePhase Phase { get; private set; } = GamePhase.Boot;
 
         public System.Action OnStateChanged;
 
-        private float hudTick; // giảm spam UI update
+        private float uiTick;
 
         private void Awake()
         {
@@ -27,43 +26,37 @@ namespace FPTSim.Core
 
         private void Update()
         {
-            // Chỉ đếm thời gian khi đang ở Campus (1 ngày diễn ra ở đây)
+            // Timer chạy khi đang ở Campus (bạn có thể đổi để chạy cả trong minigame nếu muốn)
             if (Phase != GamePhase.Campus) return;
             if (config == null) return;
+            if (State.isGameOver) return;
 
-            if (State.dayTimeLeft > 0f)
+            if (State.timeLeft > 0f)
             {
-                State.dayTimeLeft -= Time.deltaTime;
-                if (State.dayTimeLeft < 0f) State.dayTimeLeft = 0f;
+                State.timeLeft -= Time.deltaTime;
+                if (State.timeLeft < 0f) State.timeLeft = 0f;
 
-                // Update HUD mỗi 0.2s cho mượt mà, đỡ Invoke liên tục
-                hudTick += Time.deltaTime;
-                if (hudTick >= 0.2f)
+                uiTick += Time.deltaTime;
+                if (uiTick >= 0.2f)
                 {
-                    hudTick = 0f;
+                    uiTick = 0f;
                     OnStateChanged?.Invoke();
                 }
 
-                // Hết giờ => tự end day
-                if (State.dayTimeLeft <= 0f)
+                if (State.timeLeft <= 0f)
                 {
-                    EndDay();
+                    Lose();
                 }
             }
         }
 
-        public void Init(GameConfigSO cfg)
+        public void LoadOrNew(GameConfigSO cfg)
         {
-            if (config == null) config = cfg;
-            Phase = GamePhase.Boot;
-            OnStateChanged?.Invoke();
-        }
+            config = cfg;
 
-        public void NewGame(bool deleteSave = true)
-        {
-            if (deleteSave) SaveSystem.Delete();
-
-            State.Reset(config.dayDurationSeconds);
+            // Bạn đang dùng SaveSystem? Nếu muốn, giữ load.
+            // Ở đây mình cho chạy "new run" cho đơn giản:
+            State.Reset(config.runDurationSeconds);
             SaveSystem.Save(State);
 
             Phase = GamePhase.Campus;
@@ -71,36 +64,21 @@ namespace FPTSim.Core
             SceneManager.LoadScene(SceneNames.Campus);
         }
 
-        public void LoadOrNew(GameConfigSO cfg)
+        public void NewRun(bool deleteSave = true)
         {
-            Init(cfg);
-
-            if (SaveSystem.TryLoad(out var loaded))
-                State = loaded;
-            else
-            {
-                State.Reset(config.dayDurationSeconds);
-                SaveSystem.Save(State);
-            }
-
-            // Nếu save cũ không có dayTimeLeft (bị 0), ta set lại cho an toàn
-            if (State.dayTimeLeft <= 0f)
-                State.dayTimeLeft = config.dayDurationSeconds;
+            if (deleteSave) SaveSystem.Delete();
+            State.Reset(config.runDurationSeconds);
+            SaveSystem.Save(State);
 
             Phase = GamePhase.Campus;
             OnStateChanged?.Invoke();
             SceneManager.LoadScene(SceneNames.Campus);
         }
 
-        // Bỏ giới hạn số mini-game/ngày => chỉ check còn trong 7 ngày
-        public bool CanPlayMinigame()
-        {
-            return State.currentDay <= config.totalDays && State.dayTimeLeft > 0f;
-        }
-
         public void RegisterMinigameResult(MinigameResult result)
         {
-            // cộng medals
+            if (State.isGameOver) return;
+
             switch (result.medal)
             {
                 case Medal.Gold: State.gold++; break;
@@ -112,45 +90,94 @@ namespace FPTSim.Core
             OnStateChanged?.Invoke();
         }
 
-        public void EndDay()
+        // ===== Buy Time =====
+        public bool TryBuyTimeWithBronze()
         {
-            // chống gọi nhiều lần khi timer vừa chạm 0
-            if (Phase == GamePhase.DayEnd || Phase == GamePhase.Ending) return;
-
-            Phase = GamePhase.DayEnd;
-            SaveSystem.Save(State);
-            OnStateChanged?.Invoke();
-            SceneManager.LoadScene(SceneNames.DayEnd);
+            if (State.bronze <= 0) return false;
+            State.bronze--;
+            AddTime(config.addSecondsBronze);
+            return true;
         }
 
-        public void NextDayOrFinish()
+        public bool TryBuyTimeWithSilver()
         {
-            State.currentDay++;
+            if (State.silver <= 0) return false;
+            State.silver--;
+            AddTime(config.addSecondsSilver);
+            return true;
+        }
+
+        public bool TryBuyTimeWithGold()
+        {
+            if (State.gold <= 0) return false;
+            State.gold--;
+            AddTime(config.addSecondsGold);
+            return true;
+        }
+
+        private void AddTime(int seconds)
+        {
+            State.timeLeft += seconds;
+
+            if (config.maxTimeCapSeconds > 0)
+                State.timeLeft = Mathf.Min(State.timeLeft, config.maxTimeCapSeconds);
+
+            SaveSystem.Save(State);
+            OnStateChanged?.Invoke();
+        }
+
+        // ===== Submit Medals to Win =====
+        public bool CanSubmitToWin()
+        {
+            return State.gold >= config.requiredGold
+                && State.silver >= config.requiredSilver
+                && State.bronze >= config.requiredBronze;
+        }
+
+        public bool TrySubmitToWin()
+        {
+            if (!CanSubmitToWin()) return false;
+
+            // trừ đủ huy chương yêu cầu
+            State.gold -= config.requiredGold;
+            State.silver -= config.requiredSilver;
+            State.bronze -= config.requiredBronze;
+
+            Win();
+            return true;
+        }
+
+        private void Win()
+        {
+            if (State.isGameOver) return;
+
+            State.isGameOver = true;
+            State.isWin = true;
+
             SaveSystem.Save(State);
             OnStateChanged?.Invoke();
 
-            if (State.currentDay > config.totalDays)
-            {
-                FinishGame();
-            }
-            else
-            {
-                // Reset timer ngày mới
-                State.StartNewDay(config.dayDurationSeconds);
-                SaveSystem.Save(State);
-
-                Phase = GamePhase.Campus;
-                OnStateChanged?.Invoke();
-                SceneManager.LoadScene(SceneNames.Campus);
-            }
-        }
-
-        public void FinishGame()
-        {
             Phase = GamePhase.Ending;
+            SceneManager.LoadScene(SceneNames.Ending);
+        }
+
+        private void Lose()
+        {
+            if (State.isGameOver) return;
+
+            State.isGameOver = true;
+            State.isWin = false;
+
             SaveSystem.Save(State);
             OnStateChanged?.Invoke();
+
+            Phase = GamePhase.Ending;
             SceneManager.LoadScene(SceneNames.Ending);
+        }
+
+        public string DecideEnding()
+        {
+            return State.isWin ? "HAPPY_END" : "BAD_TIME_OUT";
         }
     }
 }
