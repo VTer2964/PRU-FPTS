@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Buy Gold
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: Admin
+  text: "ang \u0111\u1ED5i Gold l\u1EA5y th\u1EDDi gian..."
+  choices:
+  - text: "Mua ti\u1EBFp"
+    next: {fileID: 11400000, guid: 75a410acf920876428bdb6aa9f759b21, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "Quay l\u1EA1i"
+    next: {fileID: 11400000, guid: 4ff3b5c7f08d59945a6dcf6f23bdd75a, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  triggerAction: 1
+  actionType: 4
+  actionParam: 
+  actionValue: 0

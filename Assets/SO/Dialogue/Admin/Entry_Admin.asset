@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Entry_Admin
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: Admin
+  text: "Ta c\xF3 th\u1EC3 \u0111\u1ED5i huy ch\u01B0\u01A1ng l\u1EA5y th\u1EDDi
+    gian.\nHo\u1EB7c n\u1ED9p \u0111\u1EE7 huy ch\u01B0\u01A1ng \u0111\u1EC3 k\u1EBFt
+    th\xFAc h\xE0nh tr\xECnh."
+  choices:
+  - text: "Mua th\xEAm th\u1EDDi gian"
+    next: {fileID: 11400000, guid: 75a410acf920876428bdb6aa9f759b21, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "N\u1ED9p huy ch\u01B0\u01A1ng \u0111\u1EC3 th\u1EAFng"
+    next: {fileID: 11400000, guid: 2f04c66d11fd71d4180ee71915b8dd50, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "T\u1EA1m bi\u1EC7t"
+    next: {fileID: 0}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

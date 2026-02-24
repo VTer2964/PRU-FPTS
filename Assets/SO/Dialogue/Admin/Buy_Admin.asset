@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Buy_Admin
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: Admin
+  text: "Ch\u1ECDn g\xF3i th\u1EDDi gian:\r\n+1 ph\xFAt (1 Bronze)\r\n+2 ph\xFAt
+    (1 Silver)\r\n+3 ph\xFAt (1 Gold)"
+  choices:
+  - text: "Mua +1 ph\xFAt (1 Bronze)"
+    next: {fileID: 11400000, guid: 0c336e46cd362f249a05fa98acb04878, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "Mua +2 ph\xFAt (1 Silver)"
+    next: {fileID: 11400000, guid: 98baac987cde75c47b70e59a4a0335c1, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "Mua +3 ph\xFAt (1 Gold)"
+    next: {fileID: 11400000, guid: 29128d41e8fbed8439f8535746db44f9, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "Quay l\u1EA1i"
+    next: {fileID: 11400000, guid: 4ff3b5c7f08d59945a6dcf6f23bdd75a, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
