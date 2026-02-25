@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f82606508ef2024ba64c0671ba2da19, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Core.GameConfigSO
-  totalDays: 7
-  maxMinigamesPerDay: 5
-  goldPoints: 3
-  silverPoints: 2
-  bronzePoints: 1
-  stressThreshold: 100
-  randomEventChancePerMinigame: 0.25
+  runDurationSeconds: 1080
+  requiredGold: 1
+  requiredSilver: 2
+  requiredBronze: 3
+  addSecondsBronze: 60
+  addSecondsSilver: 120
+  addSecondsGold: 180
+  maxTimeCapSeconds: 0
