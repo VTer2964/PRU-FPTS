@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Intro_3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: NPC
+  text: "H\xE3y thu th\u1EADp \u0111\u1EE7 huy ch\u01B0\u01A1ng v\xE0 quay l\u1EA1i
+    g\u1EB7p ta."
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

@@ -12,6 +12,7 @@ namespace FPTSim.NPC
 
         public string GetPromptText() => $"Nói chuyện với {npcName}";
 
+        public void SetGraph(DialogueGraphSO g) => dialogueGraph = g;
         public void Interact()
         {
             if (dialogueGraph == null || runner == null) return;

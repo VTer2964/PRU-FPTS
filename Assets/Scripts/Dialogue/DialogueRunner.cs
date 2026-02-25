@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using FPTSim.Core;
 using FPTSim.UI;
 
@@ -15,10 +16,14 @@ namespace FPTSim.Dialogue
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
 
+        [Header("Input")]
+        [SerializeField] private Key continueKey = Key.Space;
+        [SerializeField] private Key exitKey = Key.Escape;
+
         private DialogueGraphSO currentGraph;
         private DialogueNodeSO currentNode;
 
-        // Thông báo runtime (không ghi đè asset node.text)
+        // runtime message (không ghi đè asset)
         private string runtimeMessage;
 
         public bool IsRunning => currentGraph != null;
@@ -41,6 +46,52 @@ namespace FPTSim.Dialogue
             ShowNode(currentNode);
         }
 
+        private void Update()
+        {
+            if (!IsRunning) return;
+
+            // ESC luôn thoát
+            if (Keyboard.current != null && Keyboard.current[exitKey].wasPressedThisFrame)
+            {
+                StopDialogue();
+                return;
+            }
+
+            if (currentNode == null) return;
+
+            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
+
+            // Có choices => bắt buộc chọn option, không cho click/Space next
+            if (hasChoices) return;
+
+            // Không có choices: chỉ cho continue nếu autoAdvance = true
+            if (!currentNode.autoAdvance) return;
+
+            bool pressContinue =
+                (Keyboard.current != null && Keyboard.current[continueKey].wasPressedThisFrame) ||
+                (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
+
+            if (pressContinue)
+            {
+                ContinueAuto();
+            }
+        }
+
+        private void ContinueAuto()
+        {
+            if (currentNode == null) return;
+
+            // nextAuto null => kết thúc dialogue
+            if (currentNode.nextAuto == null)
+            {
+                StopDialogue();
+                return;
+            }
+
+            currentNode = currentNode.nextAuto;
+            ShowNode(currentNode);
+        }
+
         private void ShowNode(DialogueNodeSO node)
         {
             if (node == null)
@@ -51,22 +102,19 @@ namespace FPTSim.Dialogue
 
             runtimeMessage = null;
 
-            // chạy action trước khi render
+            // chạy action trước render
             if (node.triggerAction)
             {
                 ExecuteAction(node);
 
-                // nếu action đã StopDialogue() (vd StartMinigameScene/CloseDialogue)
+                // action có thể StopDialogue / chuyển scene
                 if (currentGraph == null) return;
             }
 
             ui.RenderNode(node);
 
-            // nếu có message runtime (fail/success), ghi đè body sau khi render
             if (!string.IsNullOrWhiteSpace(runtimeMessage))
-            {
                 ui.SetBodyText(runtimeMessage);
-            }
         }
 
         private void OnChoiceSelected(int choiceIndex)
@@ -76,7 +124,7 @@ namespace FPTSim.Dialogue
 
             var choice = currentNode.choices[choiceIndex];
 
-            // ✅ choice.next null => kết thúc hội thoại
+            // next null => thoát
             if (choice.next == null)
             {
                 StopDialogue();
@@ -163,8 +211,6 @@ namespace FPTSim.Dialogue
                         }
 
                         bool ok = gm.TrySubmitToWin();
-
-                        // Nếu ok -> GameManager sẽ tự chuyển Ending ngay
                         if (!ok)
                         {
                             var c = gm.Config;
@@ -172,7 +218,27 @@ namespace FPTSim.Dialogue
                                 $"❌ Chưa đủ huy chương yêu cầu!\n" +
                                 $"Cần: G{c.requiredGold}  S{c.requiredSilver}  B{c.requiredBronze}";
                         }
+                        // nếu ok -> GameManager tự chuyển Ending
+                        break;
+                    }
 
+                case DialogueActionType.SetFlag:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        string flag = node.actionParam != null ? node.actionParam.Trim() : "";
+                        if (string.IsNullOrWhiteSpace(flag))
+                        {
+                            runtimeMessage = "Lỗi: SetFlag thiếu actionParam (tên flag).";
+                            break;
+                        }
+
+                        gm.SetFlag(flag);
+                        runtimeMessage = $"✅ Đã mở khóa cốt truyện: {flag}";
                         break;
                     }
 

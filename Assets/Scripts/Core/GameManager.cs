@@ -179,5 +179,16 @@ namespace FPTSim.Core
         {
             return State.isWin ? "HAPPY_END" : "BAD_TIME_OUT";
         }
+
+        //manage flag
+        public bool HasFlag(string flag) => State != null && State.HasFlag(flag);
+
+        public void SetFlag(string flag)
+        {
+            if (State == null) return;
+            State.SetFlag(flag);
+            SaveSystem.Save(State);
+            OnStateChanged?.Invoke();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using FPTSim.Dialogue;
+using FPTSim.Core;
 
 namespace FPTSim.UI
 {
@@ -31,8 +32,6 @@ namespace FPTSim.UI
         private void Awake()
         {
             if (exitButton) exitButton.onClick.AddListener(() => onExit?.Invoke());
-
-            // Ẩn panel lúc bắt đầu
             if (panel) panel.SetActive(false);
         }
 
@@ -43,7 +42,6 @@ namespace FPTSim.UI
 
             if (panel) panel.SetActive(true);
 
-            // ✅ Ẩn crosshair + xóa hint khi vào dialogue
             if (crosshair) crosshair.SetActive(false);
             if (interactHintText) interactHintText.text = "";
         }
@@ -52,7 +50,6 @@ namespace FPTSim.UI
         {
             if (panel) panel.SetActive(false);
 
-            // ✅ Hiện lại crosshair khi thoát dialogue
             if (crosshair) crosshair.SetActive(true);
 
             ClearChoices();
@@ -74,29 +71,38 @@ namespace FPTSim.UI
 
             for (int i = 0; i < node.choices.Length; i++)
             {
-                int index = i;
+                var ch = node.choices[i];
+
+                // ✅ Condition gate by story flag
+                if (ch.requireCondition)
+                {
+                    string flag = ch.conditionKey != null ? ch.conditionKey.Trim() : "";
+                    bool ok = GameManager.I != null && !string.IsNullOrWhiteSpace(flag) && GameManager.I.HasFlag(flag);
+
+                    if (!ok) continue; // ẩn choice này
+                }
+
+                int realIndex = i; // index thật của choice trong node.choices
 
                 var btn = Instantiate(choiceButtonPrefab, choicesRoot);
-
                 var tmp = btn.GetComponentInChildren<TMP_Text>();
-                if (tmp) tmp.text = node.choices[i].text;
+                if (tmp) tmp.text = ch.text;
 
                 btn.onClick.RemoveAllListeners();
-                btn.onClick.AddListener(() => onChoiceSelected?.Invoke(index));
+                btn.onClick.AddListener(() => onChoiceSelected?.Invoke(realIndex));
             }
-        }
-
-        private void ClearChoices()
-        {
-            if (!choicesRoot) return;
-
-            for (int i = choicesRoot.childCount - 1; i >= 0; i--)
-                Destroy(choicesRoot.GetChild(i).gameObject);
         }
 
         public void SetBodyText(string msg)
         {
             if (bodyText) bodyText.text = msg;
+        }
+
+        private void ClearChoices()
+        {
+            if (!choicesRoot) return;
+            for (int i = choicesRoot.childCount - 1; i >= 0; i--)
+                Destroy(choicesRoot.GetChild(i).gameObject);
         }
     }
 }
