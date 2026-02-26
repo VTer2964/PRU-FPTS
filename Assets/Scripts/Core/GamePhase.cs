@@ -3,9 +3,8 @@ namespace FPTSim.Core
     public enum GamePhase
     {
         Boot,
+        MainMenu,
         Campus,
-        Minigame,
-        DayEnd,
         Ending
     }
 }
