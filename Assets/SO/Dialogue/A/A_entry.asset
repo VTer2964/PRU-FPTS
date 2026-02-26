@@ -16,9 +16,9 @@ MonoBehaviour:
   speakerName: NPC
   text: ok gap B di
   choices: []
-  autoAdvance: 0
-  nextAuto: {fileID: 0}
-  triggerAction: 1
-  actionType: 7
-  actionParam: A_DONE
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 19709ba21775dc246a48203a6fa1a924, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0

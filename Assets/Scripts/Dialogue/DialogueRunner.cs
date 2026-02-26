@@ -11,8 +11,11 @@ namespace FPTSim.Dialogue
         [Header("UI")]
         [SerializeField] private DialogueUI_Genshin ui;
 
+        [Header("Camera (optional)")]
+        [SerializeField] private DialogueCameraController camCtrl;
+
         [Header("Lock Player While Talking")]
-        [SerializeField] private FPTSim.Player.MouseLook mouseLook;
+        [SerializeField] private FPTSim.Player.MouseLook mouseLook; // MouseLook trên CameraPivot
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
 
@@ -22,8 +25,6 @@ namespace FPTSim.Dialogue
 
         private DialogueGraphSO currentGraph;
         private DialogueNodeSO currentNode;
-
-        // runtime message (không ghi đè asset)
         private string runtimeMessage;
 
         public bool IsRunning => currentGraph != null;
@@ -60,28 +61,21 @@ namespace FPTSim.Dialogue
             if (currentNode == null) return;
 
             bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
-
-            // Có choices => bắt buộc chọn option, không cho click/Space next
             if (hasChoices) return;
 
-            // Không có choices: chỉ cho continue nếu autoAdvance = true
             if (!currentNode.autoAdvance) return;
 
             bool pressContinue =
                 (Keyboard.current != null && Keyboard.current[continueKey].wasPressedThisFrame) ||
                 (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
 
-            if (pressContinue)
-            {
-                ContinueAuto();
-            }
+            if (pressContinue) ContinueAuto();
         }
 
         private void ContinueAuto()
         {
             if (currentNode == null) return;
 
-            // nextAuto null => kết thúc dialogue
             if (currentNode.nextAuto == null)
             {
                 StopDialogue();
@@ -102,13 +96,10 @@ namespace FPTSim.Dialogue
 
             runtimeMessage = null;
 
-            // chạy action trước render
             if (node.triggerAction)
             {
                 ExecuteAction(node);
-
-                // action có thể StopDialogue / chuyển scene
-                if (currentGraph == null) return;
+                if (currentGraph == null) return; // có thể StopDialogue / load scene
             }
 
             ui.RenderNode(node);
@@ -142,13 +133,16 @@ namespace FPTSim.Dialogue
             ui.Close();
             LockPlayer(false);
 
+            // ✅ hạ priority cam cutscene/dialogue => tự về CM_Gameplay
+            camCtrl?.Clear();
+
             currentGraph = null;
             currentNode = null;
         }
 
         private void LockPlayer(bool talking)
         {
-            // talking=true => unlock cursor + disable movement/interact
+            // talking=true => unlock cursor + disable movement/interact + disable look
             if (mouseLook) mouseLook.LockCursor(!talking);
             if (playerMovement) playerMovement.enabled = !talking;
             if (playerInteractor) playerInteractor.enabled = !talking;
@@ -160,6 +154,26 @@ namespace FPTSim.Dialogue
 
             switch (node.actionType)
             {
+                case DialogueActionType.SetCamera:
+                    {
+                        if (camCtrl == null)
+                        {
+                            runtimeMessage = "Lỗi: chưa gán DialogueCameraController.";
+                            break;
+                        }
+
+                        string key = node.actionParam != null ? node.actionParam.Trim() : "";
+                        if (string.IsNullOrWhiteSpace(key))
+                        {
+                            runtimeMessage = "Lỗi: SetCamera thiếu actionParam (cameraKey).";
+                            break;
+                        }
+
+                        bool ok = camCtrl.Focus(key);
+                        if (!ok) runtimeMessage = $"Lỗi: không tìm thấy camera key '{key}'.";
+                        break;
+                    }
+
                 case DialogueActionType.StartMinigameScene:
                     {
                         string scene = node.actionParam != null ? node.actionParam.Trim() : "";
@@ -218,7 +232,6 @@ namespace FPTSim.Dialogue
                                 $"❌ Chưa đủ huy chương yêu cầu!\n" +
                                 $"Cần: G{c.requiredGold}  S{c.requiredSilver}  B{c.requiredBronze}";
                         }
-                        // nếu ok -> GameManager tự chuyển Ending
                         break;
                     }
 
