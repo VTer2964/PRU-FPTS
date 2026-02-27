@@ -1,0 +1,19 @@
+{
+    "name": "StackTower.Editor",
+    "rootNamespace": "StackTower",
+    "references": [
+        "GUID:d7fb127fadf087d4b9893d4e00e5df02",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

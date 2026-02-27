@@ -17,6 +17,10 @@ namespace FPTSim.Minigames
         {
             timeLeft = timeLimit;
             finished = false;
+
+            // Unlock cursor — Campus MouseLook có thể đã lock trước khi load scene
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         protected virtual void Update()

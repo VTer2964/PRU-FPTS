@@ -23,6 +23,33 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Ending.unity
     guid: 417d697e093d5414a98bd1a40d7b851d
+  - enabled: 1
+    path: Assets/MiniGames/CaroGame/Scenes/CaroGame.unity
+    guid: edfb3ccbc488d1347892d190180fb475
+  - enabled: 1
+    path: Assets/MiniGames/CountryGuessGame/Scenes/CountryGameScene.unity
+    guid: 2577610bd51f6a140860a4652070ea20
+  - enabled: 1
+    path: Assets/MiniGames/MemoryCardMatch/Scenes/MemoryCardMatch.unity
+    guid: a0db0079dde42744c93b1bbd75f40afc
+  - enabled: 1
+    path: Assets/MiniGames/StackTower/Scenes/StackTowerScene.unity
+    guid: f7df577ca29cc064888b139957c9b937
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Caro.unity
+    guid: 34999012a777a474ba87d290fbcdfd94
+  - enabled: 1
+    path: Assets/Scenes/Minigame_CountryGuess.unity
+    guid: 087ecd62b775ee446bd9957c6f02b0ae
+  - enabled: 1
+    path: Assets/Scenes/Minigame_Memory.unity
+    guid: 6e61c2acfb3973f4d9a9501b81298414
+  - enabled: 1
+    path: Assets/Scenes/Minigame_StackTower.unity
+    guid: 8b97269850c7a4348a9e260a66cbd606
+  - enabled: 1
+    path: Assets/Scenes/Minigame_FlappyVocab.unity
+    guid: 68e46ad2984a4d740aa676a4450b6b3a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
