@@ -47,6 +47,9 @@ namespace FPTSim.Minigames
             if (finished) return;
             finished = true;
 
+            var sfx = FindFirstObjectByType<FPTSim.Audio.MinigameResultSfxPlayer>();
+            if (sfx != null) sfx.PlayFor(result);
+
             if (GameManager.I != null)
             {
                 GameManager.I.RegisterMinigameResult(result);
