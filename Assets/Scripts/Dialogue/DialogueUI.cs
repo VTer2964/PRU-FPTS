@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using FPTSim.Dialogue;
 using FPTSim.Core;
+using FPTSim.Audio;
 
 namespace FPTSim.UI
 {
@@ -26,12 +27,24 @@ namespace FPTSim.UI
         [SerializeField] private GameObject crosshair;
         [SerializeField] private TMP_Text interactHintText;
 
+        [Header("Audio (optional)")]
+        [SerializeField] private AudioClip openClip;
+        [SerializeField] private AudioClip nextClip;
+        [SerializeField] private AudioClip choiceClip;
+        [SerializeField] private AudioClip closeClip;
+
         private System.Action<int> onChoiceSelected;
         private System.Action onExit;
 
         private void Awake()
         {
-            if (exitButton) exitButton.onClick.AddListener(() => onExit?.Invoke());
+            if (exitButton) exitButton.onClick.AddListener(() =>
+            {
+                // âm thoát
+                if (closeClip && AudioManager.I != null) AudioManager.I.PlayDialogue(closeClip);
+                onExit?.Invoke();
+            });
+
             if (panel) panel.SetActive(false);
         }
 
@@ -42,14 +55,19 @@ namespace FPTSim.UI
 
             if (panel) panel.SetActive(true);
 
+            // hide HUD
             if (crosshair) crosshair.SetActive(false);
             if (interactHintText) interactHintText.text = "";
+
+            // âm mở
+            if (openClip && AudioManager.I != null) AudioManager.I.PlayDialogue(openClip);
         }
 
         public void Close()
         {
             if (panel) panel.SetActive(false);
 
+            // show HUD
             if (crosshair) crosshair.SetActive(true);
 
             ClearChoices();
@@ -66,6 +84,10 @@ namespace FPTSim.UI
 
             ClearChoices();
 
+            // âm "next line" mỗi lần render node
+            // (nếu bạn không thích phát ở entry node, có thể bỏ dòng này)
+            if (nextClip && AudioManager.I != null) AudioManager.I.PlayDialogue(nextClip);
+
             if (node.choices == null || node.choices.Length == 0)
                 return;
 
@@ -73,23 +95,30 @@ namespace FPTSim.UI
             {
                 var ch = node.choices[i];
 
-                // ✅ Condition gate by story flag
+                // ✅ condition gate theo flag
                 if (ch.requireCondition)
                 {
                     string flag = ch.conditionKey != null ? ch.conditionKey.Trim() : "";
-                    bool ok = GameManager.I != null && !string.IsNullOrWhiteSpace(flag) && GameManager.I.HasFlag(flag);
+                    bool ok = GameManager.I != null &&
+                              !string.IsNullOrWhiteSpace(flag) &&
+                              GameManager.I.HasFlag(flag);
 
-                    if (!ok) continue; // ẩn choice này
+                    if (!ok) continue; // ẩn option
                 }
 
-                int realIndex = i; // index thật của choice trong node.choices
+                int realIndex = i;
 
                 var btn = Instantiate(choiceButtonPrefab, choicesRoot);
                 var tmp = btn.GetComponentInChildren<TMP_Text>();
                 if (tmp) tmp.text = ch.text;
 
                 btn.onClick.RemoveAllListeners();
-                btn.onClick.AddListener(() => onChoiceSelected?.Invoke(realIndex));
+                btn.onClick.AddListener(() =>
+                {
+                    // âm bấm option
+                    if (choiceClip && AudioManager.I != null) AudioManager.I.PlayDialogue(choiceClip);
+                    onChoiceSelected?.Invoke(realIndex);
+                });
             }
         }
 

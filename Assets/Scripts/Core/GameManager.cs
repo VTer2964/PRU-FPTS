@@ -3,32 +3,41 @@ using UnityEngine.SceneManagement;
 
 namespace FPTSim.Core
 {
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager I { get; private set; }
 
+        [Header("Config")]
         [SerializeField] private GameConfigSO config;
         public GameConfigSO Config => config;
 
         public GameState State { get; private set; } = new GameState();
         public GamePhase Phase { get; private set; } = GamePhase.Boot;
 
+        // UI subscribe
         public System.Action OnStateChanged;
 
         private float uiTick;
 
         private void Awake()
         {
-            if (I != null && I != this) { Destroy(gameObject); return; }
+            if (I != null && I != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             I = this;
             DontDestroyOnLoad(gameObject);
         }
 
         private void Update()
         {
-            // Timer chạy khi đang ở Campus (bạn có thể đổi để chạy cả trong minigame nếu muốn)
+            // Chỉ chạy timer khi đang ở Campus và game chưa kết thúc
             if (Phase != GamePhase.Campus) return;
             if (config == null) return;
+            if (State == null) return;
             if (State.isGameOver) return;
 
             if (State.timeLeft > 0f)
@@ -36,6 +45,7 @@ namespace FPTSim.Core
                 State.timeLeft -= Time.deltaTime;
                 if (State.timeLeft < 0f) State.timeLeft = 0f;
 
+                // refresh UI không cần mỗi frame
                 uiTick += Time.deltaTime;
                 if (uiTick >= 0.2f)
                 {
@@ -45,39 +55,73 @@ namespace FPTSim.Core
 
                 if (State.timeLeft <= 0f)
                 {
-                    Lose();
+                    Lose_TimeOut();
                 }
             }
         }
 
+        // ========== INIT / FLOW ==========
+
+        public void Init(GameConfigSO cfg)
+        {
+            if (config == null) config = cfg;
+            Phase = GamePhase.Boot;
+            OnStateChanged?.Invoke();
+        }
+
+        public void GoMainMenu()
+        {
+            Phase = GamePhase.MainMenu;
+            OnStateChanged?.Invoke();
+            SceneManager.LoadScene(SceneNames.MainMenu);
+        }
+
+        public void NewGame(bool deleteSave = true)
+        {
+            if (config == null)
+            {
+                Debug.LogError("[GameManager] Missing GameConfigSO!");
+                return;
+            }
+
+            if (deleteSave) SaveSystem.Delete();
+
+            State.Reset(config.runDurationSeconds);
+            SaveSystem.Save(State);
+
+            Phase = GamePhase.Campus;
+            OnStateChanged?.Invoke();
+            SceneManager.LoadScene(SceneNames.Campus);
+        }
+
         public void LoadOrNew(GameConfigSO cfg)
         {
-            config = cfg;
+            if (config == null) config = cfg;
 
-            // Bạn đang dùng SaveSystem? Nếu muốn, giữ load.
-            // Ở đây mình cho chạy "new run" cho đơn giản:
-            State.Reset(config.runDurationSeconds);
-            SaveSystem.Save(State);
+            if (config == null)
+            {
+                Debug.LogError("[GameManager] Missing GameConfigSO!");
+                return;
+            }
 
-            Phase = GamePhase.Campus;
-            OnStateChanged?.Invoke();
-            SceneManager.LoadScene(SceneNames.Campus);
-        }
-
-        public void NewRun(bool deleteSave = true)
-        {
-            if (deleteSave) SaveSystem.Delete();
-            State.Reset(config.runDurationSeconds);
-            SaveSystem.Save(State);
+            if (SaveSystem.TryLoad(out var loaded))
+                State = loaded;
+            else
+            {
+                State.Reset(config.runDurationSeconds);
+                SaveSystem.Save(State);
+            }
 
             Phase = GamePhase.Campus;
             OnStateChanged?.Invoke();
             SceneManager.LoadScene(SceneNames.Campus);
         }
+
+        // ========== GAMEPLAY API ==========
 
         public void RegisterMinigameResult(MinigameResult result)
         {
-            if (State.isGameOver) return;
+            if (State == null || State.isGameOver) return;
 
             switch (result.medal)
             {
@@ -90,35 +134,44 @@ namespace FPTSim.Core
             OnStateChanged?.Invoke();
         }
 
-        // ===== Buy Time =====
+        // ===== Buy time =====
         public bool TryBuyTimeWithBronze()
         {
+            if (State == null || State.isGameOver) return false;
             if (State.bronze <= 0) return false;
+
             State.bronze--;
-            AddTime(config.addSecondsBronze);
+            AddTimeSeconds(config.addSecondsBronze);
             return true;
         }
 
         public bool TryBuyTimeWithSilver()
         {
+            if (State == null || State.isGameOver) return false;
             if (State.silver <= 0) return false;
+
             State.silver--;
-            AddTime(config.addSecondsSilver);
+            AddTimeSeconds(config.addSecondsSilver);
             return true;
         }
 
         public bool TryBuyTimeWithGold()
         {
+            if (State == null || State.isGameOver) return false;
             if (State.gold <= 0) return false;
+
             State.gold--;
-            AddTime(config.addSecondsGold);
+            AddTimeSeconds(config.addSecondsGold);
             return true;
         }
 
-        private void AddTime(int seconds)
+        private void AddTimeSeconds(int seconds)
         {
+            if (seconds <= 0) return;
+
             State.timeLeft += seconds;
 
+            // optional cap
             if (config.maxTimeCapSeconds > 0)
                 State.timeLeft = Mathf.Min(State.timeLeft, config.maxTimeCapSeconds);
 
@@ -126,9 +179,11 @@ namespace FPTSim.Core
             OnStateChanged?.Invoke();
         }
 
-        // ===== Submit Medals to Win =====
+        // ===== Win by submit medals =====
         public bool CanSubmitToWin()
         {
+            if (State == null || config == null) return false;
+
             return State.gold >= config.requiredGold
                 && State.silver >= config.requiredSilver
                 && State.bronze >= config.requiredBronze;
@@ -136,9 +191,9 @@ namespace FPTSim.Core
 
         public bool TrySubmitToWin()
         {
+            if (State == null || State.isGameOver) return false;
             if (!CanSubmitToWin()) return false;
 
-            // trừ đủ huy chương yêu cầu
             State.gold -= config.requiredGold;
             State.silver -= config.requiredSilver;
             State.bronze -= config.requiredBronze;
@@ -146,6 +201,23 @@ namespace FPTSim.Core
             Win();
             return true;
         }
+
+        // ===== Story Flags =====
+        public bool HasFlag(string flag)
+        {
+            return State != null && State.HasFlag(flag);
+        }
+
+        public void SetFlag(string flag)
+        {
+            if (State == null) return;
+
+            State.SetFlag(flag);
+            SaveSystem.Save(State);
+            OnStateChanged?.Invoke();
+        }
+
+        // ========== ENDINGS ==========
 
         private void Win()
         {
@@ -161,7 +233,7 @@ namespace FPTSim.Core
             SceneManager.LoadScene(SceneNames.Ending);
         }
 
-        private void Lose()
+        private void Lose_TimeOut()
         {
             if (State.isGameOver) return;
 
@@ -177,18 +249,8 @@ namespace FPTSim.Core
 
         public string DecideEnding()
         {
-            return State.isWin ? "HAPPY_END" : "BAD_TIME_OUT";
-        }
-
-        //manage flag
-        public bool HasFlag(string flag) => State != null && State.HasFlag(flag);
-
-        public void SetFlag(string flag)
-        {
-            if (State == null) return;
-            State.SetFlag(flag);
-            SaveSystem.Save(State);
-            OnStateChanged?.Invoke();
+            // Ending scene đọc chuỗi này để hiển thị text/ảnh
+            return (State != null && State.isWin) ? "HAPPY_END" : "BAD_TIME_OUT";
         }
     }
 }

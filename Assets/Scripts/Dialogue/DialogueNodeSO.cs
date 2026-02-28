@@ -7,13 +7,14 @@ namespace FPTSim.Dialogue
     public enum DialogueActionType
     {
         None,
-        StartMinigameScene,     // actionParam = sceneName
-        BuyTimeWithBronze,      // dùng hệ của bạn
+        StartMinigameScene,
+        BuyTimeWithBronze,
         BuyTimeWithSilver,
         BuyTimeWithGold,
-        SubmitToWin,            // nộp huy chương thắng
-        CloseDialogue,           // đóng hộp thoại
-        SetFlag
+        SubmitToWin,
+        CloseDialogue,
+        SetFlag,
+        SetCamera // ✅ thêm action này
     }
 
     [CreateAssetMenu(menuName = "FPT Sim/Dialogue/Node", fileName = "DialogueNode")]
@@ -27,17 +28,17 @@ namespace FPTSim.Dialogue
         [TextArea(3, 8)]
         public string text;
 
-        [Header("Choices (Nếu có choices thì bắt buộc chọn, không click/Space next)")]
+        [Header("Choices (Nếu có choices thì bắt buộc chọn)")]
         public DialogueChoice[] choices;
 
-        [Header("Auto Next (Dùng cho cutscene: nếu KHÔNG có choices, click/Space để qua nextAuto)")]
+        [Header("Auto Next (Không choices, autoAdvance=true => Space/Click qua nextAuto)")]
         public bool autoAdvance = false;
         public DialogueNodeSO nextAuto;
 
         [Header("Action (tùy chọn)")]
         public bool triggerAction = false;
         public DialogueActionType actionType = DialogueActionType.None;
-        public string actionParam; // ví dụ: tên scene minigame, hoặc param khác
-        public int actionValue;    // ví dụ: số giây cộng thêm...
+        public string actionParam; // SetCamera: cameraKey | StartMinigameScene: sceneName | SetFlag: flagName
+        public int actionValue;
     }
 }
