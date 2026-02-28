@@ -29,6 +29,9 @@ namespace FPTSim.Dialogue
 
         public bool IsRunning => currentGraph != null;
 
+        // ✅ NPC / systems có thể subscribe để biết khi dialogue đóng
+        public System.Action OnDialogueStopped;
+
         public void StartDialogue(DialogueGraphSO graph)
         {
             if (graph == null || graph.entryNode == null) return;
@@ -138,6 +141,9 @@ namespace FPTSim.Dialogue
 
             currentGraph = null;
             currentNode = null;
+
+            // ✅ notify listeners (NPC resume, UI resume...)
+            OnDialogueStopped?.Invoke();
         }
 
         private void LockPlayer(bool talking)
