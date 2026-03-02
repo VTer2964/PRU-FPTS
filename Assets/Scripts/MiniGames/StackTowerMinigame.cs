@@ -18,6 +18,11 @@ namespace FPTSim.Minigames
     /// </summary>
     public class StackTowerMinigame : MinigameBase
     {
+        [Header("Medal Thresholds (score = stars × 33)")]
+        [SerializeField] private int goldScore   = 80; // ≥ 3 sao (99)
+        [SerializeField] private int silverScore = 50; // ≥ 2 sao (66)
+        [SerializeField] private int bronzeScore = 20; // ≥ 1 sao (33)
+
         [SerializeField] private StackTowerGameManager stackManager;
 
         protected override void Start()
@@ -44,29 +49,32 @@ namespace FPTSim.Minigames
 
         private void HandleVictory(int stars)
         {
-            Medal medal = stars switch
-            {
-                3 => Medal.Gold,
-                2 => Medal.Silver,
-                _ => Medal.Bronze
-            };
-
-            StartCoroutine(FinishAfterDelay(medal, 3f));
+            int score = stars * 33; // 1 sao=33, 2 sao=66, 3 sao=99
+            Medal medal = CalculateMedal(score);
+            StartCoroutine(FinishAfterDelay(medal, score, 3f));
         }
 
         private void HandleGameOver()
         {
-            StartCoroutine(FinishAfterDelay(Medal.None, 3f));
+            StartCoroutine(FinishAfterDelay(Medal.None, 0, 3f));
         }
 
-        private IEnumerator FinishAfterDelay(Medal medal, float delay)
+        private Medal CalculateMedal(int score)
+        {
+            if (score >= goldScore)   return Medal.Gold;
+            if (score >= silverScore) return Medal.Silver;
+            if (score >= bronzeScore) return Medal.Bronze;
+            return Medal.None;
+        }
+
+        private IEnumerator FinishAfterDelay(Medal medal, int score, float delay)
         {
             yield return new WaitForSeconds(delay);
             Finish(new MinigameResult
             {
                 minigameId   = minigameId,
                 medal        = medal,
-                scoreAwarded = 0,
+                scoreAwarded = score,
                 success      = medal != Medal.None
             });
         }

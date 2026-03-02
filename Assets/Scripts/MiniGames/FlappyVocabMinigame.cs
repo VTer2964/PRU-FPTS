@@ -52,17 +52,17 @@ namespace FPTSim.Minigames
             else if (score >= bronzeScore) medal = Medal.Bronze;
             else                           medal = Medal.None;
 
-            StartCoroutine(FinishAfterDelay(medal, 3f));
+            StartCoroutine(FinishAfterDelay(medal, score, 3f));
         }
 
-        private IEnumerator FinishAfterDelay(Medal medal, float delay)
+        private IEnumerator FinishAfterDelay(Medal medal, int score, float delay)
         {
             yield return new WaitForSeconds(delay);
             Finish(new MinigameResult
             {
                 minigameId   = minigameId,
                 medal        = medal,
-                scoreAwarded = 0,
+                scoreAwarded = score,
                 success      = medal != Medal.None
             });
         }

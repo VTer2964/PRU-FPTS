@@ -56,8 +56,8 @@ namespace FPTSim.Minigames
                 GameManager.I.RegisterMinigameResult(result);
             }
 
-            // Return to Campus (simple flow)
-            SceneManager.LoadScene(SceneNames.Campus);
+            // Hiển thị kết quả, sau đó load Campus
+            MinigameResultPanel.Show(result, () => SceneManager.LoadScene(SceneNames.Campus));
         }
     }
 }
