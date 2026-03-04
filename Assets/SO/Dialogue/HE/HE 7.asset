@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: HE 7
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  text: "\"Ph\xF9... Cu\u1ED1i c\xF9ng c\u0169ng xong. Tim m\xECnh s\u1EAFp nh\u1EA3y
+    ra ngo\xE0i r\u1ED3i. Mai ph\u1EA3i \u0111\xF2i b\u1ECDn n\xF3 khao l\u1EA9u
+    Haidilao full topping m\u1EDBi \u0111\u01B0\u1EE3c. FPTU m\xE3i \u0111\u1EC9nh!\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0
   actionParam: 

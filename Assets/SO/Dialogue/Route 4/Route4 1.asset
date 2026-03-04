@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: Route4 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  speakerType: 0
+  speakerName: "Du H\u1ECDc Sinh Ng\u01B0\u1EDDi T\xE0y (Dimixo)"
+  text: "\"Alo V\u0169 \xE0 V\u0169! Server FPT \u0111ang b\u1ECB t\u1EA5n c\xF4ng
+    DDoS t\u1EEB n\u01B0\u1EDBc ngo\xE0i. Ch\xFAng ta c\u1EA7n \u0111\u1ECBnh tuy\u1EBFn
+    l\u1EA1i (reroute) traffic v\u1EC1 \u0111\xFAng qu\u1ED1c gia. Help me identify
+    these flags: Brazil, Germany... Quick!\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 11400000, guid: 47ee48a2e9c44a84790501b85b1a7b14, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

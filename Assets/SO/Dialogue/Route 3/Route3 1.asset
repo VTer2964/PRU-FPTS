@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_2
+  m_Name: Route3 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC
-  text: "\"V\u0169 \u01A1i c\u1EE9u! FAP s\u1EADp r\u1ED3i! Kh\xF4ng n\u1ED9p \u0111\u01B0\u1EE3c
-    b\xE0i! C\u1EA3 kh\xF3a \u0111ang kh\xF3c ti\u1EBFng M\xE1n \u0111\xE2y n\xE0y!\""
+  speakerName: "C\xF4 Th\u1EE7 Th\u01B0"
+  text: "\"V\u0169 \u01A1i, h\u1EC7 th\u1ED1ng rung l\u1EAFc l\xE0m \u0111\u1ED5
+    h\u1EBFt ch\u1ED3ng \u1ED5 c\u1EE9ng d\u1EEF li\u1EC7u r\u1ED3i. Em ph\u1EA3i
+    x\u1EBFp l\u1EA1i c\xE1i th\xE1p \u1ED5 c\u1EE9ng n\xE0y th\u1EADt v\u1EEFng
+    th\xEC \u0111\u01B0\u1EDDng truy\u1EC1n m\u1EDBi \u1ED5n \u0111\u1ECBnh l\u1EA1i
+    \u0111\u01B0\u1EE3c. Nhanh l\xEAn, c\xF2n 8 ph\xFAt th\xF4i!\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
+  nextAuto: {fileID: 11400000, guid: 6a16a61b1aeda784cbd4d2b6d2a605e7, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

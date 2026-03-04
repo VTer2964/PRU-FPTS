@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: Route3 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  text: "\"C\xF4 y\xEAn t\xE2m! Em ch\u01A1i x\u1EBFp h\xECnh... \xE0 nh\u1EA7m,
+    x\u1EBFp th\xE1p l\xE0 tr\xF9m. Em s\u1EBD build c\xE1i th\xE1p n\xE0y v\u1EEFng
+    h\u01A1n c\u1EA3 wifi c\u1EE7a tr\u01B0\u1EDDng m\xECnh!\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 11400000, guid: 3a2ed2d4f0e82b4489d49042ec065e08, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 
