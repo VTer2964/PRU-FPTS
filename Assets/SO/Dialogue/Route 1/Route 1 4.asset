@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 1 4
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Ch\u1ECB Leader"
+  text: "Em nh\xECn th\u1EA5y con Mascot C\xF3c V\xE0ng b\xE9o \xFA \u0111ang \u0111\u1EE9ng
+    c\u1EA1nh c\xE1i Standee to \u0111\xF9ng kia kh\xF4ng? N\xF3 \u0111ang gi\u1EEF
+    m\u1ED9t t\xFAi v\xF2ng tay \u0111\u1EA5y. Ra \u0111\xF3 xin n\xF3 \u0111i r\u1ED3i
+    quay l\u1EA1i \u0111\xE2y!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 1
+  actionType: 1
+  actionParam: 
+  actionValue: 0

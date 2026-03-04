@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 2
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: Anh PT
+  text: "Tuy\u1EC7t v\u1EDDi! N\u0103ng l\u01B0\u1EE3ng tr\xE0n tr\u1EC1! Yeah Buddy!
+    Gi\u1EDD th\xEC ch\u1ECDn \u0111\xFAng t\u1EEB v\u1EF1ng v\u1EC1 Body Parts (B\u1ED9
+    ph\u1EADn c\u01A1 th\u1EC3) \u0111\u1EC3 ch\u1EE9ng minh em kh\xF4ng ch\u1EC9
+    bi\u1EBFt code m\xE0 c\xF2n bi\u1EBFt t\u1EADp gym!"
+  choices: []
+  autoAdvance: 0
+  nextAuto: {fileID: 11400000, guid: d997528fd36891f458600f769cce7f06, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
