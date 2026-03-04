@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
   m_Name: Intro_4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 0
-  speakerName: NPC
-  text: ok Z1
+  speakerType: 1
+  speakerName: "V\u0169"
+  text: "\"Ph\u1EA3i ch\u1EA1y l\xEAn ph\xF2ng m\xE1y ch\u1EE7 ngay! Ch\u1EC9 c\xF2n
+    18 ph\xFAt. T\u1ED1c \u0111\u1ED9 b\xE0n th\u1EDD th\xF4i anh em \u01A1i! G\xE9t
+    g\xF4!\""
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

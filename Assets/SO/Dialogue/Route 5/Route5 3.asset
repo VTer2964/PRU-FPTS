@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route5 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 2
+  speakerName: System
+  text: "\"C\u1EA2NH B\xC1O CU\u1ED0I C\xD9NG! \u0110\xE2y l\xE0 tr\u1EADn chi\u1EBFn
+    quy\u1EBFt \u0111\u1ECBnh. Th\u1EAFng l\xE0m Vua, thua l\xE0m... l\u1EA1i \u0111\u1ED3
+    \xE1n. B\u1EA1n ch\u1EAFc ch\u1EAFn ch\u1EE9?\""
+  choices:
+  - text: "QUY\u1EBET CHI\u1EBEN (PLAY)"
+    next: {fileID: 11400000, guid: 0329e645c2cf0a741be9966561786872, type: 2}
+    requireCondition: 1
+    conditionKey: 
+    conditionValue: 0
+  - text: "\u0110\u1EE2I \u0110\xD3 TAO S\u1EBC QUAY L\u1EA0I !!"
+    next: {fileID: 11400000, guid: d9c420ffabf6ad34fb92a62226cc0249, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

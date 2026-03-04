@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: Route2 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  speakerType: 0
+  speakerName: Hologram
+  text: "\"Stop! Restricted Area. H\u1EC7 th\u1ED1ng nh\u1EADn di\u1EC7n gi\u1ECDng
+    n\xF3i y\xEAu c\u1EA7u m\u1EADt kh\u1EA9u. Ch\u1ECDn \u0111\xFAng t\u1EEB v\u1EF1ng
+    v\u1EC1 c\xE1c b\u1ED9 ph\u1EADn c\u01A1 th\u1EC3 (Body Parts) \u0111\u1EC3 m\u1EDF
+    kh\xF3a thang m\xE1y.\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 11400000, guid: 2971f80fa66ade140a327ee79c52d86d, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

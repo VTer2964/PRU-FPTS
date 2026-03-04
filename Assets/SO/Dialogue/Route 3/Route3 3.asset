@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route3 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 2
+  speakerName: System
+  text: "\"C\u1EA3nh b\xE1o rung l\u1EAFc! \u0110\u1ED9 kh\xF3 v\u1EADt l\xFD: Cao.
+    B\u1EA1n c\xF3 d\xE1m th\u1EED th\xE1ch \u0111\xF4i tay c\u1EE7a m\xECnh kh\xF4ng?\""
+  choices:
+  - text: "X\u1EBEP NGAY (PLAY)"
+    next: {fileID: 11400000, guid: 5113b2583c659f74fafd417ec15fa766, type: 2}
+    requireCondition: 1
+    conditionKey: 
+    conditionValue: 0
+  - text: "RUN TAY QU\xC1"
+    next: {fileID: 11400000, guid: 1bc1e40972d228a4980c853d0e3dfef9, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

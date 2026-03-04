@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: Route2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  text: "\"L\u1EA1i l\xE0 ti\u1EBFng Anh! May m\xE0 h\u1ED3i x\u01B0a kh\xF4ng c\xFAp
+    ti\u1EBFt Little UK. Body parts ch\u1EE9 g\xEC? Chuy\u1EC7n nh\u1ECF nh\u01B0
+    con th\u1ECF!\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 11400000, guid: a66bceacd46ec2141855ba4b06d65129, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

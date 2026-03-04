@@ -10,15 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_1
+  m_Name: Route2 3
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
   speakerName: System
-  text: "Ti\u1EBFng c\xF2i b\xE1o \u0111\u1ED9ng \u0111\u1ECF r\u1EF1c c\u1EA3 t\xF2a
-    \u0110\u1EA1i h\u1ECDc FPT. \u0110i\u1EC7n tho\u1EA1i V\u0169 rung li\xEAn h\u1ED3i."
-  choices: []
+  text: "\"Y\xEAu c\u1EA7u k\xEDch ho\u1EA1t Module Ng\xF4n ng\u1EEF. B\u1EA1n \u0111\xE3
+    s\u1EB5n s\xE0ng 'b\u1EAFn' ti\u1EBFng Anh ch\u01B0a?\""
+  choices:
+  - text: I AM READY (PLAY)
+    next: {fileID: 11400000, guid: 83b5f4423168f9c4eb3e71b98312f231, type: 2}
+    requireCondition: 1
+    conditionKey: 
+    conditionValue: 0
+  - text: I DON'T KNOW
+    next: {fileID: 11400000, guid: 3c97aaf7bdc13c64fb432e23aa99a1b1, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 7907eb827ea35dc48b9fe52a2fca6493, type: 2}
+  nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0
   actionParam: 

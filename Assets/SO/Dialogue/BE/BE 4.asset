@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: BE 4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "\"Ch\u1EBFt d\u1EDF! Server l\u1EA1i 'tr\xE0n b\u1ED9 nh\u1EDB' r\u1ED3i.
-    M\xECnh \u0111ang gi\u1EEF th\u1EBB Admin.\""
+  speakerType: 2
+  speakerName: System
+  text: "\"K\u1EBET QU\u1EA2 M\xD4 PH\u1ECENG: K18 R\u1EDAT T\u1ED0T NGHI\u1EC6P
+    TO\xC0N T\u1EACP.\""
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 11400000, guid: 0a690e0f24ea79744af511aa0017b2a8, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 
