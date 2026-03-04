@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_2
+  m_Name: Route 2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "C\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi \u0111\xE2y r\u1ED3i! MacBook
-    M3 \u01A1i, ch\u1EDD anh! 18 ph\xFAt l\xE0 qu\xE1 \u0111\u1EE7 v\u1EDBi m\u1ED9t
-    runner nh\u01B0 m\xECnh. G\xE9t g\xF4!"
+  speakerType: 0
+  speakerName: "B\u1EA1n N\u1EEF"
+  text: "Huhu, t\u1EDB kh\xF4ng bi\u1EBFt n\u1EEFa! T\u1EDB b\u1EADt Bluetooth \u0111i\u1EC7n
+    tho\u1EA1i r\u1ED3i m\xE0 t\xECm m\xE3i kh\xF4ng th\u1EA5y t\xEAn loa \u0111\xE2u.
+    C\xE1i loa n\xE0y 'ch\u1EA3nh' qu\xE1 hay sao \u1EA5y! Anh PT nh\xECn t\u1EDB
+    ch\xE1y c\u1EA3 m\xE1y r\u1ED3i!"
   choices: []
-  autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
+  autoAdvance: 0
+  nextAuto: {fileID: 11400000, guid: ecdf7aa876c2251459627087e9964fdc, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 
