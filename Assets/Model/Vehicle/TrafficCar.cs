@@ -32,7 +32,7 @@ public class TrafficCar : MonoBehaviour
         }
 
         // 3. Xử lý việc chuyển điểm khi đến gần đích
-        if (!agent.pathPending && agent.remainingDistance < 2f)
+        if (!agent.pathPending && agent.remainingDistance < 5f)
         {
             currentPointIndex++;
 
