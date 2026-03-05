@@ -69,3 +69,13 @@ sysinfo.txt
 # Others
 # ===============================
 *.log
+
+# ===============================
+# Claude Code (local tool config)
+# ===============================
+.claude/
+
+# ===============================
+# MCP Unity local settings
+# ===============================
+ProjectSettings/McpUnitySettings.json
