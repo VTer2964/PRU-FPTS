@@ -17,17 +17,17 @@ MonoBehaviour:
   text: "Nh\u1EA1c n\u1EC1n c\u1EF1c c\u0103ng. PT \u0111ang sung s\u1EE9c. B\u1EA1n
     s\u1EB5n s\xE0ng ch\u01B0a?"
   choices:
-  - text: "[A] YEAH BUDDY (CHI\u1EBEN) "
-    next: {fileID: 0}
+  - text: "YEAH BUDDY (CHI\u1EBEN) "
+    next: {fileID: 11400000, guid: 2221311c43a70814eaa1e6f2097edbdc, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "[B] NG\u1EA0I QU\xC1 (B\u1ECE)"
-    next: {fileID: 0}
+  - text: "NG\u1EA0I QU\xC1 (B\u1ECE)"
+    next: {fileID: 11400000, guid: 3407f9762dbe8c74992b749f64424123, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

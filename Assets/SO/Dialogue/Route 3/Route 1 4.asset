@@ -20,7 +20,7 @@ MonoBehaviour:
     c\u1EEDa v\xE0o \u0111\u01B0\u1EE3c. Em ra c\u1EEDa \u0111\xF3n ly n\u01B0\u1EDBc
     v\xE0o \u0111\xE2y gi\xFAp c\xF4 v\u1EDBi!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Mic ngon l\xE0nh r\u1ED3i anh \u01A1i! Alo 1 2 3 4 nghe r\xF5 tr\u1EA3 l\u1EDDi!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d519fda5ffed414408def5a4c02acea6, type: 2}
   triggerAction: 0
   actionType: 0

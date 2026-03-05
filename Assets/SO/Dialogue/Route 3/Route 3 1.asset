@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "C\xE0 ph\xEA B\u1EA1c X\u1EC9u nhi\u1EC1u s\u1EEFa \xEDt c\xE0 ph\xEA c\u1EE7a
     c\xF4 \u0111\xE2y \u1EA1! T\u1EC9nh t\xE1o ch\u01B0a c\xF4?"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: bec6dd37af8441642b13e0e365e80cae, type: 2}
   triggerAction: 0
   actionType: 0

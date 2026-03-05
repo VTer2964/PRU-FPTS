@@ -18,7 +18,7 @@ MonoBehaviour:
     Em c\u1EE9u m\u1EA1ng anh r\u1ED3i! T\xED n\u1EEFa anh s\u1EBD \u0111\u1ECDc
     t\xEAn em to nh\u1EA5t (n\u1EBFu em th\u1EAFng)!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: ff77e7d779bc68c4e98210f5ac0e49fd, type: 2}
   triggerAction: 0
   actionType: 0

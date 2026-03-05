@@ -17,7 +17,7 @@ MonoBehaviour:
   text: Oh thank god! You are a lifesaver. Now, show me your geography knowledge.
     Match the flags to the countries correctly!
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 54df2bb9a2649ef47b20e379f9f62fc8, type: 2}
   triggerAction: 0
   actionType: 0

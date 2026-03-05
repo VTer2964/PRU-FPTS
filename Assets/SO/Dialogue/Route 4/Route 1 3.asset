@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Where did you drop it? (Th\u1EA7y l\xE0m r\u01A1i \u1EDF \u0111\xE2u?)"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}
   triggerAction: 0
   actionType: 0

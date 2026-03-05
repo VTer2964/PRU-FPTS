@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: Here is your passport, Sir!
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: c7765036e45a51848a5622446d53bb70, type: 2}
   triggerAction: 0
   actionType: 0

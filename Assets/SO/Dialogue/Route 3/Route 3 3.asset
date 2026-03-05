@@ -17,13 +17,13 @@ MonoBehaviour:
   text: "Th\u1EE7 th\u01B0 \u0111\xE3 n\u1EA1p \u0111\u1EE7 Cafein. Th\u1EED th\xE1ch
     X\xE2y Th\xE1p \u0111\xE3 s\u1EB5n s\xE0ng. Ch\u01A1i kh\xF4ng?"
   choices:
-  - text: "[A] X\u1EBEP NGAY"
-    next: {fileID: 0}
+  - text: "X\u1EBEP NGAY"
+    next: {fileID: 11400000, guid: e1135c69754be50428e4c8cffa07758d, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "[B] S\u1EE2 \u0110\u1ED4 (B\u1ECE)"
-    next: {fileID: 0}
+  - text: " S\u1EE2 \u0110\u1ED4 (B\u1ECE)"
+    next: {fileID: 11400000, guid: a3b908a77ca211841a37a3f3f8e48ef7, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0

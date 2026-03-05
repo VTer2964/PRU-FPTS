@@ -20,6 +20,6 @@ MonoBehaviour:
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: fff2dbb3a4b13c949838ce274e11066e, type: 2}
   triggerAction: 0
-  actionType: 7
+  actionType: 0
   actionParam: 
   actionValue: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
     m\u1EAFt ra r\u1ED3i, kh\xF4ng c\xF3 s\u1EE9c ch\u01A1i b\u1EDDi g\xEC c\u1EA3.
     S\xE1ng gi\u1EDD c\xF4 ch\u1EDD ly c\xE0 ph\xEA m\xE3i..."
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 46b55f7358422e84caf81b82f3c54266, type: 2}
   triggerAction: 0
   actionType: 0

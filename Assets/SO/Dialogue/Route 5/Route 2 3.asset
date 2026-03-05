@@ -21,7 +21,7 @@ MonoBehaviour:
     c\u1EF1c, v\u1ED7 nh\u1EB9 v\xE0o \u0111\u1EA7u Mic: B\u1EE5p b\u1EE5p... Alo
     alo!)\r\n"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2f32765b1ad45e34ebf45f698ebb72cd, type: 2}
   triggerAction: 0
   actionType: 0

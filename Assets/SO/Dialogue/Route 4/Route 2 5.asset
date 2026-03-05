@@ -18,7 +18,7 @@ MonoBehaviour:
     \u01A1n ch\xFA nhi\u1EC1u l\u1EAFm \u1EA1! Ch\xFA l\xE0 ng\u01B0\u1EDDi h\xF9ng
     c\u1EE7a con!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 41f3115314afa514a8fc5606ceac1920, type: 2}
   triggerAction: 0
   actionType: 0

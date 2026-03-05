@@ -19,7 +19,7 @@ MonoBehaviour:
     l\xE0 ngo\xE0i h\xE0nh lang. Em ra h\u1ECFi ch\xFA lao c\xF4ng \u1EDF cu\u1ED1i
     \u0111\u01B0\u1EDDng xem).\r\n"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

@@ -16,9 +16,9 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Ok anh! Anh c\u1EE9 tin \u1EDF tay l\xE1i l\u1EE5a c\u1EE7a em!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  triggerAction: 1
+  actionType: 7
+  actionParam: Game3
   actionValue: 0

@@ -19,7 +19,7 @@ MonoBehaviour:
     ph\u1EA3i kia kh\xF4ng? Em d\xE2n k\u1EF9 thu\u1EADt m\xE0, ra xem c\xE1i Micro
     b\u1ECB sao, s\u1EEDa nhanh l\xEAn th\xEC anh m\u1EDBi cho ch\u01A1i game cu\u1ED1i!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

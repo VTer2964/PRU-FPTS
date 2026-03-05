@@ -20,7 +20,7 @@ MonoBehaviour:
     t\xECm th\u1EA5y. Nh\xECn tay t\u1EDB n\xE0y!(V\u0169 nh\u1EA5n gi\u1EEF n\xFAt
     Bluetooth tr\xEAn loa 3 gi\xE2y: B\xEDp b\xEDp! \u0110\xE8n xanh nh\u1EA5p nh\xE1y) "
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 4819225c0d84b774c90cccf6b62eac23, type: 2}
   triggerAction: 0
   actionType: 0

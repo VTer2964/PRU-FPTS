@@ -19,7 +19,7 @@ MonoBehaviour:
     n\xE0y. L\u1EADt \u0111\xFAng c\xE1c c\u1EB7p h\xECnh gi\u1ED1ng nhau trong 60
     gi\xE2y th\xEC MacBook l\xE0 c\u1EE7a em!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 8d086acb8787c104e92ff5efcf44797e, type: 2}
   triggerAction: 0
   actionType: 0

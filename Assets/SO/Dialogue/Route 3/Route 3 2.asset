@@ -19,7 +19,7 @@ MonoBehaviour:
     t\u1EADp trung cao \u0111\u1ED9. X\u1EBFp ch\u1ED3ng s\xE1ch n\xE0y l\xEAn cao
     m\xE0 kh\xF4ng \u0111\u1ED5 nh\xE9!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 239aaa08eeee53142b23d02f154db3cd, type: 2}
   triggerAction: 0
   actionType: 0

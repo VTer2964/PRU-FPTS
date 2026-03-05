@@ -18,7 +18,7 @@ MonoBehaviour:
     b\u1ECB gi\xE1n \u0111o\u1EA1n. Micro c\u1EE7a MC h\u1ECFng r\u1ED3i, kh\xF4ng
     c\xF4ng b\u1ED1 gi\u1EA3i \u0111\u01B0\u1EE3c."
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: bdb07c5dbf53ee0429656f661384719a, type: 2}
   triggerAction: 0
   actionType: 0

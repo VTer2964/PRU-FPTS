@@ -18,13 +18,13 @@ MonoBehaviour:
     v\xE0 r\u1EA5t vui v\u1EBB. B\u1EA1n c\xF3 mu\u1ED1n th\u1EED th\xE1ch \u0110\u1ECBa
     L\xFD kh\xF4ng?"
   choices:
-  - text: "[A] YES, SIR (CHI\u1EBEN) "
-    next: {fileID: 0}
+  - text: "YES, SIR (CHI\u1EBEN) "
+    next: {fileID: 11400000, guid: e8853e148e88d6e48a3b13fead945c45, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "[B] NO ENGLISH (B\u1ECE) "
-    next: {fileID: 0}
+  - text: "NO ENGLISH (B\u1ECE) "
+    next: {fileID: 11400000, guid: dfbe4c5a3f7cf4b46937f69f33470f86, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0

@@ -20,7 +20,7 @@ MonoBehaviour:
     c\u1EE9u h\u1ECFa kia k\xECa.(V\u0169 nh\xECn l\xEAn n\xF3c t\u1EE7, th\u1EA5y
     cu\u1ED1n H\u1ED9 chi\u1EBFu n\u1EB1m \u0111\xF3)\r\n"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d3a816b815e6e5345aa433db2abe8132, type: 2}
   triggerAction: 0
   actionType: 0

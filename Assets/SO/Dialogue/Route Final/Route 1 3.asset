@@ -17,9 +17,9 @@ MonoBehaviour:
   text: "\u0110ang k\u1EBFt n\u1ED1i m\xE1y ch\u1EE7... D\u1EEF li\u1EC7u \u0111ang
     \u0111\u01B0\u1EE3c g\u1EEDi \u0111i... T\u1ED1c \u0111\u1ED9 b\xE0n th\u1EDD!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
-  triggerAction: 0
-  actionType: 0
+  triggerAction: 1
+  actionType: 5
   actionParam: 
   actionValue: 0

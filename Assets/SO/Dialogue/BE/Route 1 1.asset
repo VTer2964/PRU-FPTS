@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "L\u1ED6I K\u1EBET N\u1ED0I! QU\xC1 TH\u1EDCI GIAN QUY \u0110\u1ECANH.\"
     \"GAME OVER. B\u1EA0N NH\u1EACN \u0110\u01AF\u1EE2C: 01 C\xC1I \xC1O M\u01AFA."
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 20873749747c38644bbb88fdefdbcda8, type: 2}
   triggerAction: 0
   actionType: 0

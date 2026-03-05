@@ -19,7 +19,7 @@ MonoBehaviour:
     m\xE0u xanh l\xE1 c\xE2y, c\xF3 ch\u1EEF n\u01B0\u1EDBc ngo\xE0i kh\xF4ng ch\xFA?
     C\u1EE7a th\u1EA7y David b\u1ECB r\u1EDBt \u1EA1."
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: de9855f59bca20d40bba4901f1ccd8b7, type: 2}
   triggerAction: 0
   actionType: 0

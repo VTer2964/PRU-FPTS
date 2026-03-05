@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "Tr\xF9ng h\u1EE3p qu\xE1! Em \u0111ang c\u1EA7n g\u1EB7p c\xF4 \u1EA5y.
     \u0110\u01B0a \u0111\xE2y em mang v\xE0o cho!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 9fa870b858f5db146a2583f6c630dca0, type: 2}
   triggerAction: 0
   actionType: 0

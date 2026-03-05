@@ -16,9 +16,9 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Ok r\u1ED3i nh\xE9! T\u1EDB v\xE0o vi\u1EC7c \u0111\xE2y!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  triggerAction: 1
+  actionType: 7
+  actionParam: Game2
   actionValue: 0

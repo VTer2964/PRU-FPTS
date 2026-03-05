@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "UPLOAD TH\xC0NH C\xD4NG!\" \"PH\u1EA6N TH\u01AF\u1EDENG: 01 MACBOOK PRO
     M3."
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: f31b1cb008534c14b87fc6248ca7adb5, type: 2}
   triggerAction: 0
   actionType: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
     no work! (Xin l\u1ED7i, th\u1EA7y m\u1EA5t h\u1ED9 chi\u1EBFu r\u1ED3i, kh\xF4ng
     l\xE0m vi\u1EC7c \u0111\u01B0\u1EE3c).\r\n"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5446e9e3de94da74fa360fee75db6f77, type: 2}
   triggerAction: 0
   actionType: 0

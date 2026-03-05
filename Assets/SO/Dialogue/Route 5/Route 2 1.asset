@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "Anh MC \u01A1i! \u0110\u1EA1o di\u1EC5n b\u1EA3o em ra xem c\xE1i Mic. T\xECnh
     h\xECnh sao r\u1ED3i anh?"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d4ade85c5b9f96e4d89a594cb304f5e0, type: 2}
   triggerAction: 0
   actionType: 0

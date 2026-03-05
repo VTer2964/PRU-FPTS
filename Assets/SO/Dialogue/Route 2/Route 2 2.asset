@@ -19,7 +19,7 @@ MonoBehaviour:
     C\xE1i loa n\xE0y 'ch\u1EA3nh' qu\xE1 hay sao \u1EA5y! Anh PT nh\xECn t\u1EDB
     ch\xE1y c\u1EA3 m\xE1y r\u1ED3i!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: ecdf7aa876c2251459627087e9964fdc, type: 2}
   triggerAction: 0
   actionType: 0

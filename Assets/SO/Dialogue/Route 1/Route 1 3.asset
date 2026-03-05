@@ -15,19 +15,9 @@ MonoBehaviour:
   speakerType: 1
   speakerName: "V\u0169"
   text: "\u01A0 th\u1EBF l\u1EA5y \u1EDF \u0111\xE2u h\u1EA3 ch\u1ECB?"
-  choices:
-  - text: "V\xC0O VI\u1EC6C LU\xD4N (PLAY)"
-    next: {fileID: 11400000, guid: c78a46fc77be1774480a383b60f253ad, type: 2}
-    requireCondition: 1
-    conditionKey: 
-    conditionValue: 0
-  - text: "TH\xD4I B\u1ECE \u0110I"
-    next: {fileID: 11400000, guid: 05474bd0e83e6c14ca38eebf1ebc29d7, type: 2}
-    requireCondition: 0
-    conditionKey: 
-    conditionValue: 0
-  autoAdvance: 0
-  nextAuto: {fileID: 0}
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: c78a46fc77be1774480a383b60f253ad, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

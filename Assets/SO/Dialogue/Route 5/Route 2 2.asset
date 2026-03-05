@@ -18,7 +18,7 @@ MonoBehaviour:
     Nh\u1EA5t m\xE0 Mic t\u1ECBt ng\xF3m. Anh b\u1EADt On/Off ch\u1EE5c l\u1EA7n
     r\u1ED3i kh\xF4ng l\xEAn. Ch\u1EAFc anh b\u1ECB \u0111u\u1ED5i vi\u1EC7c m\u1EA5t!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b41bcc8f0c036034ba2a45a7424beadd, type: 2}
   triggerAction: 0
   actionType: 0

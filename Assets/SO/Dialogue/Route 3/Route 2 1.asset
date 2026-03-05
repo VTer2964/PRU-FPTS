@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "Em \u01A1i! Em sinh vi\xEAn tr\u01B0\u1EDDng n\xE0y \u0111\xFAng kh\xF4ng?
     C\u1EE9u anh v\u1EDBi!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 287dc79be9ae31348bcff129ccd2bf93, type: 2}
   triggerAction: 0
   actionType: 0

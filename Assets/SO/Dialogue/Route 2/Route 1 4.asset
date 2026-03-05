@@ -20,7 +20,7 @@ MonoBehaviour:
     Em ra gh\u1EBF \u0111\xE1, fix c\xE1i loa cho n\xF3 \u0111\u1EC3 nh\u1EA1c l\xEAn
     x\u1EADp x\xECnh \u0111i r\u1ED3i anh ti\u1EBFp chi\xEAu!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

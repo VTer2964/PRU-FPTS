@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: Hello Sir! I want the QR Code number 4!
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 89cc6e73d8ff39a4ea7963b1b5ca865b, type: 2}
   triggerAction: 0
   actionType: 0

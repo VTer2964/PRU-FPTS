@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Sao th\u1EBF anh? Em \u0111ang v\u1ED9i l\u1EAFm!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b2c031c14c975494d9a7a87d75c34f66, type: 2}
   triggerAction: 0
   actionType: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "(H\xE9t l\u1EDBn)YES! K\u1ECBp r\u1ED3i! MacBook l\xE0 c\u1EE7a t\xF4i!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

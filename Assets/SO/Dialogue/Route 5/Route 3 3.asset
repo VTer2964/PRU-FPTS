@@ -18,13 +18,13 @@ MonoBehaviour:
     tr\u01B0\u1EDBc m\u1EAFt. Ch\u1EC9 c\xF2n m\u1ED9t game n\u1EEFa th\xF4i. Quy\u1EBFt
     \u0111\u1ECBnh c\u1EE7a b\u1EA1n?"
   choices:
-  - text: "[A] L\u1EA4Y MACBOOK"
-    next: {fileID: 0}
+  - text: "L\u1EA4Y MACBOOK"
+    next: {fileID: 11400000, guid: 78b81ce264978414ba6e28aabfc27005, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "[B] RUN QU\xC1 (B\u1ECE) "
-    next: {fileID: 0}
+  - text: "RUN QU\xC1 (B\u1ECE) "
+    next: {fileID: 11400000, guid: 1b723e089eea3b442bf9e58e4be5490c, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0

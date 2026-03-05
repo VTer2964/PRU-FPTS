@@ -19,7 +19,7 @@ MonoBehaviour:
     ph\u1EADn c\u01A1 th\u1EC3) \u0111\u1EC3 ch\u1EE9ng minh em kh\xF4ng ch\u1EC9
     bi\u1EBFt code m\xE0 c\xF2n bi\u1EBFt t\u1EADp gym!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d997528fd36891f458600f769cce7f06, type: 2}
   triggerAction: 0
   actionType: 0
