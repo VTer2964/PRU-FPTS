@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Intro_4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC
-  text: ok Z1
+  speakerName: 
+  text: "\xC0 m\xE0 th\u1EDDi gian b\u1EAFt \u0111\u1EA7u ch\u1EA1y lu\xF4n r\u1ED3i
+    \u0111\u1EA5y nh\xE9"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
-  triggerAction: 1
-  actionType: 7
-  actionParam: Z1
+  nextAuto: {fileID: 11400000, guid: f111ad28342956541ad3e0adf913621c, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0

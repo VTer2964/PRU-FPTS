@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Intro_2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC
-  text: "Ng\u01B0\u01A1i ch\u1EC9 c\xF2n 18 ph\xFAt\u2026"
+  speakerName: 
+  text: "Tr\u01B0\u1EDDng \u0111ang t\u1ED5 ch\u1EE9c s\u1EF1 ki\u1EC7n. H\xE3y v\xE0o
+    \u0111\u1EC3 tr\u1EA3i nghi\u1EC7m v\xE0 nh\u1EADn v\u1EC1 ph\u1EA7n th\u01B0\u1EDFng
+    h\u1EA5p d\u1EABn"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
   triggerAction: 0
   actionType: 0
-  actionParam: 
+  actionParam: ThoCam
   actionValue: 0
