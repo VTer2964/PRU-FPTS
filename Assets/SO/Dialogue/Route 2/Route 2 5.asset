@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_3
+  m_Name: Route 2 5
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 0
-  speakerName: 
-  text: "B\u1EA1n c\xF3 th\u1EDDi gian 18 ph\xFAt. H\xE3y t\xECm qu\u1EA3n l\xFD
-    s\u1EF1 ki\u1EC7n \u0111\u1EC3 bi\u1EBFt th\xEAm chi ti\u1EBFt nh\xE9"
+  speakerType: 1
+  speakerName: "V\u0169"
+  text: "Ok r\u1ED3i nh\xE9! T\u1EDB v\xE0o vi\u1EC7c \u0111\xE2y!"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 3416cf485a1763c4abbc96202fb8d5ba, type: 2}
+  nextAuto: {fileID: 0}
   triggerAction: 1
-  actionType: 8
-  actionParam: ThoCam
+  actionType: 7
+  actionParam: Game2
   actionValue: 0

@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_2
+  m_Name: Route 3 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "C\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi \u0111\xE2y r\u1ED3i! MacBook
-    M3 \u01A1i, ch\u1EDD anh! 18 ph\xFAt l\xE0 qu\xE1 \u0111\u1EE7 v\u1EDBi m\u1ED9t
-    runner nh\u01B0 m\xECnh. G\xE9t g\xF4!"
+  speakerType: 0
+  speakerName: "Th\u1EA7y David"
+  text: Oh thank god! You are a lifesaver. Now, show me your geography knowledge.
+    Match the flags to the countries correctly!
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
+  nextAuto: {fileID: 11400000, guid: 54df2bb9a2649ef47b20e379f9f62fc8, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

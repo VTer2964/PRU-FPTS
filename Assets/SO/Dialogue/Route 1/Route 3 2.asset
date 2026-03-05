@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_2
+  m_Name: Route 3 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "C\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi \u0111\xE2y r\u1ED3i! MacBook
-    M3 \u01A1i, ch\u1EDD anh! 18 ph\xFAt l\xE0 qu\xE1 \u0111\u1EE7 v\u1EDBi m\u1ED9t
-    runner nh\u01B0 m\xECnh. G\xE9t g\xF4!"
+  speakerType: 0
+  speakerName: "Ch\u1ECB Leader"
+  text: "\u0110\u01B0\u1EE3c, t\xE1c phong nhanh nh\u1EB9n \u0111\u1EA5y. Nh\u01B0ng
+    mu\u1ED1n l\u1EA5y QR Code th\xEC ph\u1EA3i th\u1EAFng ch\u1ECB v\xE1n Caro \u0111\xE3.
+    Ch\u1ECB l\xE0 'Ki\u1EC7n t\u01B0\u1EDBng Caro' FPT 3 n\u0103m li\u1EC1n \u0111\u1EA5y
+    nh\xE9!"
   choices: []
-  autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
+  autoAdvance: 0
+  nextAuto: {fileID: 11400000, guid: 6fd731b3e2a224d4b8e49519d7fbf8a3, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

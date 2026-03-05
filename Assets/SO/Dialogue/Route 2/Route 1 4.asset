@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Intro_2
+  m_Name: Route 1 4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 1
-  speakerName: "V\u0169"
-  text: "C\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi \u0111\xE2y r\u1ED3i! MacBook
-    M3 \u01A1i, ch\u1EDD anh! 18 ph\xFAt l\xE0 qu\xE1 \u0111\u1EE7 v\u1EDBi m\u1ED9t
-    runner nh\u01B0 m\xECnh. G\xE9t g\xF4!"
+  speakerType: 0
+  speakerName: Anh PT
+  text: "C\xE1i loa Bluetooth c\u1EE7a anh \u0111\u01B0a cho con b\xE9 \u0111ang
+    ng\u1ED3i \u1EDF gh\u1EBF \u0111\xE1 \u0111\u1EB1ng kia m\u01B0\u1EE3n, m\xE0
+    n\xF3 loay hoay c\u1EA3 ti\u1EBFng r\u1ED3i ch\u01B0a b\u1EADt \u0111\u01B0\u1EE3c.
+    Em ra gh\u1EBF \u0111\xE1, fix c\xE1i loa cho n\xF3 \u0111\u1EC3 nh\u1EA1c l\xEAn
+    x\u1EADp x\xECnh \u0111i r\u1ED3i anh ti\u1EBFp chi\xEAu!"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
+  nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0
   actionParam: 
