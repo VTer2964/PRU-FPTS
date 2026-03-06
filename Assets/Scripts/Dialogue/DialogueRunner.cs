@@ -257,7 +257,6 @@ namespace FPTSim.Dialogue
                         }
 
                         gm.SetFlag(flag);
-                        runtimeMessage = $"✅ Đã mở khóa cốt truyện: {flag}";
                         break;
                     }
 
