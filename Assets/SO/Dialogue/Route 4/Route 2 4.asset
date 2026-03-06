@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 2 4
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Ch\xFA Lao C\xF4ng"
+  text: "S\u1ED5 m\xE0u xanh h\u1EA3? \xC0... N\xE3y ch\xFA qu\xE9t g\u1EA7m gh\u1EBF
+    \u0111\xE1 th\u1EA5y m\u1ED9t cu\u1ED1n. T\u01B0\u1EDFng s\u1ED5 n\u1EE3 c\u1EE7a
+    \u0111\u1EE9a n\xE0o v\u1EE9t \u0111i. Ch\xFA \u0111\u1EC3 tr\xEAn n\xF3c t\u1EE7
+    c\u1EE9u h\u1ECFa kia k\xECa.(V\u0169 nh\xECn l\xEAn n\xF3c t\u1EE7, th\u1EA5y
+    cu\u1ED1n H\u1ED9 chi\u1EBFu n\u1EB1m \u0111\xF3)\r\n"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: d3a816b815e6e5345aa433db2abe8132, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 2 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 1
+  speakerName: "V\u0169"
+  text: "Tr\u1EDDi \u0111\u1EA5t! \u0102n cho l\u1EAFm v\xE0o! \u0110\u1EE9ng y\xEAn
+    n\xE0o, h\xF3p b\u1EE5ng v\xE0o!\" (V\u0169 h\xEC h\u1EE5c k\xE9o m\u1EA1nh c\xE1i
+    kh\xF3a \xE1o Mascot: R\u1EB9tttt!)"
+  choices: []
+  autoAdvance: 0
+  nextAuto: {fileID: 11400000, guid: bc2def6901d894b4395bcf713e2f3bcf, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
