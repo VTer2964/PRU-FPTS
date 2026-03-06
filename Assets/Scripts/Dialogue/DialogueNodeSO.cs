@@ -14,6 +14,9 @@ namespace FPTSim.Dialogue
         SubmitToWin,
         CloseDialogue,
         SetFlag,
+        AddBronze,
+        AddSilver,
+        AddGold,
         SetCamera // ✅ thêm action này
     }
 
