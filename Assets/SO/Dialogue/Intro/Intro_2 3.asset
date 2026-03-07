@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Intro_2 3
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "V\u0169"
-  text: "C\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi \u0111\xE2y r\u1ED3i! MacBook
-    M3 \u01A1i, ch\u1EDD anh! 18 ph\xFAt l\xE0 qu\xE1 \u0111\u1EE7 v\u1EDBi m\u1ED9t
-    runner nh\u01B0 m\xECnh. G\xE9t g\xF4!"
+  speakerName: "MC S\u1EF1 Ki\u1EC7n"
+  text: "Lu\u1EADt ch\u01A1i r\u1EA5t \u0111\u01A1n gi\u1EA3n:\nM\u1EA5y v\u1ECB
+    'g\xE1c c\u1ED5ng' s\u1EBD l\xE0m kh\xF3 c\u1EADu.\nM\u1EB9o l\xE0 h\xE3y t\xECm
+    ng\u01B0\u1EDDi xung quanh, gi\xFAp h\u1ECD gi\u1EA3i quy\u1EBFt r\u1EAFc r\u1ED1i
+    th\xEC m\u1EDBi \u0111\u01B0\u1EE3c v\xE0o ch\u01A1i game nh\u1EADn th\u01B0\u1EDFng."
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
+  nextAuto: {fileID: 11400000, guid: d5b0da1a362a366419f3cb1d1fd3a559, type: 2}
   triggerAction: 1
-  actionType: 7
-  actionParam: Z1
+  actionType: 11
+  actionParam: ThoCam
   actionValue: 0

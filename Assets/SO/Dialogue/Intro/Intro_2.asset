@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "Tr\u01B0\u1EDDng \u0111ang c\xF3..."
+  text: "Macbook M3? Mi\u1EC5n ph\xED? \u0110\xE2y kh\xF4ng ph\u1EA3i l\xE0 game,
+    \u0111\xE2y l\xE0 c\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 91128f30a5aefd849a22778df881692d, type: 2}
   triggerAction: 1
-  actionType: 7
-  actionParam: T1
+  actionType: 11
+  actionParam: FPTU3
   actionValue: 0
