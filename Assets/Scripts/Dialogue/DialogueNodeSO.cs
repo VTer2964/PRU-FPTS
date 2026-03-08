@@ -17,7 +17,8 @@ namespace FPTSim.Dialogue
         AddBronze,
         AddSilver,
         AddGold,
-        SetCamera // ✅ thêm action này
+        SetCamera, // ✅ thêm action này
+        GoHomeEnding
     }
 
     [CreateAssetMenu(menuName = "FPT Sim/Dialogue/Node", fileName = "DialogueNode")]

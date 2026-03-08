@@ -11,6 +11,8 @@ namespace FPTSim.Core
         // Timer tổng còn lại (giây)
         public float timeLeft;
 
+        public string endingKey = "";
+
         // Medals
         public int gold = 0;
         public int silver = 0;
@@ -26,6 +28,7 @@ namespace FPTSim.Core
 
             gold = silver = bronze = 0;
 
+            endingKey = "";
             isGameOver = false;
             isWin = false;
         }

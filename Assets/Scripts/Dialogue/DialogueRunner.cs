@@ -313,7 +313,18 @@ namespace FPTSim.Dialogue
                         runtimeMessage = $"✅ Nhận +{amount} Gold!";
                         break;
                     }
+                case DialogueActionType.GoHomeEnding:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
 
+                        StopDialogue();
+                        gm.TriggerGoHomeEnding();
+                        break;
+                    }
                 case DialogueActionType.CloseDialogue:
                     {
                         StopDialogue();

@@ -197,6 +197,8 @@ namespace FPTSim.Core
                 && State.bronze >= config.requiredBronze;
         }
 
+
+
         public bool TrySubmitToWin()
         {
             if (State == null || State.isGameOver) return false;
@@ -233,6 +235,7 @@ namespace FPTSim.Core
 
             State.isGameOver = true;
             State.isWin = true;
+            State.endingKey = "HAPPY_END";
 
             SaveSystem.Save(State);
             OnStateChanged?.Invoke();
@@ -247,6 +250,22 @@ namespace FPTSim.Core
 
             State.isGameOver = true;
             State.isWin = false;
+            State.endingKey = "BAD_TIME_OUT";
+
+            SaveSystem.Save(State);
+            OnStateChanged?.Invoke();
+
+            Phase = GamePhase.Ending;
+            SceneManager.LoadScene(SceneNames.Ending);
+        }
+
+        public void TriggerGoHomeEnding()
+        {
+            if (State == null || State.isGameOver) return;
+
+            State.isGameOver = true;
+            State.isWin = false;
+            State.endingKey = "GO_HOME";
 
             SaveSystem.Save(State);
             OnStateChanged?.Invoke();
@@ -272,8 +291,12 @@ namespace FPTSim.Core
         }
         public string DecideEnding()
         {
-            // Ending scene đọc chuỗi này để hiển thị text/ảnh
-            return (State != null && State.isWin) ? "HAPPY_END" : "BAD_TIME_OUT";
+            if (State == null) return "BAD_TIME_OUT";
+
+            if (!string.IsNullOrWhiteSpace(State.endingKey))
+                return State.endingKey;
+
+            return State.isWin ? "HAPPY_END" : "BAD_TIME_OUT";
         }
         public void SetReturnPoint(string sceneName, Vector3 position, Quaternion rotation)
         {

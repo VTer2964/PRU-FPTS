@@ -15,6 +15,12 @@ namespace FPTSim.UI
         [SerializeField] private TMP_Text silverText;
         [SerializeField] private TMP_Text bronzeText;
 
+        [Header("Background")]
+        [SerializeField] private Image backgroundImage;
+        [SerializeField] private Sprite happyEndingSprite;
+        [SerializeField] private Sprite badEndingSprite;
+        [SerializeField] private Sprite goHomeEndingSprite;
+
         [Header("Button")]
         [SerializeField] private Button continueButton;
 
@@ -24,6 +30,10 @@ namespace FPTSim.UI
 
         private void Start()
         {
+            // ✅ mở chuột để bấm UI
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             if (continueButton)
                 continueButton.onClick.AddListener(OnContinue);
 
@@ -57,9 +67,15 @@ namespace FPTSim.UI
                     case "HAPPY_END":
                         subtitleText.text = "Happy Ending";
                         break;
+
                     case "BAD_TIME_OUT":
                         subtitleText.text = "Bad Ending - Hết thời gian";
                         break;
+
+                    case "GO_HOME":
+                        subtitleText.text = "Tôi đi về";
+                        break;
+
                     default:
                         subtitleText.text = endingKey;
                         break;
@@ -69,6 +85,24 @@ namespace FPTSim.UI
             if (goldText) goldText.text = $"Gold: {state.gold}";
             if (silverText) silverText.text = $"Silver: {state.silver}";
             if (bronzeText) bronzeText.text = $"Bronze: {state.bronze}";
+
+            if (backgroundImage)
+            {
+                switch (endingKey)
+                {
+                    case "HAPPY_END":
+                        backgroundImage.sprite = happyEndingSprite;
+                        break;
+
+                    case "BAD_TIME_OUT":
+                        backgroundImage.sprite = badEndingSprite;
+                        break;
+
+                    case "GO_HOME":
+                        backgroundImage.sprite = goHomeEndingSprite;
+                        break;
+                }
+            }
         }
 
         private void OnContinue()

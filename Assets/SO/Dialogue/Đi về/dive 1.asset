@@ -19,6 +19,6 @@ MonoBehaviour:
   autoAdvance: 0
   nextAuto: {fileID: 0}
   triggerAction: 1
-  actionType: 5
+  actionType: 12
   actionParam: 
   actionValue: 0
