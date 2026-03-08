@@ -20,5 +20,5 @@ MonoBehaviour:
   nextAuto: {fileID: 0}
   triggerAction: 1
   actionType: 1
-  actionParam: Minigame_Caro
+  actionParam: Minigame_StackTower
   actionValue: 0

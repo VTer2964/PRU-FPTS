@@ -31,7 +31,8 @@ namespace FPTSim.Minigames
 
             caroGameManager.OnGameEnded += HandleGameEnded;
 
-            // Bỏ qua menu — bắt đầu game ngay
+            // Đặt AI depth = 3 (Hard) trước khi bắt đầu
+            caroGameManager.SetAiDepth(3);
             caroGameManager.StartGame();
         }
 
@@ -45,8 +46,11 @@ namespace FPTSim.Minigames
                 _                    => Medal.None
             };
 
-            // Chờ 3 giây để player xem kết quả rồi quay về Campus
-            StartCoroutine(FinishAfterDelay(medal, 3f));
+            // Ẩn panel kết quả của CaroGame, dùng MinigameResultPanel thay thế
+            var resultsPanel = FindFirstObjectByType<CaroResultsPanel>();
+            if (resultsPanel != null) resultsPanel.Hide();
+
+            StartCoroutine(FinishAfterDelay(medal, 0f));
         }
 
         private IEnumerator FinishAfterDelay(Medal medal, float delay)

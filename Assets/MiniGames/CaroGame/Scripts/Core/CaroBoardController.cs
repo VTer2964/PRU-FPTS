@@ -132,6 +132,13 @@ namespace CaroGame
                 cells[row, col].SetHighlight(highlighted);
         }
 
+        public void SetCellWinHighlight(int row, int col, bool highlighted)
+        {
+            if (!IsInBounds(row, col)) return;
+            if (cells[row, col] != null)
+                cells[row, col].SetWinHighlight(highlighted);
+        }
+
         public void ClearAllHighlights()
         {
             if (cells == null) return;

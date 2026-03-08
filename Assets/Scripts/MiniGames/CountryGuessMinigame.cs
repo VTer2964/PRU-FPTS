@@ -39,9 +39,15 @@ namespace FPTSim.Minigames
 
             levelController.OnLevelCompleted += HandleLevelCompleted;
 
-            // Bỏ qua menu — bắt đầu Level 0 ngay
-            if (countryGameManager != null)
-                countryGameManager.StartLevel(0);
+            // Chờ 1 frame để CountryLevelController.Start() chạy LoadLevel(0) trước,
+            // rồi override lên Level 2
+            StartCoroutine(LoadLevelNextFrame(2));
+        }
+
+        private IEnumerator LoadLevelNextFrame(int levelIndex)
+        {
+            yield return null; // chờ 1 frame
+            levelController.LoadLevel(levelIndex);
         }
 
         private void HandleLevelCompleted(MedalType countryMedal, int medalPoints)
@@ -59,8 +65,11 @@ namespace FPTSim.Minigames
                 ? countryScoreManager.CurrentScore
                 : medalPoints * 33;
 
-            // Chờ 3 giây để player xem result panel rồi quay về Campus
-            StartCoroutine(FinishAfterDelay(medal, score, 3f));
+            // Ẩn panel kết quả của CountryGuessGame, dùng MinigameResultPanel thay thế
+            var countryUI = FindFirstObjectByType<CountryUIManager>();
+            if (countryUI != null) countryUI.HideResultPanel();
+
+            StartCoroutine(FinishAfterDelay(medal, score, 0f));
         }
 
         private IEnumerator FinishAfterDelay(Medal medal, int score, float delay)

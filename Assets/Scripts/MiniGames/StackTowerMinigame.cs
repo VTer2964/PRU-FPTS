@@ -19,9 +19,9 @@ namespace FPTSim.Minigames
     public class StackTowerMinigame : MinigameBase
     {
         [Header("Medal Thresholds (score = stars × 33)")]
-        [SerializeField] private int goldScore   = 80; // ≥ 3 sao (99)
-        [SerializeField] private int silverScore = 50; // ≥ 2 sao (66)
-        [SerializeField] private int bronzeScore = 20; // ≥ 1 sao (33)
+        [SerializeField] private int goldScore   = 99; // 3 sao = 99
+        [SerializeField] private int silverScore = 66; // 2 sao = 66
+        [SerializeField] private int bronzeScore = 33; // 1 sao = 33
 
         [SerializeField] private StackTowerGameManager stackManager;
 
@@ -51,12 +51,21 @@ namespace FPTSim.Minigames
         {
             int score = stars * 33; // 1 sao=33, 2 sao=66, 3 sao=99
             Medal medal = CalculateMedal(score);
-            StartCoroutine(FinishAfterDelay(medal, score, 3f));
+
+            // Ẩn tất cả panel của StackTower, dùng MinigameResultPanel thay thế
+            var stackUI = FindFirstObjectByType<StackTowerUIManager>();
+            if (stackUI != null) stackUI.HideAllPanels();
+
+            StartCoroutine(FinishAfterDelay(medal, score, 0f));
         }
 
         private void HandleGameOver()
         {
-            StartCoroutine(FinishAfterDelay(Medal.None, 0, 3f));
+            // Ẩn tất cả panel của StackTower, dùng MinigameResultPanel thay thế
+            var stackUI = FindFirstObjectByType<StackTowerUIManager>();
+            if (stackUI != null) stackUI.HideAllPanels();
+
+            StartCoroutine(FinishAfterDelay(Medal.None, 0, 0f));
         }
 
         private Medal CalculateMedal(int score)

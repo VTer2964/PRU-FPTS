@@ -90,9 +90,7 @@ namespace CountryGuessGame.Managers
         public void UpdateLevelInfo(int levelNumber, string levelName)
         {
             if (levelText != null)
-            {
-                levelText.text = $"Level {levelNumber}: {levelName}";
-            }
+                levelText.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -193,6 +191,14 @@ namespace CountryGuessGame.Managers
                 default:
                     return null;
             }
+        }
+
+        /// <summary>
+        /// Hide result panel (called by FPTSim adapter)
+        /// </summary>
+        public void HideResultPanel()
+        {
+            if (resultPanel != null) resultPanel.SetActive(false);
         }
 
         /// <summary>
