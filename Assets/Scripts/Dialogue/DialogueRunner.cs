@@ -257,7 +257,47 @@ namespace FPTSim.Dialogue
                         }
 
                         gm.SetFlag(flag);
-                        runtimeMessage = $"✅ Đã mở khóa cốt truyện: {flag}";
+                        break;
+                    }
+                case DialogueActionType.AddBronze:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue); // mặc định +1, nếu bạn set actionValue khác
+                        gm.AddMedal(Medal.Bronze, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Bronze!";
+                        break;
+                    }
+
+                case DialogueActionType.AddSilver:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue);
+                        gm.AddMedal(Medal.Silver, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Silver!";
+                        break;
+                    }
+
+                case DialogueActionType.AddGold:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue);
+                        gm.AddMedal(Medal.Gold, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Gold!";
                         break;
                     }
 

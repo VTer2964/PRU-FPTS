@@ -247,6 +247,21 @@ namespace FPTSim.Core
             SceneManager.LoadScene(SceneNames.Ending);
         }
 
+        public void AddMedal(Medal medal, int amount = 1)
+        {
+            if (State == null || State.isGameOver) return;
+            if (amount <= 0) return;
+
+            switch (medal)
+            {
+                case Medal.Gold: State.gold += amount; break;
+                case Medal.Silver: State.silver += amount; break;
+                case Medal.Bronze: State.bronze += amount; break;
+            }
+
+            SaveSystem.Save(State);
+            OnStateChanged?.Invoke();
+        }
         public string DecideEnding()
         {
             // Ending scene đọc chuỗi này để hiển thị text/ảnh

@@ -20,5 +20,5 @@ MonoBehaviour:
   nextAuto: {fileID: 0}
   triggerAction: 1
   actionType: 1
-  actionParam: MG_SpaceSpam
+  actionParam: Minigame_Caro
   actionValue: 0

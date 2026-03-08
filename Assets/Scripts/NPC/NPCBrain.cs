@@ -15,21 +15,31 @@ namespace FPTSim.NPC
         [SerializeField] private string talkBool = "Talk";        // Bool (khi nói chuyện)
 
         [Header("Face to face")]
-        [SerializeField] private Transform facePivot; // null => quay toàn thân (transform)
+        [SerializeField] private Transform facePivot;             // null => quay toàn thân (transform)
         [SerializeField] private float rotateSpeed = 720f;
+
+        [Header("Return facing after talk")]
+        [SerializeField] private bool returnToOriginalFacing = true;
+        [SerializeField] private float returnRotateSpeed = 720f;  // tốc độ quay về hướng cũ
 
         private Transform lookTarget;
         private bool isTalking;
 
-        // Save state để resume
+        // Save state để resume movement/perform
         private bool hadAgent;
         private bool wasAgentStopped;
         private Vector3 savedDestination;
         private bool hadDestination;
-
         private bool wasPerforming;
 
+        // Save facing
+        private Quaternion savedFacing;
+        private bool hasSavedFacing;
+        private bool isReturningFacing;
+
         public bool IsTalking => isTalking;
+
+        private Transform Pivot => facePivot ? facePivot : transform;
 
         private void Awake()
         {
@@ -40,7 +50,7 @@ namespace FPTSim.NPC
 
         private void Update()
         {
-            // cập nhật speed khi đang di chuyển và không talk
+            // cập nhật speed khi di chuyển và không talk
             if (!isTalking && animator != null && agent != null)
             {
                 float v = agent.velocity.magnitude;
@@ -52,33 +62,46 @@ namespace FPTSim.NPC
             // quay mặt nhìn player khi đang talk
             if (isTalking && lookTarget != null)
             {
-                Transform pivot = facePivot ? facePivot : transform;
+                isReturningFacing = false;
 
-                Vector3 dir = lookTarget.position - pivot.position;
+                Vector3 dir = lookTarget.position - Pivot.position;
                 dir.y = 0f;
 
                 if (dir.sqrMagnitude > 0.0001f)
                 {
                     Quaternion targetRot = Quaternion.LookRotation(dir.normalized, Vector3.up);
-                    pivot.rotation = Quaternion.RotateTowards(pivot.rotation, targetRot, rotateSpeed * Time.deltaTime);
+                    Pivot.rotation = Quaternion.RotateTowards(Pivot.rotation, targetRot, rotateSpeed * Time.deltaTime);
+                }
+            }
+            // quay về hướng cũ sau talk (mượt)
+            else if (!isTalking && returnToOriginalFacing && isReturningFacing && hasSavedFacing)
+            {
+                Pivot.rotation = Quaternion.RotateTowards(Pivot.rotation, savedFacing, returnRotateSpeed * Time.deltaTime);
+
+                // tới gần thì stop return
+                if (Quaternion.Angle(Pivot.rotation, savedFacing) < 0.5f)
+                {
+                    Pivot.rotation = savedFacing;
+                    isReturningFacing = false;
                 }
             }
         }
 
-        // NPC đứng tại chỗ làm việc (lau nhà…) gọi cái này
         public void SetPerforming(bool performing)
         {
             wasPerforming = performing;
-
             if (animator != null && !string.IsNullOrWhiteSpace(performBool))
                 animator.SetBool(performBool, performing);
         }
 
-        // Khi bắt đầu nói chuyện
         public void EnterTalk(Transform player)
         {
             isTalking = true;
             lookTarget = player;
+
+            // Save facing (hướng hiện tại trước khi quay nhìn player)
+            hasSavedFacing = true;
+            savedFacing = Pivot.rotation;
 
             // Save perform state
             bool curPerform = wasPerforming;
@@ -116,11 +139,14 @@ namespace FPTSim.NPC
             wasPerforming = curPerform; // nhớ lại để resume
         }
 
-        // Khi kết thúc nói chuyện
         public void ExitTalk()
         {
             isTalking = false;
             lookTarget = null;
+
+            // bật chế độ quay về hướng cũ
+            if (returnToOriginalFacing && hasSavedFacing)
+                isReturningFacing = true;
 
             if (animator != null)
             {

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39d38f116256c0488d6b1be262ee4f2, type: 3}
+  m_Name: CountryDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::CountryGuessGame.Data.CountryDatabase
+  allCountries:
+  - {fileID: 11400000, guid: b9f152a8264e5ee49a5fe59cf39cce62, type: 2}
+  - {fileID: 11400000, guid: c7dc1ae0fc8bdb443ae8ca91336416de, type: 2}
+  - {fileID: 11400000, guid: 247c2d1e819a11a40b8597550ec7134f, type: 2}
+  - {fileID: 11400000, guid: 234aacce730eb804e84c4e9916630443, type: 2}
+  - {fileID: 11400000, guid: 4c162da9edcd5f94ca094cc0c92a02bf, type: 2}
+  - {fileID: 11400000, guid: 77ea0ce8419b64d4090b542460f5ab76, type: 2}
+  - {fileID: 11400000, guid: 8b99f54ec92b6034d9e5e711aaddf160, type: 2}
+  - {fileID: 11400000, guid: a33e335a68f502b47a59bf7112ca6ba3, type: 2}
+  - {fileID: 11400000, guid: 47db8fe7ed99cdf4ab48202035cb0331, type: 2}
+  - {fileID: 11400000, guid: 850e25ee4717d9c439b5f02f7858d981, type: 2}
+  - {fileID: 11400000, guid: cdb4746a13bef9941b1468b074e0cff0, type: 2}
+  - {fileID: 11400000, guid: 5c92d2d1ce8524e4f80a8af9e52d6447, type: 2}
+  - {fileID: 11400000, guid: 92298fc177e8713489d7c373559e8dd0, type: 2}
+  - {fileID: 11400000, guid: 94cba63a1370b1c47be63318294ff704, type: 2}
+  - {fileID: 11400000, guid: fa1b1a9cc9c26494585df3d7eb262e33, type: 2}
+  - {fileID: 11400000, guid: ca3bd4095414010438299ce2cc6d2b47, type: 2}
+  - {fileID: 11400000, guid: eefcb2b6e3c069a46a3e040725651e3e, type: 2}
