@@ -21,5 +21,5 @@ MonoBehaviour:
   nextAuto: {fileID: 0}
   triggerAction: 1
   actionType: 7
-  actionParam: Game5
+  actionParam: GAME5
   actionValue: 0

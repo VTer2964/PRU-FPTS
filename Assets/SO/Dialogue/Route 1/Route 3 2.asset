@@ -20,7 +20,7 @@ MonoBehaviour:
     nh\xE9!"
   choices: []
   autoAdvance: 0
-  nextAuto: {fileID: 11400000, guid: 6fd731b3e2a224d4b8e49519d7fbf8a3, type: 2}
+  nextAuto: {fileID: 11400000, guid: 6e82a8938c1bde44f8e3c77a637baeb1, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

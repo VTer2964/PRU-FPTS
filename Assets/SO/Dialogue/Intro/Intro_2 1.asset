@@ -19,6 +19,6 @@ MonoBehaviour:
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 1c2f3f8ad7e95e84ba6b4d6156a87a46, type: 2}
   triggerAction: 1
-  actionType: 11
-  actionParam: FPTU2
+  actionType: 0
+  actionParam: 
   actionValue: 0

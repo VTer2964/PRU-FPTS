@@ -23,6 +23,6 @@ MonoBehaviour:
   autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
-  actionType: 0
-  actionParam: 
+  actionType: 11
+  actionParam: Shipper
   actionValue: 0
