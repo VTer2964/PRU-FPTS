@@ -191,7 +191,20 @@ namespace FPTSim.Dialogue
                             return;
                         }
 
-                        SceneManager.LoadScene(scene);
+                        if (gm == null)
+                        {
+                            Debug.LogError("[DialogueRunner] GameManager is null.");
+                            return;
+                        }
+
+                        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+                        if (playerObj == null)
+                        {
+                            Debug.LogError("[DialogueRunner] Không tìm thấy Player có tag Player.");
+                            return;
+                        }
+
+                        gm.EnterMinigame(scene, playerObj.transform);
                         break;
                     }
 

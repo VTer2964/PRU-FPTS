@@ -23,7 +23,7 @@ MonoBehaviour:
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "N\u1ED9p huy ch\u01B0\u01A1ng \u0111\u1EC3 th\u1EAFng"
+  - text: Minigame
     next: {fileID: 11400000, guid: 2f04c66d11fd71d4180ee71915b8dd50, type: 2}
     requireCondition: 0
     conditionKey: 
@@ -33,6 +33,8 @@ MonoBehaviour:
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
+  autoAdvance: 0
+  nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0
   actionParam: 

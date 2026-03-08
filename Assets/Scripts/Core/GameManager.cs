@@ -10,8 +10,16 @@ namespace FPTSim.Core
 
         [Header("Config")]
         [SerializeField] private GameConfigSO config;
+        [SerializeField] private bool hasReturnPoint;
+        [SerializeField] private string returnSceneName;
+        [SerializeField] private Vector3 returnPlayerPosition;
+        [SerializeField] private Quaternion returnPlayerRotation;
         public GameConfigSO Config => config;
 
+        public bool HasReturnPoint => hasReturnPoint;
+        public string ReturnSceneName => returnSceneName;
+        public Vector3 ReturnPlayerPosition => returnPlayerPosition;
+        public Quaternion ReturnPlayerRotation => returnPlayerRotation;
         public GameState State { get; private set; } = new GameState();
         public GamePhase Phase { get; private set; } = GamePhase.Boot;
 
@@ -266,6 +274,35 @@ namespace FPTSim.Core
         {
             // Ending scene đọc chuỗi này để hiển thị text/ảnh
             return (State != null && State.isWin) ? "HAPPY_END" : "BAD_TIME_OUT";
+        }
+        public void SetReturnPoint(string sceneName, Vector3 position, Quaternion rotation)
+        {
+            hasReturnPoint = true;
+            returnSceneName = sceneName;
+            returnPlayerPosition = position;
+            returnPlayerRotation = rotation;
+        }
+
+        public void ClearReturnPoint()
+        {
+            hasReturnPoint = false;
+            returnSceneName = "";
+        }
+        public void EnterMinigame(string minigameSceneName, Transform playerTransform)
+        {
+            if (playerTransform == null)
+            {
+                Debug.LogError("[GameManager] playerTransform is null when entering minigame.");
+                return;
+            }
+
+            SetReturnPoint(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+                playerTransform.position,
+                playerTransform.rotation
+            );
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(minigameSceneName);
         }
     }
 }

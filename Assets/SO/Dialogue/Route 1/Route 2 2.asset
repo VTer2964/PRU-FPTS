@@ -19,7 +19,7 @@ MonoBehaviour:
     trong t\xFAi b\u1EE5ng ra m\xE0 c\xE1i kh\xF3a k\xE9o n\xF3 k\u1EB9t v\xE0o...
     'm\u1EE1 b\u1EE5ng' r\u1ED3i! T\u1EDB kh\xF4ng c\xFAi xu\u1ED1ng \u0111\u01B0\u1EE3c!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5c501702519e97240810cd6fedce9975, type: 2}
   triggerAction: 0
   actionType: 0

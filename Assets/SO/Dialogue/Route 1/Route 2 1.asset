@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "\xCA C\xF3c \u01A1i! C\u1EE9u t\u1EDB! Cho t\u1EDB xin m\u1ED9t c\xE1i v\xF2ng
     tay Check-in v\u1EDBi, b\xE0 ch\u1ECB Leader kh\xF3 t\xEDnh qu\xE1!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: cc11536070409e8418fc12425e5cf12c, type: 2}
   triggerAction: 0
   actionType: 0

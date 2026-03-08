@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "Ph\xF9... S\u1ED1ng l\u1EA1i r\u1ED3i! C\u1EA3m \u01A1n c\u1EADu nha. \u0110\xE2y,
     v\xF2ng tay VIP cho c\u1EADu lu\xF4n. Ch\xFAc may m\u1EAFn!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 49490bc87088010489080089c8515b5d, type: 2}
   triggerAction: 0
   actionType: 0
