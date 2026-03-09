@@ -15,7 +15,7 @@ MonoBehaviour:
   speakerType: 0
   speakerName: MC
   text: "T\xF4i chu\u1EA9n b\u1ECB l\xEAn d\u1EABn ch\u01B0\u01A1ng tr\xECnh r\u1ED3i!!
-    Run qu\xE1 \u0111i!!"
+    Th\u1EADt h\xE0o h\u1EE9ng qu\xE1 \u0111i!!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}
