@@ -15,7 +15,7 @@ namespace FPTSim.Dialogue
         [SerializeField] private DialogueCameraController camCtrl;
 
         [Header("Lock Player While Talking")]
-        [SerializeField] private FPTSim.Player.MouseLook mouseLook; // MouseLook trên CameraPivot
+        [SerializeField] private FPTSim.Player.MouseLook mouseLook;
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
 
@@ -29,7 +29,6 @@ namespace FPTSim.Dialogue
 
         public bool IsRunning => currentGraph != null;
 
-        // ✅ NPC / systems có thể subscribe để biết khi dialogue đóng
         public System.Action OnDialogueStopped;
 
         public void StartDialogue(DialogueGraphSO graph)
@@ -54,7 +53,6 @@ namespace FPTSim.Dialogue
         {
             if (!IsRunning) return;
 
-            // ESC luôn thoát
             if (Keyboard.current != null && Keyboard.current[exitKey].wasPressedThisFrame)
             {
                 StopDialogue();
@@ -63,16 +61,28 @@ namespace FPTSim.Dialogue
 
             if (currentNode == null) return;
 
-            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
-            if (hasChoices) return;
-
-            if (!currentNode.autoAdvance) return;
-
             bool pressContinue =
                 (Keyboard.current != null && Keyboard.current[continueKey].wasPressedThisFrame) ||
                 (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
 
-            if (pressContinue) ContinueAuto();
+            if (!pressContinue) return;
+
+            // Nếu đang typewriter -> complete câu hiện tại trước
+            if (ui != null && ui.IsTyping)
+            {
+                ui.CompleteTyping();
+                return;
+            }
+
+            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
+
+            // Có choices -> phải chọn option, không cho skip tiếp
+            if (hasChoices) return;
+
+            // Không có choices -> nếu autoAdvance thì qua node tiếp
+            if (!currentNode.autoAdvance) return;
+
+            ContinueAuto();
         }
 
         private void ContinueAuto()
@@ -102,7 +112,7 @@ namespace FPTSim.Dialogue
             if (node.triggerAction)
             {
                 ExecuteAction(node);
-                if (currentGraph == null) return; // có thể StopDialogue / load scene
+                if (currentGraph == null) return;
             }
 
             ui.RenderNode(node);
@@ -118,7 +128,6 @@ namespace FPTSim.Dialogue
 
             var choice = currentNode.choices[choiceIndex];
 
-            // next null => thoát
             if (choice.next == null)
             {
                 StopDialogue();
@@ -136,19 +145,16 @@ namespace FPTSim.Dialogue
             ui.Close();
             LockPlayer(false);
 
-            // ✅ hạ priority cam cutscene/dialogue => tự về CM_Gameplay
             camCtrl?.Clear();
 
             currentGraph = null;
             currentNode = null;
 
-            // ✅ notify listeners (NPC resume, UI resume...)
             OnDialogueStopped?.Invoke();
         }
 
         private void LockPlayer(bool talking)
         {
-            // talking=true => unlock cursor + disable movement/interact + disable look
             if (mouseLook) mouseLook.LockCursor(!talking);
             if (playerMovement) playerMovement.enabled = !talking;
             if (playerInteractor) playerInteractor.enabled = !talking;
@@ -212,8 +218,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithBronze();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Bronze để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương đồng?";
                         break;
                     }
 
@@ -221,8 +227,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithSilver();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Silver để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương bạc";
                         break;
                     }
 
@@ -230,8 +236,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithGold();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Gold để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương vàng";
                         break;
                     }
 
@@ -272,6 +278,7 @@ namespace FPTSim.Dialogue
                         gm.SetFlag(flag);
                         break;
                     }
+
                 case DialogueActionType.AddBronze:
                     {
                         if (gm == null)
@@ -280,7 +287,7 @@ namespace FPTSim.Dialogue
                             break;
                         }
 
-                        int amount = Mathf.Max(1, node.actionValue); // mặc định +1, nếu bạn set actionValue khác
+                        int amount = Mathf.Max(1, node.actionValue);
                         gm.AddMedal(Medal.Bronze, amount);
                         runtimeMessage = $"✅ Nhận +{amount} Bronze!";
                         break;
@@ -313,6 +320,7 @@ namespace FPTSim.Dialogue
                         runtimeMessage = $"✅ Nhận +{amount} Gold!";
                         break;
                     }
+
                 case DialogueActionType.GoHomeEnding:
                     {
                         if (gm == null)
@@ -325,6 +333,7 @@ namespace FPTSim.Dialogue
                         gm.TriggerGoHomeEnding();
                         break;
                     }
+
                 case DialogueActionType.CloseDialogue:
                     {
                         StopDialogue();

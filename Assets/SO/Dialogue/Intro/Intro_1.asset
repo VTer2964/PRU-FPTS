@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Intro_1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
-  speakerName: "MC S\u1EF1 Ki\u1EC7n"
-  text: "ALO ALO! TO\xC0N TR\u01AF\u1EDCNG CH\xDA \xDD! Ch\u1EC9 c\xF2n \u0111\xFAng
-    18 PH\xDAT n\u1EEFa l\xE0 c\u1ED5ng trao gi\u1EA3i chi\u1EBFc MACBOOK PRO M3
-    s\u1EBD \u0111\xF3ng l\u1EA1i!\n"
+  speakerName: 
+  text: "FPTU Game Day l\xE0 ng\xE0y h\u1ED9i c\u1EE7a \u0111\u1EA1i h\u1ECDc FPT
+    do FPT Game Club t\u1ED5 ch\u1EE9c "
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 947b1875ed550cb40820c1bc42ed3e03, type: 2}
   triggerAction: 1
   actionType: 11
-  actionParam: FPTU1
+  actionParam: FPTUCam0
   actionValue: 0

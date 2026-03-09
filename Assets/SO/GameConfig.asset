@@ -16,7 +16,7 @@ MonoBehaviour:
   requiredGold: 0
   requiredSilver: 0
   requiredBronze: 0
-  addSecondsBronze: 60
-  addSecondsSilver: 120
-  addSecondsGold: 180
+  addSecondsBronze: 120
+  addSecondsSilver: 240
+  addSecondsGold: 480
   maxTimeCapSeconds: 0

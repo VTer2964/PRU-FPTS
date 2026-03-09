@@ -19,7 +19,7 @@ MonoBehaviour:
     Ch\u1ECB l\xE0 'Ki\u1EC7n t\u01B0\u1EDBng Caro' FPT 3 n\u0103m li\u1EC1n \u0111\u1EA5y
     nh\xE9!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 6e82a8938c1bde44f8e3c77a637baeb1, type: 2}
   triggerAction: 0
   actionType: 0

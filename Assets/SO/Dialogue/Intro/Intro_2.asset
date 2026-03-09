@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Intro_2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "V\u0169"
-  text: "Macbook M3? Mi\u1EC5n ph\xED? \u0110\xE2y kh\xF4ng ph\u1EA3i l\xE0 game,
-    \u0111\xE2y l\xE0 c\u01A1 h\u1ED9i \u0111\u1ED5i \u0111\u1EDDi!"
+  speakerName: 
+  text: "B\xEAn c\u1EA1nh \u0111\xF3 c\xF2n c\xF3 s\u1EED c\u1ED9ng t\xE1c c\u1EE7a
+    c\xE1c CLB kh\xE1c"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 91128f30a5aefd849a22778df881692d, type: 2}

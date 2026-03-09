@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Intro_2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "MC S\u1EF1 Ki\u1EC7n"
-  text: "M\u1EE5c ti\xEAu: Gom \u0111\u1EE7 5 m\u1EA3nh QR t\u1EA1i 5 tr\u1EA1m trong
-    tr\u01B0\u1EDDng \u0111\u1EC3 \u0111\u1ED5i l\u1EA5y Macbook."
+  speakerName: 
+  text: "\u0110i lu\xF4n th\xF4i s\u1EAFp h\u1EBFt th\u1EDDi gian r\u1ED3i."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 957c7d337731f69418ab91d7cde6e346, type: 2}
   triggerAction: 1
-  actionType: 0
-  actionParam: 
+  actionType: 7
+  actionParam: Z1
   actionValue: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "V\xF2ng tay \u0111\xE2y r\u1ED3i ch\u1ECB \u01A1i! X\u1ECBn x\xF2 ch\u01B0a!
     Cho em ch\u01A1i game \u0111i!"
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 403813116da0c7d45aa3febe5abfa32d, type: 2}
   triggerAction: 0
   actionType: 0

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Intro_2 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "MC S\u1EF1 Ki\u1EC7n"
-  text: "Nhi\u1EC7m v\u1EE5 k\xEDch ho\u1EA1t: S\u0102N T\xC1O - \u0110\u1ED4I \u0110\u1EDCI."
+  speakerName: 
+  text: "Nghe n\xF3i \u0111\xE2y l\xE0 h\xECnh th\u1EE9c tuy\u1EC3n d\u1EE5ng th\xE0nh
+    vi\xEAn CLB m\u1EDBi c\u1EE7a h\u1ED9i n\xE0y n\u1EEFa"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 1c2f3f8ad7e95e84ba6b4d6156a87a46, type: 2}

@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Ch\u1ECB Leader"
-  text: "Em nh\xECn th\u1EA5y con Mascot C\xF3c V\xE0ng b\xE9o \xFA \u0111ang \u0111\u1EE9ng
-    c\u1EA1nh c\xE1i Standee to \u0111\xF9ng kia kh\xF4ng? N\xF3 \u0111ang gi\u1EEF
-    m\u1ED9t t\xFAi v\xF2ng tay \u0111\u1EA5y. Ra \u0111\xF3 xin n\xF3 \u0111i r\u1ED3i
-    quay l\u1EA1i \u0111\xE2y!"
+  text: "Em nh\xECn th\u1EA5y con C\xF3c V\xE0ng \u0111ang \u0111\u1EE9ng c\u1EA1nh
+    c\xE1i Standee to \u0111\xF9ng kia kh\xF4ng? N\xF3 l\xE0 AI check-in \u0111\u1EA5y.
+    Ra \u0111\xF3 check-in \u0111i"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

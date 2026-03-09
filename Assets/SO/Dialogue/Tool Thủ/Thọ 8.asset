@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: "Th\u1ECD 8"
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "V\u0169"
+  text: "\u0110\u01B0a anh huy ch\u01B0\u01A1ng b\u1EA1c th\xEC anh add cho 4 ph\xFAt.
+    C\xF2n huy ch\u01B0\u01A1ng \u0111\u1ED3ng th\xEC \u0111\u01B0\u1EE3c 2 ph\xFAt."
+  choices:
+  - text: "Tr\u1EA3 huy ch\u01B0\u01A1ng b\u1EA1c"
+    next: {fileID: 11400000, guid: 9ff7080893d34d74a9367da9eacfde21, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "Tr\u1EA3 huy ch\u01B0\u01A1ng \u0111\u1ED3ng"
+    next: {fileID: 11400000, guid: da2a6758da0ec99449c220e52922cd1f, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "B\u1ECF \u0111i"
+    next: {fileID: 11400000, guid: 2e94634cb81470f47b274fc3e5fb5c0b, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 0
+  nextAuto: {fileID: 0}
+  triggerAction: 1
+  actionType: 7
+  actionParam: Tool2
+  actionValue: 0

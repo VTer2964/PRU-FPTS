@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: Route 2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "Mascot C\xF3c V\xE0ng"
-  text: "Oa oa... May qu\xE1 c\xF3 ng\u01B0\u1EDDi t\u1EDBi! C\u1EADu \u01A1i c\u1EE9u
-    t\u1EDB tr\u01B0\u1EDBc \u0111\xE3! T\u1EDB \u0111\u1ECBnh l\u1EA5y v\xF2ng tay
-    trong t\xFAi b\u1EE5ng ra m\xE0 c\xE1i kh\xF3a k\xE9o n\xF3 k\u1EB9t v\xE0o...
-    'm\u1EE1 b\u1EE5ng' r\u1ED3i! T\u1EDB kh\xF4ng c\xFAi xu\u1ED1ng \u0111\u01B0\u1EE3c!"
+  speakerName: "C\xF3c"
+  text: ............................................................
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5c501702519e97240810cd6fedce9975, type: 2}

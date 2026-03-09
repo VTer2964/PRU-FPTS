@@ -18,7 +18,7 @@ MonoBehaviour:
     Th\xF4i \u0111i v\u1EC1 \u0111i cho ng\u01B0\u1EDDi kh\xE1c c\xF2n ch\u01A1i.
     M\u1EA5t th\u1EDDi gian qu\xE1!\""
   choices: []
-  autoAdvance: 0
+  autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0

@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Intro_1 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
-  speakerName: "MC S\u1EF1 Ki\u1EC7n"
-  text: "Hi\u1EC7n t\u1EA1i v\u1EABn CH\u01AFA C\xD3 AI thu th\u1EADp \u0111\u1EE7
-    5 m\u1EA3nh QR Code! C\u01A1 h\u1ED9i v\u1EABn c\xF2n nguy\xEAn cho c\xE1c 'th\u1EE3
-    s\u0103n' \u0111\u1EBFn sau!"
+  speakerName: 
+  text: "c\xE1c ho\u1EA1t \u0111\u1ED9ng ch\u1EE7 y\u1EBFu l\xE0 ch\u01A1i minigame
+    do h\u1ED9i t\u1ED5 ch\u1EE9c \u0111\u1EC3 ki\u1EBFm gi\u1EA3i th\u01B0\u1EDFng."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 7907eb827ea35dc48b9fe52a2fca6493, type: 2}
