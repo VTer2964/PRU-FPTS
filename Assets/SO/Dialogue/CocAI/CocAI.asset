@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4ffbf10c972103448dc02b5f255784e, type: 3}
-  m_Name: 0_Graph_Admin
+  m_Name: CocAI
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueGraphSO
-  graphId: Admin
-  entryNode: {fileID: 11400000, guid: 4ff3b5c7f08d59945a6dcf6f23bdd75a, type: 2}
+  graphId: MrSus
+  entryNode: {fileID: 11400000, guid: 5bbdc4d6582157b409ea5c28ee3ebfaa, type: 2}

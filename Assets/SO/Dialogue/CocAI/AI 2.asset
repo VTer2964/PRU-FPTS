@@ -10,23 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Buy Gold
+  m_Name: AI 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: Admin
-  text: "ang \u0111\u1ED5i Gold l\u1EA5y th\u1EDDi gian..."
-  choices:
-  - text: "Mua ti\u1EBFp"
-    next: {fileID: 11400000, guid: 75a410acf920876428bdb6aa9f759b21, type: 2}
-    requireCondition: 0
-    conditionKey: 
-    conditionValue: 0
-  - text: "Quay l\u1EA1i"
-    next: {fileID: 11400000, guid: 4ff3b5c7f08d59945a6dcf6f23bdd75a, type: 2}
-    requireCondition: 0
-    conditionKey: 
-    conditionValue: 0
+  speakerName: "V\u0169"
+  text: "N\u1ED9p huy ch\u01B0\u01A1ng r\u1ED3i v\u1EC1 th\xF4i!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
   triggerAction: 1
-  actionType: 4
+  actionType: 5
   actionParam: 
   actionValue: 0

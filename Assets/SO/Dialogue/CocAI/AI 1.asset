@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Route 2 4
+  m_Name: AI 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "C\xF3c"
-  text: "prpr....prpr..... Check-in th\xE0nh c\xF4ng! "
+  speakerName: "V\u0169"
+  text: "Th\xF4i bye"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 49490bc87088010489080089c8515b5d, type: 2}
-  triggerAction: 1
-  actionType: 7
-  actionParam: CheckInDone
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0
