@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Route 4 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "V\u0169"
+  speakerName: Mascot
   text: "Ch\xE0o M\u1EEBng \u0111\u1EBFn v\u1EDBi FPT University!"
   choices: []
   autoAdvance: 1

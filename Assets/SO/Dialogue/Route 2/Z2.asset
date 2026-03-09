@@ -17,7 +17,7 @@ MonoBehaviour:
   text: "Nh\u1EA1c sao b\u1ECB t\u1EAFt m\u1EA5t r\u1ED3i. "
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 8dd072412cfbf2148b1f5eed91ee672c, type: 2}
+  nextAuto: {fileID: 11400000, guid: ba5057ee947f86f4d9dbff77fe588598, type: 2}
   triggerAction: 1
   actionType: 11
   actionParam: PT

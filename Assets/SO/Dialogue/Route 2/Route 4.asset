@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Route 4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueGraphSO
   graphId: MrSus
-  entryNode: {fileID: 11400000, guid: 25bfd69b80d8509418d44d1f40ee245f, type: 2}
+  entryNode: {fileID: 11400000, guid: c068c2118df0f564c80af4393b7eb8d2, type: 2}

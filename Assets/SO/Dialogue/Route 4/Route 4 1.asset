@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Route 4 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "V\u0169"
+  speakerName: "Ch\xFA Lao C\xF4ng"
   text: "N\u01A1i n\xE0y b\u1EEBa b\u1ED9n th\u1EADt \u0111\u1EA5y!! Haizzz"
   choices: []
   autoAdvance: 1
