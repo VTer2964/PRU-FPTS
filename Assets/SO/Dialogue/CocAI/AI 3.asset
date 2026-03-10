@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: AI 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "C\xF3c"
+  text: "B\u1EA1n mu\u1ED1n t\u1ED1 c\xE1o ai"
+  choices:
+  - text: "T\xF4i \u0111\xF9a \u0111\u1EA5y"
+    next: {fileID: 11400000, guid: 5bbdc4d6582157b409ea5c28ee3ebfaa, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "T\u1ED1 c\xE1o Thu \"T\u1EE7n\""
+    next: {fileID: 11400000, guid: 7fa87325ec5bb0848a2d40ba540350d9, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 0
+  nextAuto: {fileID: 0}
+  triggerAction: 1
+  actionType: 7
+  actionParam: XemPhatHien
+  actionValue: 0
