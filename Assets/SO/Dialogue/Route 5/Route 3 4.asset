@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 4
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
+  text: "H\u1EA3o h\xE1n! Nh\u1EA1c l\xEAn! \xC1nh s\xE1ng t\u1EADp trung v\xE0o
+    th\xED sinh n\xE0y cho t\xF4i! 60 gi\xE2y \u0111\u1ECBnh \u0111o\u1EA1t s\u1ED1
+    ph\u1EADn... B\u1EAET \u0110\u1EA6U!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 1
+  actionType: 1
+  actionParam: Minigame_Memory
+  actionValue: 0

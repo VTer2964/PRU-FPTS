@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="StackTower.csproj" />
+  <Project Path="StackTower.Editor.csproj" />
+</Solution>

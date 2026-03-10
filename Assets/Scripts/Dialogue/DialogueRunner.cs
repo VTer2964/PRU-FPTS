@@ -11,6 +11,9 @@ namespace FPTSim.Dialogue
         [Header("UI")]
         [SerializeField] private DialogueUI_Genshin ui;
 
+        [Header("Camera (optional)")]
+        [SerializeField] private DialogueCameraController camCtrl;
+
         [Header("Lock Player While Talking")]
         [SerializeField] private FPTSim.Player.MouseLook mouseLook;
         [SerializeField] private MonoBehaviour playerMovement;
@@ -22,11 +25,11 @@ namespace FPTSim.Dialogue
 
         private DialogueGraphSO currentGraph;
         private DialogueNodeSO currentNode;
-
-        // runtime message (không ghi đè asset)
         private string runtimeMessage;
 
         public bool IsRunning => currentGraph != null;
+
+        public System.Action OnDialogueStopped;
 
         public void StartDialogue(DialogueGraphSO graph)
         {
@@ -50,7 +53,6 @@ namespace FPTSim.Dialogue
         {
             if (!IsRunning) return;
 
-            // ESC luôn thoát
             if (Keyboard.current != null && Keyboard.current[exitKey].wasPressedThisFrame)
             {
                 StopDialogue();
@@ -59,29 +61,34 @@ namespace FPTSim.Dialogue
 
             if (currentNode == null) return;
 
-            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
-
-            // Có choices => bắt buộc chọn option, không cho click/Space next
-            if (hasChoices) return;
-
-            // Không có choices: chỉ cho continue nếu autoAdvance = true
-            if (!currentNode.autoAdvance) return;
-
             bool pressContinue =
                 (Keyboard.current != null && Keyboard.current[continueKey].wasPressedThisFrame) ||
                 (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
 
-            if (pressContinue)
+            if (!pressContinue) return;
+
+            // Nếu đang typewriter -> complete câu hiện tại trước
+            if (ui != null && ui.IsTyping)
             {
-                ContinueAuto();
+                ui.CompleteTyping();
+                return;
             }
+
+            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
+
+            // Có choices -> phải chọn option, không cho skip tiếp
+            if (hasChoices) return;
+
+            // Không có choices -> nếu autoAdvance thì qua node tiếp
+            if (!currentNode.autoAdvance) return;
+
+            ContinueAuto();
         }
 
         private void ContinueAuto()
         {
             if (currentNode == null) return;
 
-            // nextAuto null => kết thúc dialogue
             if (currentNode.nextAuto == null)
             {
                 StopDialogue();
@@ -102,12 +109,9 @@ namespace FPTSim.Dialogue
 
             runtimeMessage = null;
 
-            // chạy action trước render
             if (node.triggerAction)
             {
                 ExecuteAction(node);
-
-                // action có thể StopDialogue / chuyển scene
                 if (currentGraph == null) return;
             }
 
@@ -124,7 +128,6 @@ namespace FPTSim.Dialogue
 
             var choice = currentNode.choices[choiceIndex];
 
-            // next null => thoát
             if (choice.next == null)
             {
                 StopDialogue();
@@ -142,13 +145,16 @@ namespace FPTSim.Dialogue
             ui.Close();
             LockPlayer(false);
 
+            camCtrl?.Clear();
+
             currentGraph = null;
             currentNode = null;
+
+            OnDialogueStopped?.Invoke();
         }
 
         private void LockPlayer(bool talking)
         {
-            // talking=true => unlock cursor + disable movement/interact
             if (mouseLook) mouseLook.LockCursor(!talking);
             if (playerMovement) playerMovement.enabled = !talking;
             if (playerInteractor) playerInteractor.enabled = !talking;
@@ -160,6 +166,26 @@ namespace FPTSim.Dialogue
 
             switch (node.actionType)
             {
+                case DialogueActionType.SetCamera:
+                    {
+                        if (camCtrl == null)
+                        {
+                            runtimeMessage = "Lỗi: chưa gán DialogueCameraController.";
+                            break;
+                        }
+
+                        string key = node.actionParam != null ? node.actionParam.Trim() : "";
+                        if (string.IsNullOrWhiteSpace(key))
+                        {
+                            runtimeMessage = "Lỗi: SetCamera thiếu actionParam (cameraKey).";
+                            break;
+                        }
+
+                        bool ok = camCtrl.Focus(key);
+                        if (!ok) runtimeMessage = $"Lỗi: không tìm thấy camera key '{key}'.";
+                        break;
+                    }
+
                 case DialogueActionType.StartMinigameScene:
                     {
                         string scene = node.actionParam != null ? node.actionParam.Trim() : "";
@@ -171,7 +197,20 @@ namespace FPTSim.Dialogue
                             return;
                         }
 
-                        SceneManager.LoadScene(scene);
+                        if (gm == null)
+                        {
+                            Debug.LogError("[DialogueRunner] GameManager is null.");
+                            return;
+                        }
+
+                        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+                        if (playerObj == null)
+                        {
+                            Debug.LogError("[DialogueRunner] Không tìm thấy Player có tag Player.");
+                            return;
+                        }
+
+                        gm.EnterMinigame(scene, playerObj.transform);
                         break;
                     }
 
@@ -179,8 +218,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithBronze();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Bronze để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương đồng?";
                         break;
                     }
 
@@ -188,8 +227,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithSilver();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Silver để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương bạc";
                         break;
                     }
 
@@ -197,8 +236,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithGold();
                         runtimeMessage = ok
-                            ? "✅ Đổi thành công! Bạn được cộng thêm thời gian."
-                            : "❌ Bạn không đủ Gold để mua thêm thời gian!";
+                            ? "OK rồi em nhá"
+                            : "Không đủ huy chương vàng";
                         break;
                     }
 
@@ -218,7 +257,6 @@ namespace FPTSim.Dialogue
                                 $"❌ Chưa đủ huy chương yêu cầu!\n" +
                                 $"Cần: G{c.requiredGold}  S{c.requiredSilver}  B{c.requiredBronze}";
                         }
-                        // nếu ok -> GameManager tự chuyển Ending
                         break;
                     }
 
@@ -238,7 +276,61 @@ namespace FPTSim.Dialogue
                         }
 
                         gm.SetFlag(flag);
-                        runtimeMessage = $"✅ Đã mở khóa cốt truyện: {flag}";
+                        break;
+                    }
+
+                case DialogueActionType.AddBronze:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue);
+                        gm.AddMedal(Medal.Bronze, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Bronze!";
+                        break;
+                    }
+
+                case DialogueActionType.AddSilver:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue);
+                        gm.AddMedal(Medal.Silver, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Silver!";
+                        break;
+                    }
+
+                case DialogueActionType.AddGold:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        int amount = Mathf.Max(1, node.actionValue);
+                        gm.AddMedal(Medal.Gold, amount);
+                        runtimeMessage = $"✅ Nhận +{amount} Gold!";
+                        break;
+                    }
+
+                case DialogueActionType.GoHomeEnding:
+                    {
+                        if (gm == null)
+                        {
+                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            break;
+                        }
+
+                        StopDialogue();
+                        gm.TriggerGoHomeEnding();
                         break;
                     }
 

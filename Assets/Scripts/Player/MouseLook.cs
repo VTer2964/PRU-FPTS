@@ -28,7 +28,10 @@ namespace FPTSim.Player
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -85f, 85f);
 
+            // Pitch (nhìn lên/xuống) cho pivot
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+            // Yaw (quay trái/phải) cho thân player
             if (playerBody) playerBody.Rotate(Vector3.up * mouseX);
         }
 

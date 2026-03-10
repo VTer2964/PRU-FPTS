@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 2
+  speakerName: SYSTEN
+  text: "Th\u1EE7 th\u01B0 \u0111\xE3 n\u1EA1p \u0111\u1EE7 Cafein. Th\u1EED th\xE1ch
+    X\xE2y Th\xE1p \u0111\xE3 s\u1EB5n s\xE0ng. Ch\u01A1i kh\xF4ng?"
+  choices:
+  - text: "X\u1EBEP NGAY"
+    next: {fileID: 11400000, guid: e1135c69754be50428e4c8cffa07758d, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: " S\u1EE2 \u0110\u1ED4 (B\u1ECE)"
+    next: {fileID: 11400000, guid: a3b908a77ca211841a37a3f3f8e48ef7, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 0
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

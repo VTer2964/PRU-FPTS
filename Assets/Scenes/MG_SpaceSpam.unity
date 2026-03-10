@@ -335,6 +335,74 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &627974208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627974210}
+  - component: {fileID: 627974209}
+  - component: {fileID: 627974211}
+  m_Layer: 0
+  m_Name: MinigameResultSfxPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &627974209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627974208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f89d5758ea5e934080199d218668ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.MinigameResultSfxPlayer
+  goldClip: {fileID: 8300000, guid: d2e05e3d06f9d4740a78e214045bf977, type: 3}
+  silverClip: {fileID: 8300000, guid: 22b8c8765040e4b4f9c02056e190caff, type: 3}
+  bronzeClip: {fileID: 8300000, guid: d856de582e3dec742a09d60693c3c4f0, type: 3}
+  winClip: {fileID: 0}
+  loseClip: {fileID: 0}
+--- !u!4 &627974210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627974208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 588.4895, y: 421.36465, z: -35.69873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627974211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627974208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
+  music: {fileID: 8300000, guid: e521f295fe5235b4296850cda104590a, type: 3}
+  ambient: {fileID: 0}
+  playMusicOnStart: 1
+  playAmbientOnStart: 1
+  stopMusicIfNull: 0
+  stopAmbientIfNull: 0
 --- !u!1 &718323885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,3 +1460,4 @@ SceneRoots:
   - {fileID: 1844866603}
   - {fileID: 183049247}
   - {fileID: 2121840545}
+  - {fileID: 627974210}

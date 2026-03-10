@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Core.GameConfigSO
   runDurationSeconds: 1080
-  requiredGold: 1
-  requiredSilver: 2
-  requiredBronze: 3
-  addSecondsBronze: 60
-  addSecondsSilver: 120
-  addSecondsGold: 180
+  requiredGold: 0
+  requiredSilver: 0
+  requiredBronze: 0
+  addSecondsBronze: 120
+  addSecondsSilver: 240
+  addSecondsGold: 480
   maxTimeCapSeconds: 0

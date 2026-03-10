@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
   m_Name: Intro_2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
-  speakerType: 0
-  speakerName: NPC
-  text: "Ng\u01B0\u01A1i ch\u1EC9 c\xF2n 18 ph\xFAt\u2026"
+  speakerType: 1
+  speakerName: 
+  text: "B\xEAn c\u1EA1nh \u0111\xF3 c\xF2n c\xF3 s\u1EED c\u1ED9ng t\xE1c c\u1EE7a
+    c\xE1c CLB kh\xE1c"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 2e6ac68ff930dcd44a3f48191537d6cc, type: 2}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  nextAuto: {fileID: 11400000, guid: 91128f30a5aefd849a22778df881692d, type: 2}
+  triggerAction: 1
+  actionType: 11
+  actionParam: FPTUCam2
   actionValue: 0
