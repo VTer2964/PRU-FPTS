@@ -1,0 +1,302 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5296328605052492756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5000000435830227706}
+  - component: {fileID: 8469166280527170242}
+  m_Layer: 8
+  m_Name: David
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5000000435830227706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296328605052492756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.038290154, y: -0.9435042, z: 0.30745068, w: 0.11750639}
+  m_LocalPosition: {x: 0.22, y: 3.84, z: 3.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6100039995993608998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8469166280527170242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296328605052492756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 1
+    m_Value: 10
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 6100039995993608998}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 60.000004
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!1 &7693739801961326414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6100039995993608998}
+  - component: {fileID: 6008135314291959817}
+  - component: {fileID: 793989914636608827}
+  - component: {fileID: 4317455528013026297}
+  - component: {fileID: 2731129015275705188}
+  - component: {fileID: 7617302927353889523}
+  - component: {fileID: 7626400502538160884}
+  m_Layer: 8
+  m_Name: David
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6100039995993608998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.9961947, z: -0, w: -0.08715578}
+  m_LocalPosition: {x: 349.75, y: -0.99389, z: 143.36}
+  m_LocalScale: {x: 0.41769454, y: 0.6958373, z: 0.41769454}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8706904419659416925}
+  - {fileID: 5000000435830227706}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 190, z: 0}
+--- !u!114 &6008135314291959817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a9818f596a05f4ba284adca9d7dbe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.NPC.NPCBrain
+  animator: {fileID: 793989914636608827}
+  agent: {fileID: 0}
+  speedParam: Speed
+  performBool: Perform
+  talkBool: Talk
+  facePivot: {fileID: 6100039995993608998}
+  rotateSpeed: 720
+  returnToOriginalFacing: 1
+  returnRotateSpeed: 720
+--- !u!95 &793989914636608827
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 438642cf0c8296d4abe8dca4f77347dd, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1203e607a5c9fe44bb76160f6a3af091, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4317455528013026297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444a893e7457d3549afb78000c1368d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.NPC.NPCDialogueInteractable_Graph
+  npcName: "Th\u1EA7y David"
+  dialogueGraph: {fileID: 11400000, guid: 8c67fbfa9f6b3d440bd04bdfb768c2e9, type: 2}
+  runner: {fileID: 0}
+  brain: {fileID: 6008135314291959817}
+  player: {fileID: 0}
+  playerTag: Player
+--- !u!65 &2731129015275705188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.6132731, y: 14.595855, z: 3.3688695}
+  m_Center: {x: 0.24551047, y: 2.5105119, z: -0.7021298}
+--- !u!114 &7617302927353889523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8f722a52c4ddd418482ec7eabe3600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.NPC.NPCStartPerform
+  brain: {fileID: 6008135314291959817}
+  startPerforming: 1
+--- !u!114 &7626400502538160884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693739801961326414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eacf053d276798469981bd28668499b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.NPC.NPCGraphSwitcherByFlag
+  requiredFlag: GAME4
+  npc: {fileID: 4317455528013026297}
+  lockedGraph: {fileID: 11400000, guid: 8c67fbfa9f6b3d440bd04bdfb768c2e9, type: 2}
+  unlockedGraph: {fileID: 11400000, guid: fac50b885f324234ab23285cb3153589, type: 2}
+--- !u!1001 &1674360895553975314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6100039995993608998}
+    m_Modifications:
+    - target: {fileID: 7251487550637403125, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_Name
+      value: David (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 401759aeebf4790438a426767584fd97, type: 3}
+--- !u!4 &8706904419659416925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8064158221655912783, guid: 401759aeebf4790438a426767584fd97, type: 3}
+  m_PrefabInstance: {fileID: 1674360895553975314}
+  m_PrefabAsset: {fileID: 0}
