@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EE7 Th\u01B0"
-  text: "Kh\xF4ng c\u1EA7n mua, c\xF4 \u0111\u1EB7t r\u1ED3i. H\xECnh nh\u01B0 c\u1EADu
-    Shipper \u0111ang \u0111\u1EE9ng ng\xE1o ng\u01A1 ngo\xE0i c\u1EEDa k\xEDnh kia
-    k\xECa, c\u1EADu ta kh\xF4ng c\xF3 th\u1EBB sinh vi\xEAn n\xEAn kh\xF4ng qu\u1EB9t
-    c\u1EEDa v\xE0o \u0111\u01B0\u1EE3c. Em ra c\u1EEDa \u0111\xF3n ly n\u01B0\u1EDBc
-    v\xE0o \u0111\xE2y gi\xFAp c\xF4 v\u1EDBi!"
+  text: "Kh\xF4ng c\u1EA7n mua, c\xF4 \u0111\u1EB7t r\u1ED3i. L\xE0 c\u1EADu Shipper
+    \u0111ang \u0111\u1EE9ng ngo\xE0i gian h\xE0ng kia k\xECa. Em ra l\u1EA5y ly
+    n\u01B0\u1EDBc v\xE0o \u0111\xE2y gi\xFAp c\xF4 v\u1EDBi!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}
