@@ -21,7 +21,7 @@ MonoBehaviour:
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}
-  triggerAction: 0
+  triggerAction: 1
   actionType: 11
   actionParam: LaoCong
   actionValue: 0

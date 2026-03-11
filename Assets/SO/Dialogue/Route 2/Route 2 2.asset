@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: Route 2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "B\u1EA1n N\u1EEF"
+  speakerName: "B\u1EA1n N\u1EEF "
   text: "Huhu, t\u1EDB kh\xF4ng bi\u1EBFt n\u1EEFa! T\u1EDB b\u1EADt Bluetooth \u0111i\u1EC7n
-    tho\u1EA1i r\u1ED3i m\xE0 t\xECm m\xE3i kh\xF4ng th\u1EA5y t\xEAn loa \u0111\xE2u.
-    C\xE1i loa n\xE0y 'ch\u1EA3nh' qu\xE1 hay sao \u1EA5y! Anh PT nh\xECn t\u1EDB
-    ch\xE1y c\u1EA3 m\xE1y r\u1ED3i!"
+    tho\u1EA1i r\u1ED3i m\xE0 t\xECm m\xE3i kh\xF4ng th\u1EA5y t\xEAn loa \u0111\xE2u."
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: ecdf7aa876c2251459627087e9964fdc, type: 2}
+  nextAuto: {fileID: 11400000, guid: 1856f41bfb68c104689c03d0bd6bef6a, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 
