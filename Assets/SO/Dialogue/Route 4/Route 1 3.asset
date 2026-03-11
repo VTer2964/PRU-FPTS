@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "Where did you drop it? (Th\u1EA7y l\xE0m r\u01A1i \u1EDF \u0111\xE2u?)"
+  text: "\"Hallway Guardian? Who is that?\" (Ng\u01B0\u1EDDi g\xE1c \u0111\u1EC1n
+    h\xE0nh lang \xE1? L\xE0 ai v\u1EADy th\u1EA7y?)"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}

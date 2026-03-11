@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: "Sorry V\u0169! I cannot verify you right now. I lost my Passport! No passport,
-    no work! (Xin l\u1ED7i, th\u1EA7y m\u1EA5t h\u1ED9 chi\u1EBFu r\u1ED3i, kh\xF4ng
-    l\xE0m vi\u1EC7c \u0111\u01B0\u1EE3c).\r\n"
+  text: " \"Not so fast, V\u0169! To earn the right to play my game, you must pass
+    the 'Hallway Guardian' first.\" (Kh\xF4ng nhanh th\u1EBF \u0111\xE2u V\u0169!
+    \u0110\u1EC3 \u0111\u1EE7 \u0111i\u1EC1u ki\u1EC7n tham gia th\u1EED th\xE1ch
+    c\u1EE7a th\u1EA7y, em ph\u1EA3i v\u01B0\u1EE3t qua 'Ng\u01B0\u1EDDi g\xE1c \u0111\u1EC1n
+    h\xE0nh lang' tr\u01B0\u1EDBc)."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5446e9e3de94da74fa360fee75db6f77, type: 2}

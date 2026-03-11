@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: Hello Sir! I want the QR Code number 4!
+  text: " \"Hello Sir! I want the QR Code number 4!\" (Ch\xE0o th\u1EA7y! Em mu\u1ED1n
+    l\u1EA5y m\xE3 QR s\u1ED1 4!) "
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 89cc6e73d8ff39a4ea7963b1b5ca865b, type: 2}
