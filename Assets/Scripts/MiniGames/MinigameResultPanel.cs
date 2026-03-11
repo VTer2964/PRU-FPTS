@@ -8,7 +8,7 @@ namespace FPTSim.Minigames
 {
     public class MinigameResultPanel : MonoBehaviour
     {
-        private const float AUTO_CLOSE_SECONDS = 5f;
+        private const float AUTO_CLOSE_SECONDS = 2f;
         private const float ANIM_DURATION      = 0.45f;
 
         private System.Action onClosed;
@@ -187,50 +187,6 @@ namespace FPTSim.Minigames
                 new Color(0.45f, 0.45f, 0.50f), FontStyles.Normal);
             autoCloseText.alignment = TextAlignmentOptions.Center;
             SetCenter(autoCloseText.rectTransform, new Vector2(360f, 20f), new Vector2(0f, -114f));
-
-            // Button — dùng sprite từ asset pack nếu load được, fallback plain color
-            var btnGO = new GameObject("ContinueBtn");
-            btnGO.transform.SetParent(cardT, false);
-            var btnRT = btnGO.AddComponent<RectTransform>();
-            btnRT.anchorMin        = btnRT.anchorMax = Half;
-            btnRT.pivot            = Half;
-            btnRT.sizeDelta        = new Vector2(260f, 52f);
-            btnRT.anchoredPosition = new Vector2(0f, -158f);
-
-            var btnImg = btnGO.AddComponent<Image>();
-            var continueSprite = Resources.Load<Sprite>("MinigameAssets_ContinueBtn");
-
-            if (continueSprite != null)
-            {
-                btnImg.sprite = continueSprite;
-                btnImg.type   = Image.Type.Simple;
-                btnImg.preserveAspect = true;
-                btnImg.color  = Color.white;
-            }
-            else
-            {
-                btnImg.color = accentColor;
-            }
-
-            var btn = btnGO.AddComponent<Button>();
-            var cb  = btn.colors;
-            cb.normalColor      = Color.white;
-            cb.highlightedColor = new Color(0.80f, 0.80f, 0.80f);
-            cb.pressedColor     = new Color(0.60f, 0.60f, 0.60f);
-            cb.colorMultiplier  = 1f;
-            btn.colors = cb;
-            btn.onClick.AddListener(Close);
-
-            // Nếu không có sprite → hiện text "TIẾP TỤC"
-            if (continueSprite == null)
-            {
-                Color btnTextColor = result.medal == Medal.None
-                    ? Color.white
-                    : new Color(0.08f, 0.06f, 0.02f);
-                var btnLbl = MakeTMP(btnGO.transform, "Label", "TIẾP TỤC", 20f, btnTextColor, FontStyles.Bold);
-                btnLbl.alignment = TextAlignmentOptions.Center;
-                StretchFull(btnLbl.rectTransform);
-            }
 
             // Animate card in
             StartCoroutine(AnimateIn(cardGO.GetComponent<RectTransform>()));
