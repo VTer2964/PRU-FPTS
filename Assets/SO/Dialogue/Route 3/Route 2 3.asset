@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Shipper
-  text: "\xC0!! \u0110\u01A1n 'B\u1EA1c X\u1EC9u nhi\u1EC1u s\u1EEFa' cho c\xF4 th\u1EE7
-    th\u01B0 \u0111\xFAng kh\xF4ng? Anh g\u1ECDi \u0111i\u1EC7n c\xF4 \u1EA5y kh\xF4ng
-    nghe m\xE1y.  "
+  text: "Anh giao \u0111\u01A1n 'B\u1EA1c X\u1EC9u nhi\u1EC1u s\u1EEFa' cho c\xF4
+    th\u1EE7 th\u01B0, m\xE0 b\u1EA3o v\u1EC7 kh\xF4ng cho anh qu\u1EB9t th\u1EBB
+    v\xE0o trong. G\u1ECDi \u0111i\u1EC7n c\xF4 \u1EA5y kh\xF4ng nghe m\xE1y. \u0110\xE1
+    tan h\u1EBFt th\xE0nh n\u01B0\u1EDBc l\xE3 r\u1ED3i em \u01A1i!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b4d9dafadf95a8145a90800fde91d88f, type: 2}

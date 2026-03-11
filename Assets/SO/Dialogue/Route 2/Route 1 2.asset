@@ -15,7 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Anh PT
   text: "No no! \u1EDE \u0111\xE2y nh\u1EA1c t\u1EAFt ng\xF3m th\u1EBF n\xE0y anh
-    t\u1EE5t h\u1EBFt c\u1EA3 'mood'. "
+    t\u1EE5t h\u1EBFt c\u1EA3 'mood'. Kh\xF4ng c\xF3 nh\u1EA1c sao m\xE0 'pumping'
+    c\u01A1 b\u1EAFp \u0111\u01B0\u1EE3c?"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 941f9868cfddab342872d386125bd329, type: 2}

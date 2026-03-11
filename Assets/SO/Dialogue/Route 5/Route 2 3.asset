@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "B\xECnh t\u0129nh anh \u01A1i. \u0110\u01B0a em xem... \r\n"
+  text: "B\xECnh t\u0129nh anh \u01A1i. \u0110\u01B0a em xem... Ui gi\u1EDDi, c\xE1i
+    n\u1EAFp pin b\u1ECB l\u1ECFng, pin n\xF3 tu\u1ED9t ra ngo\xE0i r\u1ED3i th\xEC
+    l\xEAn \u0111i\u1EC7n sao \u0111\u01B0\u1EE3c. Anh d\xF9ng Mic m\xE0 'b\u1EA1o
+    l\u1EF1c' th\u1EBF!(V\u0169 th\xE1o n\u1EAFp, l\u1EAFp l\u1EA1i pin \u0111\xFAng
+    c\u1EF1c, v\u1ED7 nh\u1EB9 v\xE0o \u0111\u1EA7u Mic: B\u1EE5p b\u1EE5p... Alo
+    alo!)\r\n"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2f32765b1ad45e34ebf45f698ebb72cd, type: 2}
