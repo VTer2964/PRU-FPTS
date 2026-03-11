@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "B\u1EA1n N\u1EEF "
-  text: "Event l\u1EA7n n\xE0y c\u1EE7a tr\u01B0\u1EDDng vui th\u1EADt \u0111\u1EA5y!!"
+  text: "B\u1EA1n mu\u1ED1n \u0103n g\xEC kh\xF4ng ??"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

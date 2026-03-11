@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 7
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Th\u1EA7y David"
+  text: "Excellent attitude! Let's see if you are a true Global Citizen.me, V\u0169!(Th\xE1i
+    \u0111\u1ED9 tuy\u1EC7t v\u1EDDi! H\xE3y xem b\u1EA1n c\xF3 ph\u1EA3i l\xE0 m\u1ED9t
+    C\xF4ng d\xE2n To\xE0n c\u1EA7u th\u1EF1c th\u1EE5 kh\xF4ng, V\u0169!)"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 1
+  actionType: 1
+  actionParam: Minigame_CountryGuess
+  actionValue: 0

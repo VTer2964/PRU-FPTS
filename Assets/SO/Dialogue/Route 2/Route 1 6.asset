@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Anh PT
-  text: "Em ra \u0111\xF3, fix c\xE1i loa cho n\xF3 \u0111\u1EC3 nh\u1EA1c l\xEAn
-    x\u1EADp x\xECnh \u0111i r\u1ED3i anh ti\u1EBFp chi\xEAu!"
+  text: "Em ra mua gi\xFAp anh nh\xE9. C\xF3 th\u1EF1c m\u1EDBi v\u1EF1c \u0111\u01B0\u1EE3c
+    \u0111\u1EA1o em \u1EA1!"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
+  nextAuto: {fileID: 11400000, guid: 3a6889a2f961865479e8ca45b74b3b6c, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

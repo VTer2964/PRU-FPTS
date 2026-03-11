@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Anh PT
-  text: "LIGHT WEIGHT BABY! Tinh th\u1EA7n t\u1ED1t l\u1EAFm! Nh\u1EA1c \u0111\xE3
-    l\xEAn th\xEC n\xE3o c\u0169ng ph\u1EA3i 'l\xEAn c\u01A1'. Chi\u1EBFn th\xF4i
-    ng\u01B0\u1EDDi anh em!"
+  text: "LIGHT WEIGHT BABY! Tinh th\u1EA7n t\u1ED1t l\u1EAFm! "
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
+  nextAuto: {fileID: 11400000, guid: ec6e6be6316dad844bbfab12806b36ce, type: 2}
   triggerAction: 1
-  actionType: 1
-  actionParam: Minigame_FlappyVocab
+  actionType: 7
+  actionParam: Vocab
   actionValue: 0

@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
   speakerName: SYSTEM
-  text: "MacBook Pro M3 \u0111ang \u1EDF ngay tr\u01B0\u1EDBc m\u1EAFt. Ch\u1EC9
-    c\xF2n m\u1ED9t game n\u1EEFa th\xF4i. Quy\u1EBFt \u0111\u1ECBnh c\u1EE7a b\u1EA1n?"
+  text: "B\u1EA1n \u0111\xE3 gi\u1EA3i quy\u1EBFt xong s\u1EF1 c\u1ED1 s\xE2n kh\u1EA5u.
+    Th\u1EED th\xE1ch l\u1EADt h\xECnh logo c\xE1c C\xE2u l\u1EA1c b\u1ED9 \u0111ang
+    ch\u1EDD \u0111\xF3n. B\u1EA1n \u0111\xE3 s\u1EB5n s\xE0ng thu th\u1EADp huy
+    ch\u01B0\u01A1ng ch\u01B0a?"
   choices:
-  - text: "L\u1EA4Y MACBOOK"
+  - text: "S\u1EB4N S\xC0NG (CHI\u1EBEN)"
     next: {fileID: 11400000, guid: 78b81ce264978414ba6e28aabfc27005, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0
-  - text: "RUN QU\xC1 (B\u1ECE) "
+  - text: "\u0110\u1EC2 SAU (B\u1ECE)"
     next: {fileID: 11400000, guid: 1b723e089eea3b442bf9e58e4be5490c, type: 2}
     requireCondition: 0
     conditionKey: 

@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Anh PT
-  text: "Tuy\u1EC7t v\u1EDDi! N\u0103ng l\u01B0\u1EE3ng tr\xE0n tr\u1EC1! Yeah Buddy!
-    Gi\u1EDD th\xEC ch\u1ECDn \u0111\xFAng t\u1EEB v\u1EF1ng v\u1EC1 Body Parts (B\u1ED9
-    ph\u1EADn c\u01A1 th\u1EC3) \u0111\u1EC3 ch\u1EE9ng minh em kh\xF4ng ch\u1EC9
-    bi\u1EBFt code m\xE0 c\xF2n bi\u1EBFt t\u1EADp gym!"
+  text: "Ngon qu\xE1! C\u1EE9u tinh c\u1EE7a anh \u0111\xE2y r\u1ED3i. Kh\xF4 g\xE0
+    nhi\u1EC1u protein, \u0103n v\xE0o l\xE0 c\u01A1 b\u1EAFp l\u1EA1i 'pumping'
+    ngay. C\u1EA3m \u01A1n em nhi\u1EC1u nh\xE9!"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: d997528fd36891f458600f769cce7f06, type: 2}
+  nextAuto: {fileID: 11400000, guid: 6d6d68b491d857d478dcf573e1d990ec, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

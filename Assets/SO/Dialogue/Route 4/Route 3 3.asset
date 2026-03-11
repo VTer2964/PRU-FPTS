@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
   speakerName: SYSTEM
-  text: "Th\u1EA7y David \u0111\xE3 t\xECm l\u1EA1i \u0111\u01B0\u1EE3c h\u1ED9 chi\u1EBFu
-    v\xE0 r\u1EA5t vui v\u1EBB. B\u1EA1n c\xF3 mu\u1ED1n th\u1EED th\xE1ch \u0110\u1ECBa
-    L\xFD kh\xF4ng?"
+  text: "B\u1EA1n \u0111\xE3 v\u01B0\u1EE3t qua th\u1EED th\xE1ch ph\u1EE5. Th\u1EA7y
+    David r\u1EA5t h\xE0i l\xF2ng. B\u1EA1n \u0111\xE3 s\u1EB5n s\xE0ng b\u01B0\u1EDBc
+    v\xE0o minigame ch\xEDnh c\u1EE7a khu v\u1EF1c Qu\u1ED1c t\u1EBF ch\u01B0a?"
   choices:
   - text: "YES, SIR (CHI\u1EBEN) "
     next: {fileID: 11400000, guid: e8853e148e88d6e48a3b13fead945c45, type: 2}

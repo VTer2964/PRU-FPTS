@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: Oh thank god! You are a lifesaver. Now, show me your geography knowledge.
-    Match the flags to the countries correctly!
+  text: "Excellent! You are worthy. Now, let's test your real geography knowledge. 
+    (Tuy\u1EC7t v\u1EDDi! Em r\u1EA5t x\u1EE9ng \u0111\xE1ng. Gi\u1EDD ch\xFAng ta
+    h\xE3y ki\u1EC3m tra ki\u1EBFn th\u1EE9c \u0111\u1ECBa l\xFD th\u1EF1c s\u1EF1
+    c\u1EE7a em.)"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 54df2bb9a2649ef47b20e379f9f62fc8, type: 2}
+  nextAuto: {fileID: 11400000, guid: acb25337ad2ec6f44914503ee375a4aa, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

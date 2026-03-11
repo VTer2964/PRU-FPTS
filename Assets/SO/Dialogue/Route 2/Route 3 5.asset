@@ -15,12 +15,11 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Anh PT
   text: "Th\xF4i xong! Ch\u01B0a t\u1EADp \u0111\xE3 'x\u1EA3 c\u01A1' r\u1ED3i \xE0?
-    Y\u1EBFu \u0111u\u1ED1i qu\xE1! V\u1EC1 nh\xE0 u\u1ED1ng th\xEAm Whey r\u1ED3i
-    quay l\u1EA1i \u0111\xE2y n\xF3i chuy\u1EC7n v\u1EDBi anh!"
+    Y\u1EBFu \u0111u\u1ED1i qu\xE1! "
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  nextAuto: {fileID: 11400000, guid: 88f8e92978570944cae0173cf5f3e7c8, type: 2}
+  triggerAction: 1
+  actionType: 7
+  actionParam: Lose2
   actionValue: 0

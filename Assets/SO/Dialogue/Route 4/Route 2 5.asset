@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "A \u0111\xE2y r\u1ED3i! \u0110\xFAng l\xE0 'Passport' r\u1ED3i! Con c\u1EA3m
-    \u01A1n ch\xFA nhi\u1EC1u l\u1EAFm \u1EA1! Ch\xFA l\xE0 ng\u01B0\u1EDDi h\xF9ng
-    c\u1EE7a con!"
+  text: "OK \u1EA1! Ch\xFA c\u1EE9 h\u1ECFi \u0111i!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 41f3115314afa514a8fc5606ceac1920, type: 2}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  triggerAction: 1
+  actionType: 7
+  actionParam: LaoCong2
   actionValue: 0

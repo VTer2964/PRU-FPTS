@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
-  text: "T\u1EEB t\u1EEB \u0111\xE3 em trai! Ch\u01B0\u01A1ng tr\xECnh \u0111ang
-    b\u1ECB gi\xE1n \u0111o\u1EA1n. Micro c\u1EE7a MC h\u1ECFng r\u1ED3i, kh\xF4ng
-    c\xF4ng b\u1ED1 gi\u1EA3i \u0111\u01B0\u1EE3c."
+  text: "Ch\xE0o em! Tr\u1EA1m c\u1EE7a anh \u0111ang t\u1EA1m ng\u01B0ng m\u1ED9t
+    ch\xFAt. Ng\xE0y h\u1ED9i C\xE2u l\u1EA1c b\u1ED9 \u0111ang chu\u1EA9n b\u1ECB
+    \u0111\u1EBFn ph\u1EA7n giao l\u01B0u quan tr\u1ECDng m\xE0 c\xE1i micro c\u1EE7a
+    MC l\u1EA1i d\u1EDF ch\u1EE9ng r\u1ED3i, kh\xF4ng c\xF4ng b\u1ED1 \u0111\u01B0\u1EE3c
+    g\xEC c\u1EA3."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: bdb07c5dbf53ee0429656f661384719a, type: 2}

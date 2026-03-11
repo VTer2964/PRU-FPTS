@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
-  text: "M\u1EA3nh QR n\u1EB1m trong tr\xF2 ch\u01A1i tr\xED nh\u1EDB n\xE0y. L\u1EADt
-    \u0111\xFAng c\xE1c c\u1EB7p h\xECnh gi\u1ED1ng nhau trong 60 gi\xE2y th\xEC
-    MacBook l\xE0 c\u1EE7a em!"
+  text: "Kh\xE1 l\u1EAFm ch\xE0ng trai! C\u1EA3m \u01A1n em \u0111\xE3 h\u1ED7 tr\u1EE3
+    ban t\u1ED5 ch\u1EE9c ch\u1EEFa ch\xE1y k\u1ECBp th\u1EDDi nh\xE9. Gi\u1EDD th\xEC
+    \u0111\u1EBFn ph\u1EA7n c\u1EE7a em. "
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 8d086acb8787c104e92ff5efcf44797e, type: 2}
+  nextAuto: {fileID: 11400000, guid: 3e933e3c28b32e144a641ce4a3a926e1, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

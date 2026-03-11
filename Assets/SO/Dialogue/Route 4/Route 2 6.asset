@@ -14,12 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Ch\xFA Lao C\xF4ng"
-  text: "G\u1EDBm, anh c\u1EE9 kh\xE9o m\u1ED3m. Mang tr\u1EA3 ng\u01B0\u1EDDi ta
-    \u0111i!"
-  choices: []
+  text: "\u0110\u1ED1 ch\xE1u: FPT University c\xF3 bao nhi\xEAu c\u01A1 s\u1EDF
+    tr\xEAn to\xE0n qu\u1ED1c?"
+  choices:
+  - text: "4 C\u01A1 s\u1EDF"
+    next: {fileID: 11400000, guid: 23610ffb96e125e4d986aaad10a7c534, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "5 C\u01A1 s\u1EDF"
+    next: {fileID: 11400000, guid: a05cb521042cde841b91f631bd10dc86, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "6 C\u01A1 s\u1EDF"
+    next: {fileID: 11400000, guid: 23610ffb96e125e4d986aaad10a7c534, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
   autoAdvance: 1
   nextAuto: {fileID: 0}
-  triggerAction: 1
-  actionType: 7
-  actionParam: GAME4
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0

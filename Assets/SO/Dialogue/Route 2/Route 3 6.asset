@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
-  m_Name: Route 4 1
+  m_Name: Route 3 6
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: Mascot
-  text: "Ch\xE0o M\u1EEBng \u0111\u1EBFn v\u1EDBi FPT University!"
+  speakerName: Anh PT
+  text: "D\u1EA1 kh\xF4ng c\xF3 g\xEC \u1EA1. V\u1EADy gi\u1EDD anh \u0111\xE3 kh\u1ECFe
+    l\u1EA1i \u0111\u1EC3 b\u1EAFt \u0111\u1EA7u th\u1EED th\xE1ch ch\u01B0a \u1EA1?"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
+  nextAuto: {fileID: 11400000, guid: 803bcea4da846354a97fcbd8f6bf1d69, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

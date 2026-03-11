@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 6
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
+  text: "Th\u1EED th\xE1ch c\u1EE7a tr\u1EA1m n\xE0y l\xE0 tr\xF2 ch\u01A1i l\u1EADt
+    h\xECnh (Memory Flip). Em h\xE3y t\xECm v\xE0 l\u1EADt \u0111\xFAng c\xE1c c\u1EB7p
+    logo c\u1EE7a c\xE1c C\xE2u l\u1EA1c b\u1ED9 trong tr\u01B0\u1EDDng."
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 9c7585442cbb47741848246e1cb4da78, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
