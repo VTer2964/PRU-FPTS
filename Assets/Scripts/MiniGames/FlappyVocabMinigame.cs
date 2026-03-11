@@ -52,7 +52,14 @@ namespace FPTSim.Minigames
             else if (score >= bronzeScore) medal = Medal.Bronze;
             else                           medal = Medal.None;
 
-            StartCoroutine(FinishAfterDelay(medal, score, 3f));
+            // Ẩn gameOverPanel của FlappyVocabGame, dùng MinigameResultPanel thay thế
+            if (gameManager != null)
+            {
+                var panel = gameManager.GameOverPanel;
+                if (panel != null) panel.SetActive(false);
+            }
+
+            StartCoroutine(FinishAfterDelay(medal, score, 0f));
         }
 
         private IEnumerator FinishAfterDelay(Medal medal, int score, float delay)

@@ -106,6 +106,10 @@ namespace MemoryCardMatch
         {
             SetupButtonListeners();
             HideAllPanels();
+
+            // Disable pause button and panel
+            if (pauseButton != null) pauseButton.gameObject.SetActive(false);
+            if (pausePanel != null)  pausePanel.SetActive(false);
         }
 
         private void OnDestroy()
@@ -207,7 +211,7 @@ namespace MemoryCardMatch
 
         public void ShowPauseMenu()
         {
-            SetActive(pausePanel, true);
+            // Pause menu disabled
         }
 
         public void HidePauseMenu()

@@ -6,19 +6,17 @@ using FPTSim.Core;
 
 namespace FPTSim.Minigames
 {
-    /// <summary>
-    /// Overlay panel hiển thị điểm + medal sau khi minigame kết thúc.
-    /// Được tạo động bởi MinigameBase.Finish() — không cần prefab.
-    /// Tự động đóng sau autoCloseSeconds giây hoặc khi nhấn nút.
-    /// </summary>
     public class MinigameResultPanel : MonoBehaviour
     {
-        private const float AUTO_CLOSE_SECONDS = 5f;
+        private const float AUTO_CLOSE_SECONDS = 2f;
+        private const float ANIM_DURATION      = 0.45f;
 
         private System.Action onClosed;
         private float timer;
         private bool closing;
         private TMP_Text autoCloseText;
+        private Image progressBarFill;
+        private Transform cardT;
 
         // ── Factory ──────────────────────────────────────────────────────────
 
@@ -27,13 +25,13 @@ namespace FPTSim.Minigames
             var canvasGO = new GameObject("[MinigameResultPanel]");
 
             var canvas = canvasGO.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 999;
 
             var scaler = canvasGO.AddComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.uiScaleMode        = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);
-            scaler.matchWidthOrHeight = 0.5f;
+            scaler.matchWidthOrHeight  = 0.5f;
 
             canvasGO.AddComponent<GraphicRaycaster>();
 
@@ -47,113 +45,170 @@ namespace FPTSim.Minigames
 
         private void BuildUI(Canvas canvas, MinigameResult result)
         {
-            // Dim background
-            var bg = CreateRect(canvas.transform, "BG", Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            bg.gameObject.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.72f);
+            Color accentColor, headerBg, glowColor;
+            string medalLabel;
+            switch (result.medal)
+            {
+                case Medal.Gold:
+                    accentColor = new Color(1.00f, 0.82f, 0.10f);
+                    headerBg    = new Color(0.55f, 0.38f, 0.02f, 1f);
+                    glowColor   = new Color(1.00f, 0.90f, 0.30f, 0.35f);
+                    medalLabel  = "HUY CHƯƠNG VÀNG";
+                    break;
+                case Medal.Silver:
+                    accentColor = new Color(0.85f, 0.85f, 0.90f);
+                    headerBg    = new Color(0.28f, 0.28f, 0.36f, 1f);
+                    glowColor   = new Color(0.80f, 0.80f, 1.00f, 0.28f);
+                    medalLabel  = "HUY CHƯƠNG BẠC";
+                    break;
+                case Medal.Bronze:
+                    accentColor = new Color(0.85f, 0.52f, 0.18f);
+                    headerBg    = new Color(0.38f, 0.20f, 0.04f, 1f);
+                    glowColor   = new Color(1.00f, 0.60f, 0.20f, 0.28f);
+                    medalLabel  = "HUY CHƯƠNG ĐỒNG";
+                    break;
+                default:
+                    accentColor = new Color(0.55f, 0.55f, 0.60f);
+                    headerBg    = new Color(0.20f, 0.10f, 0.10f, 1f);
+                    glowColor   = new Color(0.60f, 0.20f, 0.20f, 0.20f);
+                    medalLabel  = "KHÔNG ĐẠT";
+                    break;
+            }
+
+            var ct = canvas.transform;
+
+            // Dim overlay — full screen
+            MakeImage(ct, "Overlay",
+                Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero,
+                new Color(0f, 0f, 0f, 0.72f));
+
+            // Soft glow circle
+            MakeImage(ct, "Glow",
+                Half, Half, new Vector2(580f, 580f), Vector2.zero,
+                glowColor);
 
             // Card
-            var card = CreateRect(canvas.transform, "Card",
-                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-                new Vector2(520, 400), Vector2.zero);
-            card.gameObject.AddComponent<Image>().color = new Color(0.08f, 0.08f, 0.13f, 0.97f);
+            var cardGO = MakeImage(ct, "Card",
+                Half, Half, new Vector2(460f, 430f), Vector2.zero,
+                new Color(0.08f, 0.08f, 0.13f, 0.98f));
+            cardT = cardGO.transform;
 
-            var cardT = card.transform;
+            // Header bar
+            var headerGO = MakeImage(cardT, "Header",
+                new Vector2(0f, 1f), new Vector2(1f, 1f),
+                new Vector2(0f, 72f), new Vector2(0f, -36f),
+                headerBg);
+            var headerT = headerGO.transform;
 
-            // Title
-            AddText(cardT, "Title", "KẾT QUẢ", 44, Color.white,
-                new Vector2(0, 155), new Vector2(480, 56), FontStyles.Bold);
+            // "KẾT QUẢ" title
+            var titleTxt = MakeTMP(headerT, "Title", "KẾT QUẢ", 23f, Color.white, FontStyles.Bold);
+            titleTxt.alignment = TextAlignmentOptions.Center;
+            Stretch(titleTxt.rectTransform, new Vector2(0f, 14f), new Vector2(0f, -6f));
 
-            // Game name
-            AddText(cardT, "GameName", result.minigameId, 22, new Color(0.65f, 0.65f, 0.7f),
-                new Vector2(0, 105), new Vector2(480, 32));
+            // Game id subtitle
+            var subTxt = MakeTMP(headerT, "Sub", result.minigameId.ToUpper(),
+                13f, new Color(1f, 1f, 1f, 0.50f), FontStyles.Normal);
+            subTxt.alignment = TextAlignmentOptions.Center;
+            var subRT = subTxt.rectTransform;
+            SetAnchor(subRT, new Vector2(0f, 0f), new Vector2(1f, 0f));
+            subRT.pivot            = new Vector2(0.5f, 1f);
+            subRT.sizeDelta        = new Vector2(0f, 22f);
+            subRT.anchoredPosition = new Vector2(0f, -2f);
 
-            // Divider (thin Image)
-            var div = CreateRect(cardT, "Divider",
-                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-                new Vector2(420f, 2f), new Vector2(0f, 72f));
-            div.gameObject.AddComponent<Image>().color = new Color(0.3f, 0.3f, 0.35f);
+            // Accent border bottom of header
+            MakeImage(cardT, "Border",
+                new Vector2(0f, 1f), new Vector2(1f, 1f),
+                new Vector2(0f, 3f), new Vector2(0f, -72f),
+                accentColor);
 
-            // Score
-            string scoreLabel = result.scoreAwarded > 0
-                ? $"Điểm: <b>{result.scoreAwarded}</b>"
-                : "Điểm: —";
-            AddText(cardT, "Score", scoreLabel, 34, new Color(1f, 0.9f, 0.3f),
-                new Vector2(0, 20), new Vector2(480, 48));
+            // Medal badge — outer accent border
+            var badgeOuter = MakeImage(cardT, "BadgeOuter",
+                Half, Half, new Vector2(90f, 90f), new Vector2(0f, 68f), accentColor);
 
-            // Medal
-            (string name, Color color) medalInfo = result.medal switch
+            // Badge inner — dark fill
+            var badgeInner = MakeImage(badgeOuter.transform, "BadgeInner",
+                Half, Half, new Vector2(74f, 74f), Vector2.zero,
+                new Color(0.08f, 0.08f, 0.13f, 0.98f));
+
+            // Badge tier text (I / II / III / X)
+            string badgeTier = result.medal == Medal.Gold   ? "I"
+                             : result.medal == Medal.Silver ? "II"
+                             : result.medal == Medal.Bronze ? "III"
+                             : "X";
+            var badgeTxt = MakeTMP(badgeInner.transform, "Tier", badgeTier, 34f, accentColor, FontStyles.Bold);
+            badgeTxt.alignment = TextAlignmentOptions.Center;
+            StretchFull(badgeTxt.rectTransform);
+
+            // Medal label
+            var mlTxt = MakeTMP(cardT, "MedalLabel", medalLabel, 26f, accentColor, FontStyles.Bold);
+            mlTxt.alignment = TextAlignmentOptions.Center;
+            SetCenter(mlTxt.rectTransform, new Vector2(400f, 38f), new Vector2(0f, -4f));
+
+            // Tier dots (3 pips — filled/dim by medal rank)
+            int litDots = result.medal == Medal.Gold ? 3
+                        : result.medal == Medal.Silver ? 2
+                        : result.medal == Medal.Bronze ? 1
+                        : 0;
+            Color dimDot = new Color(accentColor.r, accentColor.g, accentColor.b, 0.18f);
+            float[] dotXs = { -20f, 0f, 20f };
+            for (int i = 0; i < 3; i++)
+                MakeImage(cardT, $"Dot{i}", Half, Half,
+                    new Vector2(10f, 10f), new Vector2(dotXs[i], -38f),
+                    i < litDots ? accentColor : dimDot);
+
+            // Separator
+            MakeImage(cardT, "Sep",
+                new Vector2(0.1f, 0.5f), new Vector2(0.9f, 0.5f),
+                new Vector2(0f, 2f), new Vector2(0f, -58f),
+                new Color(accentColor.r, accentColor.g, accentColor.b, 0.35f));
+
+            // Progress bar background
+            var barBgGO = MakeImage(cardT, "BarBg",
+                Half, Half, new Vector2(360f, 8f), new Vector2(0f, -96f),
+                new Color(0.18f, 0.18f, 0.22f));
+
+            // Progress bar fill
+            var fillGO = new GameObject("Fill");
+            fillGO.transform.SetParent(barBgGO.transform, false);
+            var fillRT = fillGO.AddComponent<RectTransform>();
+            fillRT.anchorMin        = new Vector2(0f, 0f);
+            fillRT.anchorMax        = new Vector2(1f, 1f);
+            fillRT.pivot            = new Vector2(0f, 0.5f);
+            fillRT.sizeDelta        = Vector2.zero;
+            fillRT.anchoredPosition = Vector2.zero;
+            progressBarFill            = fillGO.AddComponent<Image>();
+            progressBarFill.color      = accentColor;
+            progressBarFill.type       = Image.Type.Filled;
+            progressBarFill.fillMethod = Image.FillMethod.Horizontal;
+            progressBarFill.fillAmount = 1f;
+
+            // Auto-close countdown text
+            autoCloseText = MakeTMP(cardT, "AutoClose", "", 13f,
+                new Color(0.45f, 0.45f, 0.50f), FontStyles.Normal);
+            autoCloseText.alignment = TextAlignmentOptions.Center;
+            SetCenter(autoCloseText.rectTransform, new Vector2(360f, 20f), new Vector2(0f, -114f));
+
+            // Animate card in
+            StartCoroutine(AnimateIn(cardGO.GetComponent<RectTransform>()));
+        }
+
+        // ── Animation ────────────────────────────────────────────────────────
+
+        private IEnumerator AnimateIn(RectTransform rt)
+        {
+            rt.localScale = Vector3.zero;
+            float elapsed = 0f;
+            while (elapsed < ANIM_DURATION)
             {
-                Medal.Gold   => ("🥇  HUY CHƯƠNG VÀNG",  new Color(1.00f, 0.84f, 0.00f)),
-                Medal.Silver => ("🥈  HUY CHƯƠNG BẠC",   new Color(0.80f, 0.80f, 0.80f)),
-                Medal.Bronze => ("🥉  HUY CHƯƠNG ĐỒNG",  new Color(0.80f, 0.50f, 0.20f)),
-                _            => ("✖  KHÔNG ĐẠT",         new Color(0.70f, 0.25f, 0.25f)),
-            };
-            AddText(cardT, "Medal", medalInfo.name, 28, medalInfo.color,
-                new Vector2(0, -38), new Vector2(480, 42), FontStyles.Bold);
-
-            // Auto-close countdown
-            autoCloseText = AddText(cardT, "AutoClose", "", 17, new Color(0.5f, 0.5f, 0.55f),
-                new Vector2(0, -102), new Vector2(480, 28));
-
-            // Continue button
-            AddButton(cardT);
-        }
-
-        // ── Helpers ──────────────────────────────────────────────────────────
-
-        private RectTransform CreateRect(Transform parent, string name,
-            Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPos)
-        {
-            var go = new GameObject(name);
-            go.transform.SetParent(parent, false);
-            var rt = go.AddComponent<RectTransform>();
-            rt.anchorMin = anchorMin;
-            rt.anchorMax = anchorMax;
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta = sizeDelta;
-            rt.anchoredPosition = anchoredPos;
-            return rt;
-        }
-
-        private TMP_Text AddText(Transform parent, string name, string content,
-            float fontSize, Color color, Vector2 pos, Vector2 size,
-            FontStyles style = FontStyles.Normal)
-        {
-            var rt = CreateRect(parent, name,
-                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), size, pos);
-            var t = rt.gameObject.AddComponent<TextMeshProUGUI>();
-            t.text = content;
-            t.fontSize = fontSize;
-            t.color = color;
-            t.alignment = TextAlignmentOptions.Center;
-            t.fontStyle = style;
-            t.enableWordWrapping = false;
-            return t;
-        }
-
-        private void AddButton(Transform parent)
-        {
-            var rt = CreateRect(parent, "ContinueBtn",
-                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-                new Vector2(240f, 58f), new Vector2(0f, -162f));
-            rt.gameObject.AddComponent<Image>().color = new Color(0.15f, 0.55f, 0.25f);
-            var btn = rt.gameObject.AddComponent<Button>();
-
-            var colors = btn.colors;
-            colors.highlightedColor = new Color(0.25f, 0.75f, 0.35f);
-            colors.pressedColor = new Color(0.10f, 0.40f, 0.18f);
-            btn.colors = colors;
-
-            btn.onClick.AddListener(Close);
-
-            // Label
-            var labelRT = CreateRect(rt, "Label", Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var label = labelRT.gameObject.AddComponent<TextMeshProUGUI>();
-            label.text = "Tiếp tục";
-            label.fontSize = 24;
-            label.color = Color.white;
-            label.alignment = TextAlignmentOptions.Center;
-            label.fontStyle = FontStyles.Bold;
+                elapsed += Time.deltaTime;
+                float t = elapsed / ANIM_DURATION;
+                float scale = t < 0.7f
+                    ? Mathf.Lerp(0f, 1.08f, t / 0.7f)
+                    : Mathf.Lerp(1.08f, 1.00f, (t - 0.7f) / 0.3f);
+                rt.localScale = Vector3.one * scale;
+                yield return null;
+            }
+            rt.localScale = Vector3.one;
         }
 
         // ── Lifecycle ────────────────────────────────────────────────────────
@@ -163,10 +218,13 @@ namespace FPTSim.Minigames
             if (closing) return;
 
             timer += Time.deltaTime;
-            int remaining = Mathf.CeilToInt(AUTO_CLOSE_SECONDS - timer);
+            float remaining = AUTO_CLOSE_SECONDS - timer;
+
+            if (progressBarFill != null)
+                progressBarFill.fillAmount = Mathf.Clamp01(remaining / AUTO_CLOSE_SECONDS);
 
             if (autoCloseText != null)
-                autoCloseText.text = $"Tự động đóng sau {Mathf.Max(remaining, 0)}s";
+                autoCloseText.text = $"Tự động đóng sau {Mathf.Max(0, Mathf.CeilToInt(remaining))}s";
 
             if (timer >= AUTO_CLOSE_SECONDS)
                 Close();
@@ -176,14 +234,73 @@ namespace FPTSim.Minigames
         {
             if (closing) return;
             closing = true;
-            StartCoroutine(CloseRoutine());
-        }
-
-        private IEnumerator CloseRoutine()
-        {
-            yield return null; // chờ 1 frame tránh double-invoke
             onClosed?.Invoke();
             Destroy(gameObject);
+        }
+
+        // ── Helpers ──────────────────────────────────────────────────────────
+
+        private static readonly Vector2 Half = new Vector2(0.5f, 0.5f);
+
+        private static GameObject MakeImage(Transform parent, string name,
+            Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 pos, Color color)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(parent, false);
+            var rt = go.AddComponent<RectTransform>();
+            rt.anchorMin        = anchorMin;
+            rt.anchorMax        = anchorMax;
+            rt.pivot            = Half;
+            rt.sizeDelta        = sizeDelta;
+            rt.anchoredPosition = pos;
+            go.AddComponent<Image>().color = color;
+            return go;
+        }
+
+        private static TextMeshProUGUI MakeTMP(Transform parent, string name,
+            string text, float size, Color color, FontStyles style)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(parent, false);
+            go.AddComponent<RectTransform>();
+            var t = go.AddComponent<TextMeshProUGUI>();
+            t.text      = text;
+            t.fontSize  = size;
+            t.color     = color;
+            t.fontStyle = style;
+            t.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
+            return t;
+        }
+
+        private static void SetCenter(RectTransform rt, Vector2 size, Vector2 pos)
+        {
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = size;
+            rt.anchoredPosition = pos;
+        }
+
+        private static void SetAnchor(RectTransform rt, Vector2 min, Vector2 max)
+        {
+            rt.anchorMin = min;
+            rt.anchorMax = max;
+        }
+
+        private static void Stretch(RectTransform rt, Vector2 offsetMin, Vector2 offsetMax)
+        {
+            rt.anchorMin        = Vector2.zero;
+            rt.anchorMax        = Vector2.one;
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.offsetMin        = offsetMin;
+            rt.offsetMax        = offsetMax;
+        }
+
+        private static void StretchFull(RectTransform rt)
+        {
+            rt.anchorMin        = Vector2.zero;
+            rt.anchorMax        = Vector2.one;
+            rt.sizeDelta        = Vector2.zero;
+            rt.anchoredPosition = Vector2.zero;
         }
     }
 }

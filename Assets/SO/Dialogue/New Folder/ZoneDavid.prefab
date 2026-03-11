@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5206820328729920950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2661687547005230189}
+  - component: {fileID: 2087257283564215341}
+  - component: {fileID: 7553019078977892118}
+  m_Layer: 0
+  m_Name: ZoneDavid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2661687547005230189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206820328729920950}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.06871616, z: -0, w: 0.99763626}
+  m_LocalPosition: {x: 347.55, y: 0.000049978495, z: 142.99}
+  m_LocalScale: {x: 0.6377004, y: 1.0636, z: 0.31370282}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -7.881, z: 0}
+--- !u!65 &2087257283564215341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206820328729920950}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 17.571838, y: 0.3358332, z: 13.273254}
+  m_Center: {x: 4.1700134, y: 0.31982446, z: -3.1271973}
+--- !u!114 &7553019078977892118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206820328729920950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db35d2914ad862e4c8d2dd2905dab8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueTriggerZone
+  runner: {fileID: 0}
+  graph: {fileID: 11400000, guid: 4df629e3ae5f70b499db4fa5ae3b3f07, type: 2}
+  requiredFlag: Z1
+  completedFlag: ZoneDavid2

@@ -32,7 +32,7 @@ namespace CaroGame
             winChecker = new CaroWinChecker(config.boardSize, config.winCondition);
             moveValidator = new CaroMoveValidator(config.boardSize);
             hintSystem = new CaroHintSystem(config.boardSize);
-            hintsEnabled = config.showHints;
+            hintsEnabled = false; // hints disabled
         }
 
         private void Start()
@@ -51,6 +51,11 @@ namespace CaroGame
             uiManager.ShowMainMenu();
         }
 
+        public void SetAiDepth(int depth)
+        {
+            if (caroAI != null) caroAI.SetDepth(depth);
+        }
+
         public void StartGame()
         {
             boardController.InitializeBoard();
@@ -67,9 +72,6 @@ namespace CaroGame
 
             timerSystem.StartTurn();
             boardController.SetAllInteractable(true);
-
-            if (hintsEnabled)
-                UpdateHints();
         }
 
         private void OnCellClicked(Vector2Int position)
@@ -130,9 +132,6 @@ namespace CaroGame
             boardController.SetAllInteractable(true);
             uiManager.SetTurnIndicator("Your Turn (X)");
             timerSystem.StartTurn();
-
-            if (hintsEnabled)
-                UpdateHints();
         }
 
         private void OnTurnTimeout()
@@ -150,15 +149,13 @@ namespace CaroGame
 
             CaroMedalType medal = CalculateMedal(winner, playerMoveCount, timedOut);
 
-            // Highlight winning line if there is one
+            // Highlight winning line with green — distinct from yellow hint highlights
             int[,] boardState = boardController.GetBoardStateCopy();
             List<Vector2Int> winLine = winChecker.GetWinningLine(boardState);
             if (winLine != null)
             {
                 foreach (var pos in winLine)
-                {
-                    boardController.SetCellHighlight(pos.x, pos.y, true);
-                }
+                    boardController.SetCellWinHighlight(pos.x, pos.y, true);
             }
 
             string turnText = winner == 1 ? "You Win!" : winner == -1 ? "Draw!" : timedOut ? "Time's Up!" : "AI Wins!";

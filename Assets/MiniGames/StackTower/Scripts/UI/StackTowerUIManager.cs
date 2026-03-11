@@ -153,6 +153,16 @@ namespace StackTower
             levelSelectUI?.Refresh();
         }
 
+        public void HideAllPanels()
+        {
+            SetPanelActive(mainMenuPanel, false);
+            SetPanelActive(hudPanel, false);
+            SetPanelActive(pausePanel, false);
+            SetPanelActive(gameOverPanel, false);
+            SetPanelActive(victoryPanel, false);
+            levelSelectUI?.gameObject.SetActive(false);
+        }
+
         public void ShowHUD()
         {
             SetPanelActive(mainMenuPanel, false);
@@ -162,8 +172,8 @@ namespace StackTower
             SetPanelActive(victoryPanel, false);
             levelSelectUI?.gameObject.SetActive(false);
 
-            if (levelNameText != null && StackTowerGameManager.Instance?.CurrentLevel != null)
-                levelNameText.text = StackTowerGameManager.Instance.CurrentLevel.levelName;
+            if (levelNameText != null)
+                levelNameText.gameObject.SetActive(false);
 
             if (comboText != null)
                 comboText.text = string.Empty;

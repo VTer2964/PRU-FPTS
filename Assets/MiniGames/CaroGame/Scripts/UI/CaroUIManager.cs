@@ -33,7 +33,10 @@ namespace CaroGame
                 playButton.onClick.AddListener(() => OnPlayClicked?.Invoke());
 
             if (hintToggleButton != null)
+            {
                 hintToggleButton.onClick.AddListener(() => OnHintToggleClicked?.Invoke());
+                hintToggleButton.gameObject.SetActive(false);
+            }
 
             // Wire results panel buttons directly with callbacks
             if (resultsPanel != null)

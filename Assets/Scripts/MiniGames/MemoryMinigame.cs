@@ -41,8 +41,8 @@ namespace FPTSim.Minigames
             memoryManager.OnVictory.AddListener(HandleVictory);
             memoryManager.OnGameOver.AddListener(HandleGameOver);
 
-            // Bỏ qua menu — bắt đầu ở Medium difficulty ngay
-            memoryManager.SetDifficulty(1); // 0=Easy, 1=Medium, 2=Hard
+            // Bỏ qua menu — bắt đầu ở Hard difficulty
+            memoryManager.SetDifficulty(2); // 0=Easy, 1=Medium, 2=Hard
             memoryManager.StartGame();
         }
 
@@ -54,12 +54,20 @@ namespace FPTSim.Minigames
             else if (score >= silverScore) medal = Medal.Silver;
             else                           medal = Medal.Bronze;
 
-            StartCoroutine(FinishAfterDelay(medal, score, 3f));
+            // Ẩn panel kết quả của MemoryCardMatch, dùng MinigameResultPanel thay thế
+            var memoryUI = FindFirstObjectByType<MemoryCardMatch.MemoryMatchUIManager>();
+            if (memoryUI != null) memoryUI.HideAllPanels();
+
+            StartCoroutine(FinishAfterDelay(medal, score, 0f));
         }
 
         private void HandleGameOver()
         {
-            StartCoroutine(FinishAfterDelay(Medal.None, 0, 3f));
+            // Ẩn panel kết quả của MemoryCardMatch, dùng MinigameResultPanel thay thế
+            var memoryUI = FindFirstObjectByType<MemoryCardMatch.MemoryMatchUIManager>();
+            if (memoryUI != null) memoryUI.HideAllPanels();
+
+            StartCoroutine(FinishAfterDelay(Medal.None, 0, 0f));
         }
 
         private IEnumerator FinishAfterDelay(Medal medal, int score, float delay)

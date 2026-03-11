@@ -59,7 +59,7 @@ namespace FPTSim.Minigames
                 GameManager.I.RegisterMinigameResult(result);
             }
 
-            // Hiển thị kết quả, sau đó load Campus
+            // Hiển thị kết quả trong minigame scene, sau đó load Campus
             MinigameResultPanel.Show(result, () => SceneManager.LoadScene(SceneNames.Campus));
         }
     }
