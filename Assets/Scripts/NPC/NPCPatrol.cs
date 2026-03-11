@@ -33,6 +33,9 @@ namespace FPTSim.NPC
 
         private void Update()
         {
+            // Kiểm tra xem agent có đang hoạt động và đã đứng trên NavMesh chưa
+            if (!agent.isOnNavMesh) return;
+
             UpdateAnimator();
 
             if (points == null || points.Length == 0) return;
@@ -48,6 +51,7 @@ namespace FPTSim.NPC
                 return;
             }
 
+            // Chỉ kiểm tra distance khi agent đang có một đường đi (path) hợp lệ
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
                 waiting = true;
