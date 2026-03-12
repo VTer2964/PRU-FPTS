@@ -15,7 +15,17 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Shipper
   text: "\u0110\u01A1n h\xE0ng c\u1EE7a b\u1EA1n l\xE0 g\xEC th\u1EBF ?"
-  choices: []
+  choices:
+  - text: "Kh\xF4ng c\xF3 g\xEC"
+    next: {fileID: 11400000, guid: 19eb56a0676fbbc49afbe93c40b37844, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "T\u1EA1i sao l\u1EA1i c\xF3 shipper trong tr\u01B0\u1EDDng"
+    next: {fileID: 11400000, guid: 46725bd1722678f47ac9e33ceac70b5e, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
   autoAdvance: 1
   nextAuto: {fileID: 0}
   triggerAction: 0

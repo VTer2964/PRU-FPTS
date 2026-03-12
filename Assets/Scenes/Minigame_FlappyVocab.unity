@@ -198,7 +198,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -256,6 +256,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7161037}
   m_CullTransparentMesh: 1
+--- !u!1 &77368289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77368291}
+  - component: {fileID: 77368290}
+  m_Layer: 0
+  m_Name: audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &77368290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77368289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
+  music: {fileID: 8300000, guid: db819741333bcc842a4e2b1a7e6b07ff, type: 3}
+  ambient: {fileID: 0}
+  playMusicOnStart: 1
+  playAmbientOnStart: 1
+  stopMusicIfNull: 0
+  stopAmbientIfNull: 0
+--- !u!4 &77368291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77368289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 407.9205, y: 199.23921, z: 6.29699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &140396728
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +385,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -683,7 +733,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -839,6 +889,8 @@ MonoBehaviour:
   maxFallSpeed: -8
   yMin: -4.5
   yMax: 4.5
+  tiltUp: 30
+  tiltDown: -60
   flyFrames:
   - {fileID: 21300000, guid: c32a286c6d12df64da7c047fbef2baa7, type: 3}
   - {fileID: 21300000, guid: ec8cae7f6c792c14e99a25204b8dd0c7, type: 3}
@@ -848,8 +900,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1e1f2fa2a1d086f448677b5c4c7a2581, type: 3}
   - {fileID: 21300000, guid: fd9a7c6596101bc40a6916291879721f, type: 3}
   animFPS: 10
+  invincibilityDuration: 0.8
+  flashInterval: 0.1
   gameManager: {fileID: 2003871325}
-  wordSpawner: {fileID: 1214758112}
 --- !u!58 &768371727
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1021,7 +1074,7 @@ MonoBehaviour:
   yMin: -3
   yMax: 3
   minYGap: 1.5
-  baseWordSpeed: 3
+  baseSpeed: 4
   delayBetweenSets: 5
   questionText: {fileID: 1731223499}
 --- !u!4 &1214758113
@@ -1168,7 +1221,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1397,7 +1450,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1486,11 +1539,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlappyVocabGame.FlappyVocabGameManager
   gameDuration: 60
   startLives: 3
+  baseScore: 10
   bird: {fileID: 768371726}
   wordSpawner: {fileID: 1214758112}
   scoreText: {fileID: 1250862275}
   livesText: {fileID: 140396730}
   timerText: {fileID: 7161039}
+  streakText: {fileID: 0}
   gameOverPanel: {fileID: 2082091304}
   finalScoreText: {fileID: 380274463}
   OnGameEnd:
@@ -1598,3 +1653,4 @@ SceneRoots:
   - {fileID: 2003871326}
   - {fileID: 650498003}
   - {fileID: 1216280244}
+  - {fileID: 77368291}

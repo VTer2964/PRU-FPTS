@@ -7,38 +7,37 @@ namespace FPTSim.NPC
     {
         [Header("Refs")]
         [SerializeField] private Animator animator;
-        [SerializeField] private NavMeshAgent agent; // có thể null nếu NPC đứng yên
+        [SerializeField] private NavMeshAgent agent;
 
-        [Header("Animator Params (tùy bạn đặt tên)")]
-        [SerializeField] private string speedParam = "Speed";     // Float 0..1
-        [SerializeField] private string performBool = "Perform";  // Bool (lau nhà / làm việc)
-        [SerializeField] private string talkBool = "Talk";        // Bool (khi nói chuyện)
+        [Header("Animator Params")]
+        [SerializeField] private string speedParam = "Speed";
+        [SerializeField] private string performBool = "Perform";
+        [SerializeField] private string talkBool = "Talk";
 
         [Header("Face to face")]
-        [SerializeField] private Transform facePivot;             // null => quay toàn thân (transform)
+        [SerializeField] private Transform facePivot;
         [SerializeField] private float rotateSpeed = 720f;
 
         [Header("Return facing after talk")]
         [SerializeField] private bool returnToOriginalFacing = true;
-        [SerializeField] private float returnRotateSpeed = 720f;  // tốc độ quay về hướng cũ
+        [SerializeField] private float returnRotateSpeed = 720f;
 
         private Transform lookTarget;
         private bool isTalking;
 
-        // Save state để resume movement/perform
         private bool hadAgent;
         private bool wasAgentStopped;
         private Vector3 savedDestination;
         private bool hadDestination;
-        private bool wasPerforming;
 
-        // Save facing
+        private bool wasPerforming;
+        private bool wasMovingBeforeTalk;   // ✅ thêm
+
         private Quaternion savedFacing;
         private bool hasSavedFacing;
         private bool isReturningFacing;
 
         public bool IsTalking => isTalking;
-
         private Transform Pivot => facePivot ? facePivot : transform;
 
         private void Awake()
@@ -50,16 +49,15 @@ namespace FPTSim.NPC
 
         private void Update()
         {
-            // cập nhật speed khi di chuyển và không talk
             if (!isTalking && animator != null && agent != null)
             {
                 float v = agent.velocity.magnitude;
                 float normalized = (agent.speed <= 0.01f) ? 0f : Mathf.Clamp01(v / agent.speed);
+
                 if (!string.IsNullOrWhiteSpace(speedParam))
                     animator.SetFloat(speedParam, normalized);
             }
 
-            // quay mặt nhìn player khi đang talk
             if (isTalking && lookTarget != null)
             {
                 isReturningFacing = false;
@@ -73,12 +71,10 @@ namespace FPTSim.NPC
                     Pivot.rotation = Quaternion.RotateTowards(Pivot.rotation, targetRot, rotateSpeed * Time.deltaTime);
                 }
             }
-            // quay về hướng cũ sau talk (mượt)
             else if (!isTalking && returnToOriginalFacing && isReturningFacing && hasSavedFacing)
             {
                 Pivot.rotation = Quaternion.RotateTowards(Pivot.rotation, savedFacing, returnRotateSpeed * Time.deltaTime);
 
-                // tới gần thì stop return
                 if (Quaternion.Angle(Pivot.rotation, savedFacing) < 0.5f)
                 {
                     Pivot.rotation = savedFacing;
@@ -90,6 +86,7 @@ namespace FPTSim.NPC
         public void SetPerforming(bool performing)
         {
             wasPerforming = performing;
+
             if (animator != null && !string.IsNullOrWhiteSpace(performBool))
                 animator.SetBool(performBool, performing);
         }
@@ -99,14 +96,12 @@ namespace FPTSim.NPC
             isTalking = true;
             lookTarget = player;
 
-            // Save facing (hướng hiện tại trước khi quay nhìn player)
             hasSavedFacing = true;
             savedFacing = Pivot.rotation;
 
-            // Save perform state
-            bool curPerform = wasPerforming;
+            // ✅ nhớ xem trước khi talk có đang di chuyển không
+            wasMovingBeforeTalk = false;
 
-            // Stop agent nếu có
             if (hadAgent)
             {
                 wasAgentStopped = agent.isStopped;
@@ -115,28 +110,33 @@ namespace FPTSim.NPC
                 {
                     savedDestination = agent.destination;
                     hadDestination = true;
+
+                    // Nếu đang có path và chưa tới nơi thì coi như đang đi
+                    if (!agent.pathPending && agent.remainingDistance > agent.stoppingDistance + 0.05f)
+                        wasMovingBeforeTalk = true;
+                    else if (agent.pathPending)
+                        wasMovingBeforeTalk = true;
                 }
-                else hadDestination = false;
+                else
+                {
+                    hadDestination = false;
+                }
 
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
             }
 
-            // Switch anim sang talk/idle
             if (animator != null)
             {
                 if (!string.IsNullOrWhiteSpace(speedParam))
                     animator.SetFloat(speedParam, 0f);
 
-                // tắt perform trong lúc talk
                 if (!string.IsNullOrWhiteSpace(performBool))
                     animator.SetBool(performBool, false);
 
                 if (!string.IsNullOrWhiteSpace(talkBool))
                     animator.SetBool(talkBool, true);
             }
-
-            wasPerforming = curPerform; // nhớ lại để resume
         }
 
         public void ExitTalk()
@@ -144,7 +144,6 @@ namespace FPTSim.NPC
             isTalking = false;
             lookTarget = null;
 
-            // bật chế độ quay về hướng cũ
             if (returnToOriginalFacing && hasSavedFacing)
                 isReturningFacing = true;
 
@@ -152,19 +151,24 @@ namespace FPTSim.NPC
             {
                 if (!string.IsNullOrWhiteSpace(talkBool))
                     animator.SetBool(talkBool, false);
-
-                // trả perform về trước đó
-                if (!string.IsNullOrWhiteSpace(performBool))
-                    animator.SetBool(performBool, wasPerforming);
             }
 
-            // Resume agent nếu có
+            // Resume agent trước
             if (hadAgent)
             {
                 agent.isStopped = wasAgentStopped;
 
                 if (!agent.isStopped && hadDestination)
                     agent.SetDestination(savedDestination);
+            }
+
+            // ✅ CHỈ bật lại Perform nếu trước đó KHÔNG phải đang di chuyển
+            if (animator != null && !string.IsNullOrWhiteSpace(performBool))
+            {
+                if (!wasMovingBeforeTalk)
+                    animator.SetBool(performBool, wasPerforming);
+                else
+                    animator.SetBool(performBool, false);
             }
         }
     }

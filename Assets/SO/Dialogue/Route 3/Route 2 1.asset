@@ -15,9 +15,19 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Shipper
   text: "Em l\u1EA5y \u0111\u01A1n h\xE0ng n\xE0o \u0111\u1EA5y em!"
-  choices: []
-  autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: 287dc79be9ae31348bcff129ccd2bf93, type: 2}
+  choices:
+  - text: "\u0110\u01A1n h\xE0ng c\u1EE7a c\xF4 th\u1EE7 th\u01B0"
+    next: {fileID: 11400000, guid: 287dc79be9ae31348bcff129ccd2bf93, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "T\u1EA1i sao l\u1EA1i c\xF3 shipper trong tr\u01B0\u1EDDng"
+    next: {fileID: 11400000, guid: 46725bd1722678f47ac9e33ceac70b5e, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 0
+  nextAuto: {fileID: 0}
   triggerAction: 0
   actionType: 0
   actionParam: 

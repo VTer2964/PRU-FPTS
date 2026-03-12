@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
-  music: {fileID: 0}
+  music: {fileID: 8300000, guid: 36e4eded26604aa47afbd892e68f0821, type: 3}
   ambient: {fileID: 0}
   playMusicOnStart: 1
   playAmbientOnStart: 1

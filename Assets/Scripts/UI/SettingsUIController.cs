@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using FPTSim.Player;
+using UnityEngine.SceneManagement;
 
 namespace FPTSim.UI
 {
@@ -23,39 +24,93 @@ namespace FPTSim.UI
         [Header("Close")]
         [SerializeField] private Button closeButton;
 
+        [Header("Navigation Actions")]
+        [SerializeField] private Button mainMenuButton;
+        [SerializeField] private Button quitGameButton;
+        [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+        [Header("Confirmation UI (optional)")]
+        [SerializeField] private GameObject confirmRoot;
+        [SerializeField] private TMP_Text confirmTitleText;
+        [SerializeField] private TMP_Text confirmMessageText;
+        [SerializeField] private Button confirmYesButton;
+        [SerializeField] private Button confirmNoButton;
+
         [Header("Optional: Lock gameplay while open")]
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
 
+        private enum PendingAction
+        {
+            None,
+            MainMenu,
+            Quit
+        }
+
+        private PendingAction pendingAction;
+        private bool useOnGuiConfirm;
+
         private void Awake()
         {
+            AutoBindActionButtons();
+
             if (audioTabButton) audioTabButton.onClick.AddListener(() => ShowTab("audio"));
             if (controlsTabButton) controlsTabButton.onClick.AddListener(() => ShowTab("controls"));
             if (helpTabButton) helpTabButton.onClick.AddListener(() => ShowTab("help"));
             if (closeButton) closeButton.onClick.AddListener(Close);
 
+            if (mainMenuButton) mainMenuButton.onClick.AddListener(OnMainMenuClicked);
+            if (quitGameButton) quitGameButton.onClick.AddListener(OnQuitClicked);
+            if (confirmYesButton) confirmYesButton.onClick.AddListener(ConfirmActionInternal);
+            if (confirmNoButton) confirmNoButton.onClick.AddListener(CancelConfirmation);
+
             if (settingsRoot) settingsRoot.SetActive(false);
+            if (confirmRoot) confirmRoot.SetActive(false);
+
+            useOnGuiConfirm = confirmRoot == null;
         }
 
         public bool IsOpen => settingsRoot != null && settingsRoot.activeSelf;
+
         public void Open()
         {
             if (settingsRoot) settingsRoot.SetActive(true);
 
-            // mặc định mở Audio
+            // m?c d?nh m? Audio
             ShowTab("audio");
 
-            // khóa gameplay + hiện chuột
+            // kh�a gameplay + hi?n chu?t
             LockGameplay(true);
         }
 
         public void Close()
         {
+            CancelConfirmation();
             if (settingsRoot) settingsRoot.SetActive(false);
 
-            // mở lại gameplay + khóa chuột
+            // m? l?i gameplay + kh�a chu?t
             LockGameplay(false);
+        }
+
+        // Expose for Button OnClick in Inspector
+        public void OnMainMenuClicked()
+        {
+            ShowConfirmation(
+                PendingAction.MainMenu,
+                "Confirm Main Menu",
+                "Are you sure you want to return to Main Menu?"
+            );
+        }
+
+        // Expose for Button OnClick in Inspector
+        public void OnQuitClicked()
+        {
+            ShowConfirmation(
+                PendingAction.Quit,
+                "Confirm Quit",
+                "Are you sure you want to quit the game?"
+            );
         }
 
         private void ShowTab(string tab)
@@ -65,12 +120,109 @@ namespace FPTSim.UI
             if (helpPanel) helpPanel.SetActive(tab == "help");
         }
 
+        private void ShowConfirmation(PendingAction action, string title, string message)
+        {
+            pendingAction = action;
+
+            if (confirmTitleText) confirmTitleText.text = title;
+            if (confirmMessageText) confirmMessageText.text = message;
+            if (confirmRoot) confirmRoot.SetActive(true);
+        }
+
+        private void ConfirmActionInternal()
+        {
+            PendingAction action = pendingAction;
+            CancelConfirmation();
+
+            if (action == PendingAction.MainMenu)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(mainMenuSceneName);
+                return;
+            }
+
+            if (action == PendingAction.Quit)
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
+        }
+
+        private void CancelConfirmation()
+        {
+            pendingAction = PendingAction.None;
+            if (confirmRoot) confirmRoot.SetActive(false);
+        }
+
+        private void AutoBindActionButtons()
+        {
+            if (settingsRoot == null) return;
+
+            if (mainMenuButton == null)
+                mainMenuButton = FindButtonByNames("MainMenuButton", "BtnMainMenu", "MainMenu", "BackToMenuButton");
+
+            if (quitGameButton == null)
+                quitGameButton = FindButtonByNames("QuitButton", "BtnQuit", "ExitButton", "QuitGameButton");
+        }
+
+        private Button FindButtonByNames(params string[] names)
+        {
+            Button[] buttons = settingsRoot.GetComponentsInChildren<Button>(true);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                string buttonName = buttons[i].name;
+                for (int j = 0; j < names.Length; j++)
+                {
+                    if (buttonName.Equals(names[j], System.StringComparison.OrdinalIgnoreCase))
+                        return buttons[i];
+                }
+            }
+            return null;
+        }
+
         private void LockGameplay(bool locked)
         {
-            // locked=true => mở chuột + tắt movement/interact
+            // locked=true => m? chu?t + t?t movement/interact
             if (mouseLook) mouseLook.LockCursor(!locked);
             if (playerMovement) playerMovement.enabled = !locked;
             if (playerInteractor) playerInteractor.enabled = !locked;
+        }
+
+        private void OnGUI()
+        {
+            if (!useOnGuiConfirm || !IsOpen || pendingAction == PendingAction.None)
+                return;
+
+            const int width = 420;
+            const int height = 160;
+            Rect rect = new Rect(
+                (Screen.width - width) * 0.5f,
+                (Screen.height - height) * 0.5f,
+                width,
+                height
+            );
+
+            GUILayout.BeginArea(rect, GUI.skin.window);
+            GUILayout.Label(pendingAction == PendingAction.MainMenu
+                ? "Return to Main Menu?"
+                : "Quit game?");
+            GUILayout.Space(16);
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Yes", GUILayout.Height(32))) ConfirmActionInternal();
+            if (GUILayout.Button("No", GUILayout.Height(32))) CancelConfirmation();
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+        }
+
+        private void OnDestroy()
+        {
+            if (mainMenuButton) mainMenuButton.onClick.RemoveListener(OnMainMenuClicked);
+            if (quitGameButton) quitGameButton.onClick.RemoveListener(OnQuitClicked);
+            if (confirmYesButton) confirmYesButton.onClick.RemoveListener(ConfirmActionInternal);
+            if (confirmNoButton) confirmNoButton.onClick.RemoveListener(CancelConfirmation);
         }
     }
 }

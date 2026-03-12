@@ -18,7 +18,7 @@ MonoBehaviour:
     chanh,..."
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: ecdf7aa876c2251459627087e9964fdc, type: 2}
+  nextAuto: {fileID: 11400000, guid: 4819225c0d84b774c90cccf6b62eac23, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

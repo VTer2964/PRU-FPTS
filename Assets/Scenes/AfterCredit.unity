@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
-  music: {fileID: 0}
+  music: {fileID: 8300000, guid: ade2444abc0da8d4fa3f6dc0cf52353c, type: 3}
   ambient: {fileID: 0}
   playMusicOnStart: 1
   playAmbientOnStart: 1
@@ -201,7 +201,7 @@ MonoBehaviour:
   creditsTransform: {fileID: 1426529455}
   scrollSpeed: 40
   endY: 1200
-  fallbackReturnTime: 20
+  fallbackReturnTime: 40
 --- !u!4 &254614463
 Transform:
   m_ObjectHideFlags: 0

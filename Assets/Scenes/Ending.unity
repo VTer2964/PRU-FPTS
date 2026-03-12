@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
-  music: {fileID: 0}
+  music: {fileID: 8300000, guid: 36e4eded26604aa47afbd892e68f0821, type: 3}
   ambient: {fileID: 0}
   playMusicOnStart: 1
   playAmbientOnStart: 1
@@ -705,7 +705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87, y: 145.15}
+  m_AnchoredPosition: {x: -147, y: 142}
   m_SizeDelta: {x: 534.7667, y: 73.8537}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111389917
@@ -845,7 +845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: -38}
+  m_AnchoredPosition: {x: -210, y: -38}
   m_SizeDelta: {x: 709.2374, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150750666
@@ -1139,7 +1139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 255, y: -51}
+  m_AnchoredPosition: {x: 255, y: -19}
   m_SizeDelta: {x: 485.6092, y: 341.3259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399082681

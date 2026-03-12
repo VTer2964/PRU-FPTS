@@ -8,6 +8,7 @@ namespace FPTSim.Player
         [Header("Movement")]
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform playerBody;
+        [SerializeField] private AudioSource fallbackSource;
 
         [Header("Footstep Clips")]
         [SerializeField] private AudioClip[] footstepClips;
@@ -20,27 +21,60 @@ namespace FPTSim.Player
 
         [Header("Ground Check")]
         [SerializeField] private bool requireGrounded = true;
+        [SerializeField] private LayerMask groundMask = ~0;
+        [SerializeField] private float groundProbeDistance = 0.25f;
+        [SerializeField] private float groundedGraceTime = 0.1f;
 
         [Header("Optional Run Check")]
         [SerializeField] private bool useRunDetection = false;
         [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
 
         private float stepTimer;
+        private float lastGroundedTime;
+        private Vector3 lastPosition;
 
         private void Reset()
         {
             if (!characterController)
                 characterController = GetComponent<CharacterController>();
+
+            if (!fallbackSource)
+            {
+                fallbackSource = GetComponent<AudioSource>();
+                if (!fallbackSource) fallbackSource = gameObject.AddComponent<AudioSource>();
+                fallbackSource.playOnAwake = false;
+                fallbackSource.spatialBlend = 0f;
+            }
+        }
+
+        private void Awake()
+        {
+            if (!characterController)
+                characterController = GetComponent<CharacterController>();
+
+            if (!fallbackSource)
+            {
+                fallbackSource = GetComponent<AudioSource>();
+                if (!fallbackSource) fallbackSource = gameObject.AddComponent<AudioSource>();
+                fallbackSource.playOnAwake = false;
+                fallbackSource.spatialBlend = 0f;
+            }
+
+            lastPosition = transform.position;
+            lastGroundedTime = Time.time;
         }
 
         private void Update()
         {
             if (footstepClips == null || footstepClips.Length == 0) return;
-            if (AudioManager.I == null) return;
 
-            if (requireGrounded && characterController != null && !characterController.isGrounded)
+            if (IsGrounded())
+                lastGroundedTime = Time.time;
+
+            if (requireGrounded && Time.time - lastGroundedTime > groundedGraceTime)
             {
                 stepTimer = 0f;
+                lastPosition = transform.position;
                 return;
             }
 
@@ -49,6 +83,7 @@ namespace FPTSim.Player
             if (moveAmount < movementThreshold)
             {
                 stepTimer = 0f;
+                lastPosition = transform.position;
                 return;
             }
 
@@ -62,25 +97,50 @@ namespace FPTSim.Player
                 stepTimer = 0f;
                 PlayRandomFootstep();
             }
+
+            lastPosition = transform.position;
         }
 
         private float GetHorizontalSpeed()
         {
+            float speedFromDisplacement = 0f;
+            if (Time.deltaTime > 0f)
+            {
+                Vector3 frameDelta = transform.position - lastPosition;
+                frameDelta.y = 0f;
+                speedFromDisplacement = frameDelta.magnitude / Time.deltaTime;
+            }
+
             if (characterController != null)
             {
                 Vector3 vel = characterController.velocity;
                 vel.y = 0f;
-                return vel.magnitude;
+                return Mathf.Max(vel.magnitude, speedFromDisplacement);
             }
 
             if (playerBody != null)
             {
-                return playerBody.GetComponent<Rigidbody>() != null
-                    ? playerBody.GetComponent<Rigidbody>().linearVelocity.magnitude
-                    : 0f;
+                Rigidbody rb = playerBody.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    Vector3 vel = rb.linearVelocity;
+                    vel.y = 0f;
+                    return Mathf.Max(vel.magnitude, speedFromDisplacement);
+                }
             }
 
-            return 0f;
+            return speedFromDisplacement;
+        }
+
+        private bool IsGrounded()
+        {
+            if (characterController != null && characterController.isGrounded)
+                return true;
+
+            Vector3 origin = transform.position + Vector3.up * 0.1f;
+            float radius = characterController != null ? Mathf.Max(0.05f, characterController.radius * 0.9f) : 0.2f;
+            float distance = Mathf.Max(0.05f, groundProbeDistance);
+            return Physics.SphereCast(origin, radius, Vector3.down, out _, distance, groundMask, QueryTriggerInteraction.Ignore);
         }
 
         private void PlayRandomFootstep()
@@ -89,7 +149,14 @@ namespace FPTSim.Player
             AudioClip clip = footstepClips[index];
             if (clip == null) return;
 
-            AudioManager.I.PlaySfx(clip, volume);
+            if (AudioManager.I != null)
+            {
+                AudioManager.I.PlaySfx(clip, volume);
+                return;
+            }
+
+            if (fallbackSource != null)
+                fallbackSource.PlayOneShot(clip, volume);
         }
     }
 }

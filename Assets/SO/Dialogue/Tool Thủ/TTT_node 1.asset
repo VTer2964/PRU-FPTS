@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: TTT_node 1
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Thu \"t\u1EE7n\""
+  text: "Nh\u01B0ng anh m\xE0y kh\xF4ng tr\xE1ch. V\xEC anh m\xE0y lu\xF4n \u1EDF
+    \u0111\xE2y khi c\xE1c em c\u1EA7n \u0111\u1EBFn"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 53fca9e2d996e104db0ff1834f975b3c, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

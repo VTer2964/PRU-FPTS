@@ -1820,6 +1820,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &372750282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372750284}
+  - component: {fileID: 372750283}
+  m_Layer: 0
+  m_Name: audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &372750283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372750282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6988cb09c4139429edcda2a0331c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Audio.SceneAudio
+  music: {fileID: 8300000, guid: db819741333bcc842a4e2b1a7e6b07ff, type: 3}
+  ambient: {fileID: 0}
+  playMusicOnStart: 1
+  playAmbientOnStart: 1
+  stopMusicIfNull: 0
+  stopAmbientIfNull: 0
+--- !u!4 &372750284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372750282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 407.9205, y: 199.23921, z: 6.29699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494518779
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,6 +5004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Minigames.StackTowerMinigame
   minigameId: Unknown
   timeLimit: 30
+  goldScore: 99
+  silverScore: 66
+  bronzeScore: 33
   stackManager: {fileID: 0}
 --- !u!1 &1336941947
 GameObject:
@@ -6935,3 +6988,4 @@ SceneRoots:
   - {fileID: 809720965}
   - {fileID: 322135317}
   - {fileID: 49434312}
+  - {fileID: 372750284}

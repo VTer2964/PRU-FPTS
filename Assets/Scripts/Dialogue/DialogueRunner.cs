@@ -289,7 +289,6 @@ namespace FPTSim.Dialogue
 
                         int amount = Mathf.Max(1, node.actionValue);
                         gm.AddMedal(Medal.Bronze, amount);
-                        runtimeMessage = $"✅ Nhận +{amount} Bronze!";
                         break;
                     }
 
@@ -303,7 +302,6 @@ namespace FPTSim.Dialogue
 
                         int amount = Mathf.Max(1, node.actionValue);
                         gm.AddMedal(Medal.Silver, amount);
-                        runtimeMessage = $"✅ Nhận +{amount} Silver!";
                         break;
                     }
 
@@ -317,7 +315,6 @@ namespace FPTSim.Dialogue
 
                         int amount = Mathf.Max(1, node.actionValue);
                         gm.AddMedal(Medal.Gold, amount);
-                        runtimeMessage = $"✅ Nhận +{amount} Gold!";
                         break;
                     }
 

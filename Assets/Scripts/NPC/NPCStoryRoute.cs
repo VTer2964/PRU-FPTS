@@ -8,65 +8,116 @@ namespace FPTSim.NPC
     public class NPCStoryRoute : MonoBehaviour
     {
         [System.Serializable]
-        public class RouteStep
+        public class Step
         {
-            public string requiredFlag;      // ví dụ: "A_TALK_DONE"
-            public Transform destination;    // điểm A
-            public string setFlagOnArrive;   // ví dụ: "A_AT_POINT_A" (optional)
+            [Header("Khi có flag này thì NPC đi tới destination")]
+            public string requiredFlag;
+
+            [Header("Điểm đến")]
+            public Transform destination;
+
+            [Header("Optional: tới nơi thì set flag này")]
+            public string setFlagOnArrive;
         }
 
-        [SerializeField] private RouteStep[] steps;
+        [Header("Route Steps")]
+        [SerializeField] private Step[] steps;
         [SerializeField] private float arriveDistance = 0.6f;
 
-        private NavMeshAgent agent;
-        private int currentStep = -1;
+        [Header("Refs")]
+        [SerializeField] private NPCPatrol patrol;
+        [SerializeField] private NPCBrain brain;
+        [SerializeField] private NavMeshAgent agent;
+
+        [Header("Perform behaviour")]
+        [SerializeField] private bool resumePerformWhenArrived = true;
+        [SerializeField] private bool stopPerformWhenMoving = true;
+
+        private int activeStep = -1;
+        private bool arrivedFlagFired;
+        private bool hasReachedDestination;
 
         private void Awake()
         {
-            agent = GetComponent<NavMeshAgent>();
+            if (!agent) agent = GetComponent<NavMeshAgent>();
+            if (!brain) brain = GetComponent<NPCBrain>();
+            if (!patrol) patrol = GetComponent<NPCPatrol>();
         }
 
         private void Update()
         {
             if (GameManager.I == null) return;
+            if (steps == null || steps.Length == 0) return;
+            if (agent == null) return;
 
-            // 1) tìm step mới cần chạy theo flag
-            int targetStep = GetHighestAvailableStep();
-            if (targetStep != -1 && targetStep != currentStep)
+            int best = GetBestStep();
+            if (best == -1) return;
+
+            // Có step mới được kích hoạt
+            if (best != activeStep)
             {
-                currentStep = targetStep;
-                var step = steps[currentStep];
-                if (step.destination != null)
-                    agent.SetDestination(step.destination.position);
+                activeStep = best;
+                arrivedFlagFired = false;
+                hasReachedDestination = false;
+
+                var s = steps[activeStep];
+                if (s.destination != null)
+                {
+                    if (patrol != null)
+                        patrol.StopPatrol();
+
+                    if (stopPerformWhenMoving && brain != null)
+                        brain.SetPerforming(false);
+
+                    agent.isStopped = false;
+                    agent.SetDestination(s.destination.position);
+                }
             }
 
-            // 2) nếu đang chạy step, check đến nơi
-            if (currentStep >= 0 && currentStep < steps.Length)
-            {
-                var step = steps[currentStep];
-                if (step.destination == null) return;
+            var step = steps[activeStep];
+            if (step.destination == null) return;
 
-                if (!agent.pathPending && agent.remainingDistance <= arriveDistance)
+            // Nếu đang đi
+            bool isMoving =
+                agent.enabled &&
+                !agent.isStopped &&
+                (agent.pathPending || agent.remainingDistance > Mathf.Max(arriveDistance, agent.stoppingDistance));
+
+            if (isMoving)
+            {
+                hasReachedDestination = false;
+                return;
+            }
+
+            // Đã tới nơi
+            if (!hasReachedDestination)
+            {
+                hasReachedDestination = true;
+
+                if (resumePerformWhenArrived && brain != null)
+                    brain.SetPerforming(true);
+
+                if (!arrivedFlagFired && !string.IsNullOrWhiteSpace(step.setFlagOnArrive))
                 {
-                    if (!string.IsNullOrWhiteSpace(step.setFlagOnArrive))
-                        GameManager.I.SetFlag(step.setFlagOnArrive);
+                    arrivedFlagFired = true;
+                    GameManager.I.SetFlag(step.setFlagOnArrive);
                 }
             }
         }
 
-        private int GetHighestAvailableStep()
+        private int GetBestStep()
         {
-            if (steps == null || steps.Length == 0) return -1;
-
             int best = -1;
+
             for (int i = 0; i < steps.Length; i++)
             {
-                string f = steps[i].requiredFlag;
+                var f = steps[i].requiredFlag;
                 if (string.IsNullOrWhiteSpace(f)) continue;
 
                 if (GameManager.I.HasFlag(f))
-                    best = i;
+                    best = i; // step sau ưu tiên hơn step trước
             }
+
             return best;
         }
     }
