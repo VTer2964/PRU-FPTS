@@ -1986,7 +1986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889a390f8c1716a4eb627f571762df86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.UI.EndingController
-  titleText: {fileID: 1865703944}
+  titleText: {fileID: 0}
   subtitleText: {fileID: 1111389917}
   goldText: {fileID: 2125424653}
   silverText: {fileID: 564761130}
