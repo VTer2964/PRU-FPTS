@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 3 7
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
+  text: "Lu\u1EADt ch\u01A1i \u0111\u01A1n gi\u1EA3n, nh\u01B0ng \u0111\xF2i h\u1ECFi
+    tr\xED nh\u1EDB t\u1ED1t \u0111\u1EA5y. Ho\xE0n th\xE0nh th\u1EED th\xE1ch trong
+    th\u1EDDi gian quy \u0111\u1ECBnh, chi\u1EBFc huy ch\u01B0\u01A1ng c\u1EE7a tr\u1EA1m
+    s\xE2n kh\u1EA5u s\u1EBD thu\u1ED9c v\u1EC1 em!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 8d086acb8787c104e92ff5efcf44797e, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

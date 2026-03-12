@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "Anh \u01A1i!! Cho em tham gia game  \u0111\u1EC3 l\u1EA5y MacBook n\xE0o!"
+  text: "D\u1EA1 em ch\xE0o anh! Em mu\u1ED1n \u0111\u0103ng k\xFD tham gia th\u1EED
+    th\xE1ch \u1EDF tr\u1EA1m s\xE2n kh\u1EA5u \u0111\u1EC3 thu th\u1EADp huy ch\u01B0\u01A1ng
+    c\u1EE7a ch\u01B0\u01A1ng tr\xECnh \u1EA1!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 8318cce5993e99447a84edb3bb971880, type: 2}

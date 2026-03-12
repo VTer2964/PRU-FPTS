@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Route 2 6
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "V\u0169"
-  text: "Ok r\u1ED3i nh\xE9! T\u1EDB v\xE0o vi\u1EC7c \u0111\xE2y!"
+  speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng"
+  text: "C\u1EADu mu\u1ED1n mua g\xEC n\xE0o?"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
-  triggerAction: 1
-  actionType: 7
-  actionParam: GAME2
+  nextAuto: {fileID: 11400000, guid: b40015757360fce4ab7ba124a09c5564, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0

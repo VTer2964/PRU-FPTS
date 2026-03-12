@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Route 3 3
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
-  speakerName: System
-  text: "Ch\u1ECB Leader \u0111ang r\u1EA5t t\u1EF1 tin. B\u1EA1n c\xF3 d\xE1m th\xE1ch
+  speakerName: "Ch\u1ECB Leader"
+  text: "Th\u1EAFng ch\u1ECB kh\xF4ng d\u1EC5 \u0111\xE2u. Em c\xF3 d\xE1m th\xE1ch
     \u0111\u1EA5u kh\xF4ng?"
   choices:
   - text: " CHI\u1EBEN LU\xD4N "

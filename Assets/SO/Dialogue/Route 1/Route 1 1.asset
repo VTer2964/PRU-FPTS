@@ -15,7 +15,7 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "V\u0169"
   text: "Ch\u1ECB \u01A1i cho em v\xE0o khu v\u1EF1c game Caro \u0111\u1EC3 l\u1EA5y
-    m\u1EA3nh QR 1!"
+    huy ch\u01B0\u01A1ng v\u1EDBi ch\u1ECB!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: fff2dbb3a4b13c949838ce274e11066e, type: 2}

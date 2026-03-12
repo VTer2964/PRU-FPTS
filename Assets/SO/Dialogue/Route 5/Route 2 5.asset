@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "Nh\u1EDB l\u1EDDi anh n\xF3i \u0111\u1EA5y nh\xE9! Gi\u1EDD em ra l\u1EA5y
-    gi\u1EA3i \u0111\xE2y!"
+  text: "Nh\u1EDB l\u1EDDi anh n\xF3i \u0111\u1EA5y nh\xE9! Gi\u1EDD em ra thi \u0111\xE2y!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

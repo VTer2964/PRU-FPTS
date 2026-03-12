@@ -18,7 +18,7 @@ MonoBehaviour:
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: c78a46fc77be1774480a383b60f253ad, type: 2}
-  triggerAction: 1
-  actionType: 7
-  actionParam: Mascot
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
   actionValue: 0

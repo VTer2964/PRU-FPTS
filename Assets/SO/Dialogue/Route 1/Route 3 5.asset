@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Ch\u1ECB Leader"
-  text: "\"Tr\u1EDDi \u0111\u1EA5t, \u0111\xE0n \xF4ng con trai m\xE0 nh\xE1t th\u1EBF?
-    Th\xF4i \u0111i v\u1EC1 \u0111i cho ng\u01B0\u1EDDi kh\xE1c c\xF2n ch\u01A1i.
-    M\u1EA5t th\u1EDDi gian qu\xE1!\""
+  text: "Tr\u1EDDi \u0111\u1EA5t, \u0111\xE0n \xF4ng con trai m\xE0 nh\xE1t th\u1EBF? "
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
-  triggerAction: 0
-  actionType: 0
-  actionParam: 
+  nextAuto: {fileID: 11400000, guid: 8fc72f01132e57144b034974e92c637a, type: 2}
+  triggerAction: 1
+  actionType: 7
+  actionParam: Lose1
   actionValue: 0

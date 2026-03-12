@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Route 2 5
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "B\u1EA1n N\u1EEF"
-  text: "A! L\xEAn r\u1ED3i! 'Connected'! Nh\u1EA1c l\xEAn r\u1ED3i! C\u1EADu l\xE0
-    c\u1EE9u tinh c\u1EE7a t\u1EDB \u0111\u1EA5y!"
+  speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng"
+  text: "KH\xD4 G\xC0 L\xC1 CHANHHHHHH!!!!!!!!!!!!!"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 11400000, guid: ed4552405d1d7a740843a123ca165516, type: 2}
+  nextAuto: {fileID: 11400000, guid: 8a456c151a9887a4aabdf3cba2339bad, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

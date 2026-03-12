@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Anh PT
-  text: "C\xE1i loa Bluetooth c\u1EE7a anh \u0111\u01B0a cho con b\xE9 \u0111ang
-    ng\u1ED3i \u1EDF gh\u1EBF \u0111\xE1 \u0111\u1EB1ng kia m\u01B0\u1EE3n, m\xE0
-    n\xF3 loay hoay c\u1EA3 ti\u1EBFng r\u1ED3i ch\u01B0a b\u1EADt \u0111\u01B0\u1EE3c."
+  text: "Th\u1EBF th\xEC t\u1ED1t qu\xE1! Em nh\xECn ra ch\u1ED7 b\u1EA1n n\u1EEF
+    \u0111ang ng\u1ED3i \u1EDF s\u1EA1p \u0111\u1EB1ng kia k\xECa. B\u1EA1n \u1EA5y
+    hay b\xE1n \u0111\u1ED3 \u0103n v\u1EB7t \u1EDF s\xE2n t\u1EADp. "
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b8c1df0520aa1354daa5d3b3b836fa09, type: 2}

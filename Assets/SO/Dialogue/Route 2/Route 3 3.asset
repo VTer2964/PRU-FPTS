@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: NPC
-  text: "Nh\u1EA1c n\u1EC1n c\u1EF1c c\u0103ng. PT \u0111ang sung s\u1EE9c. B\u1EA1n
-    s\u1EB5n s\xE0ng ch\u01B0a?"
+  text: "Anh PT \u0111\xE3 n\u1EA1p \u0111\u1EE7 n\u0103ng l\u01B0\u1EE3ng v\xE0
+    \u0111ang r\u1EA5t sung s\u1EE9c. B\u1EA1n \u0111\xE3 s\u1EB5n s\xE0ng b\u01B0\u1EDBc
+    v\xE0o v\xF2ng ki\u1EC3m tra t\u1EEB v\u1EF1ng ch\u01B0a?"
   choices:
   - text: "YEAH BUDDY (CHI\u1EBEN) "
     next: {fileID: 11400000, guid: 2221311c43a70814eaa1e6f2097edbdc, type: 2}

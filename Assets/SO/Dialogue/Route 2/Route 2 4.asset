@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Route 2 4
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
-  speakerName: "V\u0169"
-  text: "\u0110\u01B0a \u0111\xE2y t\u1EDB xem n\xE0o d\xE2n IT m\xE0 l\u1ECB...  "
+  speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng"
+  text: "\u0110\u1EB7c bi\u1EC7t m\xF3n best seller nh\u1EA5t c\u1EE7a b\u1ECDn m\xECnh
+    ch\xEDnh l\xE0:"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 4819225c0d84b774c90cccf6b62eac23, type: 2}
