@@ -1992,8 +1992,8 @@ MonoBehaviour:
   silverText: {fileID: 564761130}
   bronzeText: {fileID: 1603464506}
   backgroundImage: {fileID: 1399082681}
-  happyEndingSprite: {fileID: 0}
-  badEndingSprite: {fileID: 0}
+  happyEndingSprite: {fileID: 21300000, guid: 71de69ed39015d547914b186079c8e47, type: 3}
+  badEndingSprite: {fileID: 21300000, guid: b7ed10b0004949740a34910ba8ef0999, type: 3}
   goHomeEndingSprite: {fileID: 21300000, guid: 452aa99889dd8d74eb0aef4a314c9a4f, type: 3}
   continueButton: {fileID: 1623932266}
   useAfterCredit: 1

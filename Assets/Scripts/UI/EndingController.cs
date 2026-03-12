@@ -65,11 +65,11 @@ namespace FPTSim.UI
                 switch (endingKey)
                 {
                     case "HAPPY_END":
-                        subtitleText.text = "Happy Ending";
+                        subtitleText.text = "Nice try friends";
                         break;
 
                     case "BAD_TIME_OUT":
-                        subtitleText.text = "Bad Ending - Hết thời gian";
+                        subtitleText.text = "Đéo biết để ý thời gian à";
                         break;
 
                     case "GO_HOME":
