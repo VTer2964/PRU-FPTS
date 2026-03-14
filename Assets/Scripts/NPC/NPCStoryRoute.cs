@@ -10,13 +10,16 @@ namespace FPTSim.NPC
         [System.Serializable]
         public class Step
         {
-            [Header("Khi có flag này thì NPC đi tới destination")]
+            [Header("Khi co flag nay thi NPC di toi destination")]
             public string requiredFlag;
 
-            [Header("Điểm đến")]
+            [Header("Neu co flag nay thi step route se tat va tra NPC ve patrol")]
+            public string stopWhenFlagPresent;
+
+            [Header("Diem den")]
             public Transform destination;
 
-            [Header("Optional: tới nơi thì set flag này")]
+            [Header("Optional: toi noi thi set flag nay")]
             public string setFlagOnArrive;
         }
 
@@ -29,6 +32,9 @@ namespace FPTSim.NPC
         [SerializeField] private NPCBrain brain;
         [SerializeField] private NavMeshAgent agent;
 
+        [Header("Patrol takeover")]
+        [SerializeField] private bool suppressPatrolWhileRouteActive = true;
+
         [Header("Perform behaviour")]
         [SerializeField] private bool resumePerformWhenArrived = true;
         [SerializeField] private bool stopPerformWhenMoving = true;
@@ -36,6 +42,7 @@ namespace FPTSim.NPC
         private int activeStep = -1;
         private bool arrivedFlagFired;
         private bool hasReachedDestination;
+        private bool patrolSuppressedByRoute;
 
         private void Awake()
         {
@@ -48,48 +55,44 @@ namespace FPTSim.NPC
         {
             if (GameManager.I == null) return;
             if (steps == null || steps.Length == 0) return;
-            if (agent == null) return;
+            if (agent == null || !agent.enabled) return;
 
             int best = GetBestStep();
-            if (best == -1) return;
-
-            // Có step mới được kích hoạt
-            if (best != activeStep)
+            if (best == -1)
             {
-                activeStep = best;
-                arrivedFlagFired = false;
-                hasReachedDestination = false;
-
-                var s = steps[activeStep];
-                if (s.destination != null)
-                {
-                    if (patrol != null)
-                        patrol.StopPatrol();
-
-                    if (stopPerformWhenMoving && brain != null)
-                        brain.SetPerforming(false);
-
-                    agent.isStopped = false;
-                    agent.SetDestination(s.destination.position);
-                }
+                ClearActiveStep();
+                return;
             }
 
-            var step = steps[activeStep];
-            if (step.destination == null) return;
+            if (best != activeStep)
+                ActivateStep(best);
+            else
+                ApplyRouteSuppression(true);
 
-            // Nếu đang đi
+            if (activeStep < 0 || activeStep >= steps.Length) return;
+
+            Step step = steps[activeStep];
+            if (step == null || step.destination == null) return;
+            if (brain != null && brain.IsTalking) return;
+
+            EnsureHeadingToActiveDestination(step);
+
             bool isMoving =
                 agent.enabled &&
+                agent.isOnNavMesh &&
                 !agent.isStopped &&
                 (agent.pathPending || agent.remainingDistance > Mathf.Max(arriveDistance, agent.stoppingDistance));
 
             if (isMoving)
             {
                 hasReachedDestination = false;
+
+                if (stopPerformWhenMoving && brain != null)
+                    brain.SetPerforming(false);
+
                 return;
             }
 
-            // Đã tới nơi
             if (!hasReachedDestination)
             {
                 hasReachedDestination = true;
@@ -105,20 +108,93 @@ namespace FPTSim.NPC
             }
         }
 
+        private void ActivateStep(int stepIndex)
+        {
+            activeStep = stepIndex;
+            arrivedFlagFired = false;
+            hasReachedDestination = false;
+
+            ApplyRouteSuppression(true);
+
+            if (stopPerformWhenMoving && brain != null)
+                brain.SetPerforming(false);
+
+            if (brain != null && brain.IsTalking) return;
+
+            Step step = steps[activeStep];
+            if (step == null || step.destination == null) return;
+
+            EnsureHeadingToActiveDestination(step);
+        }
+
+        private void ClearActiveStep()
+        {
+            if (activeStep == -1 && !patrolSuppressedByRoute) return;
+
+            activeStep = -1;
+            arrivedFlagFired = false;
+            hasReachedDestination = false;
+            ApplyRouteSuppression(false);
+        }
+
+        private void EnsureHeadingToActiveDestination(Step step)
+        {
+            if (step == null || step.destination == null) return;
+            if (!agent.isOnNavMesh) return;
+
+            Vector3 target = step.destination.position;
+            bool shouldRefreshDestination =
+                agent.isStopped ||
+                !agent.hasPath ||
+                Vector3.Distance(agent.destination, target) > 0.05f;
+
+            if (!shouldRefreshDestination) return;
+
+            agent.isStopped = false;
+            agent.SetDestination(target);
+        }
+
+        private void ApplyRouteSuppression(bool suppress)
+        {
+            if (!suppressPatrolWhileRouteActive || patrol == null) return;
+            if (patrolSuppressedByRoute == suppress) return;
+
+            if (suppress)
+                patrol.SuppressPatrol();
+            else
+                patrol.UnsuppressPatrol();
+
+            patrolSuppressedByRoute = suppress;
+        }
+
         private int GetBestStep()
         {
             int best = -1;
 
             for (int i = 0; i < steps.Length; i++)
             {
-                var f = steps[i].requiredFlag;
-                if (string.IsNullOrWhiteSpace(f)) continue;
+                Step step = steps[i];
+                if (!IsStepActive(step)) continue;
 
-                if (GameManager.I.HasFlag(f))
-                    best = i; // step sau ưu tiên hơn step trước
+                best = i;
             }
 
             return best;
+        }
+
+        private bool IsStepActive(Step step)
+        {
+            if (step == null) return false;
+            if (string.IsNullOrWhiteSpace(step.requiredFlag)) return false;
+            if (!GameManager.I.HasFlag(step.requiredFlag)) return false;
+
+            if (!string.IsNullOrWhiteSpace(step.stopWhenFlagPresent) &&
+                GameManager.I.HasFlag(step.stopWhenFlagPresent))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

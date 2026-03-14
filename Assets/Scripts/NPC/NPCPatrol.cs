@@ -19,6 +19,16 @@ namespace FPTSim.NPC
         private int index;
         private float waitTimer;
         private bool waiting;
+        private bool patrolEnabled = true;
+        private int pauseRequests;
+        private int suppressRequests;
+
+        public bool IsPatrolEnabled => patrolEnabled;
+        public bool IsPaused => pauseRequests > 0;
+        public bool IsSuppressed => suppressRequests > 0;
+        public bool IsPatrolActive => patrolEnabled && !IsPaused && !IsSuppressed;
+
+        private bool HasWaypoints => points != null && points.Length > 0;
 
         private void Awake()
         {
@@ -27,18 +37,28 @@ namespace FPTSim.NPC
 
         private void Start()
         {
-            if (points != null && points.Length > 0)
-                GoTo(points[0]);
+            if (HasWaypoints)
+            {
+                index = Mathf.Clamp(index, 0, points.Length - 1);
+                if (IsPatrolActive)
+                    BeginPatrolFromCurrentIndex();
+                else
+                    HoldPosition();
+            }
         }
 
         private void Update()
         {
-            // Kiểm tra xem agent có đang hoạt động và đã đứng trên NavMesh chưa
-            if (!agent.isOnNavMesh) return;
+            if (agent == null || !agent.enabled || !agent.isOnNavMesh)
+            {
+                UpdateAnimatorImmediate(0f);
+                return;
+            }
 
             UpdateAnimator();
 
-            if (points == null || points.Length == 0) return;
+            if (!IsPatrolActive) return;
+            if (!HasWaypoints) return;
 
             if (waiting)
             {
@@ -51,57 +71,168 @@ namespace FPTSim.NPC
                 return;
             }
 
-            // Chỉ kiểm tra distance khi agent đang có một đường đi (path) hợp lệ
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
                 waiting = true;
                 waitTimer = waitAtPoint;
                 agent.isStopped = true;
+                agent.velocity = Vector3.zero;
             }
         }
 
         private void NextPoint()
         {
-            agent.isStopped = false;
+            if (!HasWaypoints)
+            {
+                HoldPosition();
+                return;
+            }
 
             index++;
             if (index >= points.Length)
             {
-                if (!loop) return;
+                if (!loop)
+                {
+                    index = points.Length - 1;
+                    HoldPosition();
+                    return;
+                }
+
                 index = 0;
             }
+
+            agent.isStopped = false;
             GoTo(points[index]);
         }
 
-        private void GoTo(Transform t)
+        private void GoTo(Transform targetPoint)
         {
-            if (t == null) return;
-            agent.SetDestination(t.position);
+            if (targetPoint == null || agent == null || !agent.enabled || !agent.isOnNavMesh) return;
+            agent.SetDestination(targetPoint.position);
         }
 
         private void UpdateAnimator()
         {
-            if (!animator) return;
+            if (!animator || string.IsNullOrWhiteSpace(speedParam) || agent == null) return;
 
-            float v = agent.velocity.magnitude;
-            float normalized = Mathf.InverseLerp(0f, agent.speed, v); // 0..1
+            float speed = agent.velocity.magnitude;
+            float normalized = Mathf.InverseLerp(0f, Mathf.Max(0.01f, agent.speed), speed);
             animator.SetFloat(speedParam, normalized);
         }
 
-        // Cho hệ cốt truyện gọi
+        private void UpdateAnimatorImmediate(float normalizedSpeed)
+        {
+            if (!animator || string.IsNullOrWhiteSpace(speedParam)) return;
+            animator.SetFloat(speedParam, normalizedSpeed);
+        }
+
         public void SetWaypoints(Transform[] newPoints, bool resetIndex = true)
         {
             points = newPoints;
             if (resetIndex) index = 0;
+
             waiting = false;
-            agent.isStopped = false;
-            if (points != null && points.Length > 0) GoTo(points[index]);
+            waitTimer = 0f;
+
+            if (IsPatrolActive)
+                BeginPatrolFromCurrentIndex();
+            else
+                HoldPosition();
+        }
+
+        public void SetPatrolEnabled(bool enabled)
+        {
+            if (patrolEnabled == enabled) return;
+
+            patrolEnabled = enabled;
+            waiting = false;
+            waitTimer = 0f;
+
+            if (IsPatrolActive)
+                BeginPatrolFromCurrentIndex();
+            else
+                HoldPosition();
+        }
+
+        public void PausePatrol()
+        {
+            pauseRequests++;
+            HoldPosition();
+        }
+
+        public void ResumePatrol()
+        {
+            if (pauseRequests <= 0) return;
+
+            pauseRequests--;
+            if (IsPatrolActive)
+                ResumePatrolMovement();
+        }
+
+        public void SuppressPatrol()
+        {
+            suppressRequests++;
+            HoldPosition();
+        }
+
+        public void UnsuppressPatrol()
+        {
+            if (suppressRequests <= 0) return;
+
+            suppressRequests--;
+            if (IsPatrolActive)
+                ResumePatrolMovement();
         }
 
         public void StopPatrol()
         {
-            agent.isStopped = true;
+            SetPatrolEnabled(false);
+        }
+
+        private void BeginPatrolFromCurrentIndex()
+        {
+            if (!HasWaypoints)
+            {
+                HoldPosition();
+                return;
+            }
+
+            index = Mathf.Clamp(index, 0, points.Length - 1);
             waiting = false;
+            waitTimer = 0f;
+            agent.isStopped = false;
+            GoTo(points[index]);
+        }
+
+        private void ResumePatrolMovement()
+        {
+            if (!HasWaypoints)
+            {
+                HoldPosition();
+                return;
+            }
+
+            if (waiting)
+            {
+                agent.isStopped = true;
+                agent.velocity = Vector3.zero;
+                UpdateAnimatorImmediate(0f);
+                return;
+            }
+
+            agent.isStopped = false;
+            GoTo(points[index]);
+        }
+
+        private void HoldPosition()
+        {
+            if (agent == null || !agent.enabled) return;
+
+            agent.isStopped = true;
+            if (agent.isOnNavMesh)
+                agent.velocity = Vector3.zero;
+
+            UpdateAnimatorImmediate(0f);
         }
     }
 }
