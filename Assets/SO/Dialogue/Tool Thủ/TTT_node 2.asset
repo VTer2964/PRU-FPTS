@@ -16,7 +16,12 @@ MonoBehaviour:
   speakerName: "Thu \"t\u1EE7n\""
   text: "T\u1EA5m g\u01B0\u01A1ng m\u1EABu \u0111\u1EA5y th\u01B0\u1EDFng cho cu
     em c\xE1i huy ch\u01B0\u01A1ng v\xE0ng"
-  choices: []
+  choices:
+  - text: thay david o dau
+    next: {fileID: 0}
+    requireCondition: 1
+    conditionKey: davidroute
+    conditionValue: 0
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5be628f52bfc05e45bd42249416108b4, type: 2}
   triggerAction: 1
