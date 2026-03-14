@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using FPTSim.Core;
 
 namespace FPTSim.Dialogue
@@ -49,7 +49,7 @@ namespace FPTSim.Dialogue
             // Nếu đang chạy dialogue rồi thì không mở thêm (tránh chồng)
             if (runner.IsRunning) return;
 
-            runner.StartDialogue(graph);
+            runner.StartDialogue(graph, allowManualAdvance: true, allowManualExit: false, forceAutoAdvanceWithoutInput: false);
         }
     }
 }

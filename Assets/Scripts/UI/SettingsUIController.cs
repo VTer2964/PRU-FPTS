@@ -1,8 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using FPTSim.Player;
 using UnityEngine.SceneManagement;
+using FPTSim.Dialogue;
+using FPTSim.Minigames;
 
 namespace FPTSim.UI
 {
@@ -40,6 +42,8 @@ namespace FPTSim.UI
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
+        [SerializeField] private DialogueRunner dialogueRunner;
+        [SerializeField] private CampusMinigameRenderHost minigameHost;
 
         private enum PendingAction
         {
@@ -54,6 +58,7 @@ namespace FPTSim.UI
         private void Awake()
         {
             AutoBindActionButtons();
+            TryAutoBindStateRefs();
 
             if (audioTabButton) audioTabButton.onClick.AddListener(() => ShowTab("audio"));
             if (controlsTabButton) controlsTabButton.onClick.AddListener(() => ShowTab("controls"));
@@ -77,11 +82,8 @@ namespace FPTSim.UI
         {
             if (settingsRoot) settingsRoot.SetActive(true);
 
-            // m?c d?nh m? Audio
             ShowTab("audio");
-
-            // khóa gameplay + hi?n chu?t
-            LockGameplay(true);
+            ApplyOverlayLock();
         }
 
         public void Close()
@@ -89,11 +91,9 @@ namespace FPTSim.UI
             CancelConfirmation();
             if (settingsRoot) settingsRoot.SetActive(false);
 
-            // m? l?i gameplay + khóa chu?t
-            LockGameplay(false);
+            RestoreGameplayState();
         }
 
-        // Expose for Button OnClick in Inspector
         public void OnMainMenuClicked()
         {
             ShowConfirmation(
@@ -103,7 +103,6 @@ namespace FPTSim.UI
             );
         }
 
-        // Expose for Button OnClick in Inspector
         public void OnQuitClicked()
         {
             ShowConfirmation(
@@ -183,12 +182,41 @@ namespace FPTSim.UI
             return null;
         }
 
-        private void LockGameplay(bool locked)
+        private void TryAutoBindStateRefs()
         {
-            // locked=true => m? chu?t + t?t movement/interact
-            if (mouseLook) mouseLook.LockCursor(!locked);
-            if (playerMovement) playerMovement.enabled = !locked;
-            if (playerInteractor) playerInteractor.enabled = !locked;
+            if (dialogueRunner == null)
+                dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+
+            if (minigameHost == null)
+                minigameHost = FindFirstObjectByType<CampusMinigameRenderHost>();
+        }
+
+        private void ApplyOverlayLock()
+        {
+            if (mouseLook) mouseLook.LockCursor(false);
+            if (playerMovement) playerMovement.enabled = false;
+            if (playerInteractor) playerInteractor.enabled = false;
+        }
+
+        private void RestoreGameplayState()
+        {
+            TryAutoBindStateRefs();
+
+            if (IsOverlayGameplayModeActive())
+            {
+                ApplyOverlayLock();
+                return;
+            }
+
+            if (mouseLook) mouseLook.LockCursor(true);
+            if (playerMovement) playerMovement.enabled = true;
+            if (playerInteractor) playerInteractor.enabled = true;
+        }
+
+        private bool IsOverlayGameplayModeActive()
+        {
+            return (dialogueRunner != null && dialogueRunner.IsRunning) ||
+                   (minigameHost != null && minigameHost.IsRunning);
         }
 
         private void OnGUI()

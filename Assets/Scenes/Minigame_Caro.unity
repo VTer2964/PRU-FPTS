@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 138996765}
   - component: {fileID: 138996764}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MinigameOutputCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,7 +662,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138996763}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &138996765
 Camera:
   m_ObjectHideFlags: 0
@@ -2083,8 +2083,8 @@ MonoBehaviour:
   ambient: {fileID: 0}
   playMusicOnStart: 1
   playAmbientOnStart: 1
-  stopMusicIfNull: 0
-  stopAmbientIfNull: 0
+  stopMusicIfNull: 1
+  stopAmbientIfNull: 1
 --- !u!4 &750335596
 Transform:
   m_ObjectHideFlags: 0
