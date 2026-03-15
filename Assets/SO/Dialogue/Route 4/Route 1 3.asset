@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "Th\u1EA7y David"
-  text: " He holds the secret password, solve his puzzle, and bring the password
-    back to me. (Ch\xFA \u1EA5y gi\u1EEF m\u1EADt kh\u1EA9u b\xED m\u1EADt, gi\u1EA3i
-    c\xE2u \u0111\u1ED1 c\u1EE7a ch\xFA \u1EA5y v\xE0 mang m\u1EADt kh\u1EA9u v\u1EC1
-    \u0111\xE2y cho th\u1EA7y)"
+  text: "Ch\xFA \u1EA5y gi\u1EEF m\u1EADt kh\u1EA9u b\xED m\u1EADt, gi\u1EA3i c\xE2u
+    \u0111\u1ED1 c\u1EE7a ch\xFA \u1EA5y v\xE0 mang m\u1EADt kh\u1EA9u v\u1EC1 \u0111\xE2y
+    cho th\u1EA7y"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}

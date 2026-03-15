@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: NPC 3 1
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Em G\xE1i"
+  text: "U\u1EA7y tr\u01B0\u1EDDng FPTU to th\u1EADt \u0111\u1EA5y! \u01AF\u1EDBc
+    g\xEC m\xECnh \u0111\u01B0\u1EE3c h\u1ECDc \u1EDF ng\xF4i tr\u01B0\u1EDDng to
+    nh\u01B0 n\xE0y!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

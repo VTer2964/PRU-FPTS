@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Route 1 4
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 1
+  speakerName: "Th\u1EA7y David"
+  text: "Th\u1EA7y s\u1EBD \u0111\u1EE9ng \u0111\u1EE3i em \u1EDF C\u1ED5ng ph\u1EE5
+    b\xE3i g\u1EEDi xe!"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}
+  triggerAction: 1
+  actionType: 7
+  actionParam: guixe
+  actionValue: 0

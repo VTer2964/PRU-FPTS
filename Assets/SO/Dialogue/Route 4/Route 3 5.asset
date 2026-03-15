@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: "Oh... that's a pity. You cannot survive at FPT without English.(\u1ED2...
-    th\u1EADt \u0111\xE1ng ti\u1EBFc. B\u1EA1n kh\xF4ng th\u1EC3 tr\u1EE5 l\u1EA1i
-    \u1EDF FPT n\u1EBFu kh\xF4ng bi\u1EBFt ti\u1EBFng Anh.)"
+  text: "\u1ED2... th\u1EADt \u0111\xE1ng ti\u1EBFc. B\u1EA1n kh\xF4ng th\u1EC3 tr\u1EE5
+    l\u1EA1i \u1EDF FPT n\u1EBFu kh\xF4ng bi\u1EBFt ti\u1EBFng Anh."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 9b8a2b88d25d22d46b0065a3fbba7ac7, type: 2}
