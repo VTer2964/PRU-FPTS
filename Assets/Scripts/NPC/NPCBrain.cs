@@ -27,6 +27,9 @@ namespace FPTSim.NPC
         [SerializeField] private bool returnToOriginalFacing = true;
         [SerializeField] private float returnRotateSpeed = 720f;
 
+        [Header("Idle facing override")]
+        [SerializeField] private float idleFacingRotateSpeed = 720f;
+
         private Transform lookTarget;
         private bool isTalking;
         private bool requestedPerforming;
@@ -39,6 +42,8 @@ namespace FPTSim.NPC
         private Quaternion savedFacing;
         private bool hasSavedFacing;
         private bool isReturningFacing;
+        private bool hasIdleFacingOverride;
+        private Quaternion idleFacingOverride;
 
         public bool IsTalking => isTalking;
         private Transform Pivot => facePivot ? facePivot : transform;
@@ -77,6 +82,10 @@ namespace FPTSim.NPC
                     Pivot.rotation = savedFacing;
                     isReturningFacing = false;
                 }
+            }
+            else if (!isTalking && hasIdleFacingOverride)
+            {
+                Pivot.rotation = Quaternion.RotateTowards(Pivot.rotation, idleFacingOverride, idleFacingRotateSpeed * Time.deltaTime);
             }
         }
 
@@ -139,6 +148,20 @@ namespace FPTSim.NPC
                 patrol.ResumePatrol();
 
             RefreshAnimatorState();
+        }
+
+        public void SetIdleFacingDirection(Vector3 forward)
+        {
+            Vector3 flatForward = Vector3.ProjectOnPlane(forward, Vector3.up);
+            if (flatForward.sqrMagnitude <= 0.0001f) return;
+
+            hasIdleFacingOverride = true;
+            idleFacingOverride = Quaternion.LookRotation(flatForward.normalized, Vector3.up);
+        }
+
+        public void ClearIdleFacingOverride()
+        {
+            hasIdleFacingOverride = false;
         }
 
         private void RefreshAnimatorState(float? normalizedSpeedOverride = null)

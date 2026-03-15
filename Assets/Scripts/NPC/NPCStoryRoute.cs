@@ -87,11 +87,19 @@ namespace FPTSim.NPC
             {
                 hasReachedDestination = false;
 
-                if (stopPerformWhenMoving && brain != null)
-                    brain.SetPerforming(false);
+                if (brain != null)
+                {
+                    brain.ClearIdleFacingOverride();
+
+                    if (stopPerformWhenMoving)
+                        brain.SetPerforming(false);
+                }
 
                 return;
             }
+
+            if (brain != null)
+                brain.SetIdleFacingDirection(step.destination.forward);
 
             if (!hasReachedDestination)
             {
@@ -116,8 +124,13 @@ namespace FPTSim.NPC
 
             ApplyRouteSuppression(true);
 
-            if (stopPerformWhenMoving && brain != null)
-                brain.SetPerforming(false);
+            if (brain != null)
+            {
+                brain.ClearIdleFacingOverride();
+
+                if (stopPerformWhenMoving)
+                    brain.SetPerforming(false);
+            }
 
             if (brain != null && brain.IsTalking) return;
 
@@ -135,6 +148,9 @@ namespace FPTSim.NPC
             arrivedFlagFired = false;
             hasReachedDestination = false;
             ApplyRouteSuppression(false);
+
+            if (brain != null)
+                brain.ClearIdleFacingOverride();
         }
 
         private void EnsureHeadingToActiveDestination(Step step)
