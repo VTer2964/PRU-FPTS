@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Guide 1 10
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Sinh Vi\xEAn N\u0103m 4"
+  text: "Em mu\u1ED1n \u0111i xem s\xE2n kh\u1EA5u s\u1EF1 ki\u1EC7n n\u0103m nay
+    kh\xF4ng?"
+  choices:
+  - text: "Anh cho em m\u1EDF mang t\u1EA7m m\u1EAFt v\u1EDBi!"
+    next: {fileID: 11400000, guid: bb8412c0a3fd7d14b98f6934874193af, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  - text: "D\u1EA1 th\xF4i! Anh c\u1EE9 \u0111\u1EC3 em t\u1EF1 kh\xE1m ph\xE1"
+    next: {fileID: 11400000, guid: e7f641d604bfc144c913a0a2fdd7cd1f, type: 2}
+    requireCondition: 0
+    conditionKey: 
+    conditionValue: 0
+  autoAdvance: 1
+  nextAuto: {fileID: 0}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
