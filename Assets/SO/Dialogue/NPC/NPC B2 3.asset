@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: NPC B2 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: Anh Trai
+  text: "\u0110\xFAng em \u1EA5y r\u1ED3i! C\u1EADu th\u1EA5y em \u1EA5y \u1EDF \u0111\xE2u
+    th\u1EBF?"
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: e3fd28d4906404e478f8e44d618cf018, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

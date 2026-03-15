@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: " Match the flags to the countries correctly! ( H\xE3y n\u1ED1i \u0111\xFAng
-    c\xE1c l\xE1 c\u1EDD v\u1EDBi t\xEAn qu\u1ED1c gia nh\xE9!)"
+  text: "H\xE3y n\u1ED1i \u0111\xFAng c\xE1c l\xE1 c\u1EDD v\u1EDBi t\xEAn qu\u1ED1c
+    gia nh\xE9!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 54df2bb9a2649ef47b20e379f9f62fc8, type: 2}

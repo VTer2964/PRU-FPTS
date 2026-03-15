@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: "Excellent! You are worthy. Now, let's test your real geography knowledge. 
-    (Tuy\u1EC7t v\u1EDDi! Em r\u1EA5t x\u1EE9ng \u0111\xE1ng. Gi\u1EDD ch\xFAng ta
-    h\xE3y ki\u1EC3m tra ki\u1EBFn th\u1EE9c \u0111\u1ECBa l\xFD th\u1EF1c s\u1EF1
-    c\u1EE7a em.)"
+  text: "Tuy\u1EC7t v\u1EDDi! Em r\u1EA5t x\u1EE9ng \u0111\xE1ng. Gi\u1EDD ch\xFAng
+    ta h\xE3y ki\u1EC3m tra ki\u1EBFn th\u1EE9c \u0111\u1ECBa l\xFD th\u1EF1c s\u1EF1
+    c\u1EE7a em."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: acb25337ad2ec6f44914503ee375a4aa, type: 2}

@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Th\u1EA7y David"
-  text: "Excellent attitude! Let's see if you are a true Global Citizen.(Th\xE1i
-    \u0111\u1ED9 tuy\u1EC7t v\u1EDDi! H\xE3y xem b\u1EA1n c\xF3 ph\u1EA3i l\xE0 m\u1ED9t
-    c\xF4ng d\xE2n to\xE0n c\u1EA7u th\u1EF1c th\u1EE5 hay kh\xF4ng.)"
+  text: "Th\xE1i \u0111\u1ED9 tuy\u1EC7t v\u1EDDi! H\xE3y xem b\u1EA1n c\xF3 ph\u1EA3i
+    l\xE0 m\u1ED9t c\xF4ng d\xE2n to\xE0n c\u1EA7u th\u1EF1c th\u1EE5 hay kh\xF4ng."
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2f81ca04280a48c4fa74679cd9668cd1, type: 2}

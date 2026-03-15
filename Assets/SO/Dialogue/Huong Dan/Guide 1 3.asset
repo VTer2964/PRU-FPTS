@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Guide 1 3
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 0
+  speakerName: "Sinh Vi\xEAn N\u0103m 4"
+  text: "N\u1EC3 m\u1EB7t l\xE0 \u0111\xE0n anh h\u1ECDc \u1EDF \u0111\xE2y 4 n\u0103m.
+    Anh s\u1EBD d\u1EABn em \u0111i tham quan FPTU nh\xE9."
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: 6d06b09b1efcc7f478a40cc5828160a0, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0
