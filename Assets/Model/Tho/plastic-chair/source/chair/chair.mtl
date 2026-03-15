@@ -1,0 +1,14 @@
+# Blender MTL File: 'banco_001.blend'
+# Material Count: 1
+
+newmtl Material.002
+Ns 564.976328
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.308568 0.295508
+Ks 0.371795 0.371795 0.371795
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump baked_chair.png
+map_Ns banco.png
