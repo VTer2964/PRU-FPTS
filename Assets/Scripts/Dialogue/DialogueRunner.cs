@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using FPTSim.Core;
@@ -22,16 +22,28 @@ namespace FPTSim.Dialogue
         [Header("Input")]
         [SerializeField] private Key continueKey = Key.Space;
         [SerializeField] private Key exitKey = Key.Escape;
+        [SerializeField] private SettingsUIController settingsUI;
+        [SerializeField] private FPTSim.Minigames.CampusMinigameRenderHost minigameHost;
+        [SerializeField] private float forcedAdvanceDelay = 0.45f;
 
         private DialogueGraphSO currentGraph;
         private DialogueNodeSO currentNode;
         private string runtimeMessage;
+        private bool allowManualAdvance = true;
+        private bool allowManualExit = true;
+        private bool forceAutoAdvanceWithoutInput;
+        private float forcedAdvanceTimer = -1f;
 
         public bool IsRunning => currentGraph != null;
 
         public System.Action OnDialogueStopped;
 
         public void StartDialogue(DialogueGraphSO graph)
+        {
+            StartDialogue(graph, true, true, false);
+        }
+
+        public void StartDialogue(DialogueGraphSO graph, bool allowManualAdvance, bool allowManualExit, bool forceAutoAdvanceWithoutInput)
         {
             if (graph == null || graph.entryNode == null) return;
             if (ui == null)
@@ -42,8 +54,12 @@ namespace FPTSim.Dialogue
 
             currentGraph = graph;
             currentNode = graph.entryNode;
+            this.allowManualAdvance = allowManualAdvance;
+            this.allowManualExit = allowManualExit;
+            this.forceAutoAdvanceWithoutInput = forceAutoAdvanceWithoutInput;
+            forcedAdvanceTimer = -1f;
 
-            ui.Open(OnChoiceSelected, StopDialogue);
+            ui.Open(OnChoiceSelected, StopDialogue, allowManualExit);
             LockPlayer(true);
 
             ShowNode(currentNode);
@@ -53,21 +69,43 @@ namespace FPTSim.Dialogue
         {
             if (!IsRunning) return;
 
-            if (Keyboard.current != null && Keyboard.current[exitKey].wasPressedThisFrame)
+            if (settingsUI == null)
+                settingsUI = FindFirstObjectByType<SettingsUIController>();
+
+            if (minigameHost == null)
+                minigameHost = FindFirstObjectByType<FPTSim.Minigames.CampusMinigameRenderHost>();
+
+            if (settingsUI != null && settingsUI.IsOpen)
+                return;
+
+            if (allowManualExit && Keyboard.current != null && Keyboard.current[exitKey].wasPressedThisFrame)
             {
+                if (minigameHost != null && minigameHost.IsRunning)
+                    return;
+
+                // Reserve ESC for HUD/settings so dialogue can stay alive under the overlay.
+                if (settingsUI != null)
+                    return;
+
                 StopDialogue();
                 return;
             }
 
             if (currentNode == null) return;
 
+            if (forceAutoAdvanceWithoutInput)
+            {
+                HandleForcedAdvance();
+                return;
+            }
+
             bool pressContinue =
                 (Keyboard.current != null && Keyboard.current[continueKey].wasPressedThisFrame) ||
                 (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
 
             if (!pressContinue) return;
+            if (!allowManualAdvance) return;
 
-            // Nếu đang typewriter -> complete câu hiện tại trước
             if (ui != null && ui.IsTyping)
             {
                 ui.CompleteTyping();
@@ -75,11 +113,7 @@ namespace FPTSim.Dialogue
             }
 
             bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
-
-            // Có choices -> phải chọn option, không cho skip tiếp
             if (hasChoices) return;
-
-            // Không có choices -> nếu autoAdvance thì qua node tiếp
             if (!currentNode.autoAdvance) return;
 
             ContinueAuto();
@@ -88,6 +122,37 @@ namespace FPTSim.Dialogue
         private void ContinueAuto()
         {
             if (currentNode == null) return;
+
+            if (currentNode.nextAuto == null)
+            {
+                StopDialogue();
+                return;
+            }
+
+            currentNode = currentNode.nextAuto;
+            ShowNode(currentNode);
+        }
+
+        private void HandleForcedAdvance()
+        {
+            if (ui != null && ui.IsTyping)
+            {
+                forcedAdvanceTimer = -1f;
+                return;
+            }
+
+            bool hasChoices = currentNode.choices != null && currentNode.choices.Length > 0;
+            if (hasChoices)
+            {
+                forcedAdvanceTimer = -1f;
+                return;
+            }
+
+            if (forcedAdvanceTimer < 0f)
+                forcedAdvanceTimer = Mathf.Max(0f, forcedAdvanceDelay);
+
+            forcedAdvanceTimer -= Time.unscaledDeltaTime;
+            if (forcedAdvanceTimer > 0f) return;
 
             if (currentNode.nextAuto == null)
             {
@@ -108,6 +173,7 @@ namespace FPTSim.Dialogue
             }
 
             runtimeMessage = null;
+            forcedAdvanceTimer = -1f;
 
             if (node.triggerAction)
             {
@@ -149,6 +215,10 @@ namespace FPTSim.Dialogue
 
             currentGraph = null;
             currentNode = null;
+            allowManualAdvance = true;
+            allowManualExit = true;
+            forceAutoAdvanceWithoutInput = false;
+            forcedAdvanceTimer = -1f;
 
             OnDialogueStopped?.Invoke();
         }
@@ -170,19 +240,19 @@ namespace FPTSim.Dialogue
                     {
                         if (camCtrl == null)
                         {
-                            runtimeMessage = "Lỗi: chưa gán DialogueCameraController.";
+                            runtimeMessage = "Loi: chua gan DialogueCameraController.";
                             break;
                         }
 
                         string key = node.actionParam != null ? node.actionParam.Trim() : "";
                         if (string.IsNullOrWhiteSpace(key))
                         {
-                            runtimeMessage = "Lỗi: SetCamera thiếu actionParam (cameraKey).";
+                            runtimeMessage = "Loi: SetCamera thieu actionParam (cameraKey).";
                             break;
                         }
 
                         bool ok = camCtrl.Focus(key);
-                        if (!ok) runtimeMessage = $"Lỗi: không tìm thấy camera key '{key}'.";
+                        if (!ok) runtimeMessage = $"Loi: khong tim thay camera key '{key}'.";
                         break;
                     }
 
@@ -196,21 +266,26 @@ namespace FPTSim.Dialogue
                             Debug.LogError("[DialogueRunner] StartMinigameScene: actionParam(scene name) is empty!");
                             return;
                         }
-
-                        if (gm == null)
-                        {
-                            Debug.LogError("[DialogueRunner] GameManager is null.");
-                            return;
-                        }
-
                         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
                         if (playerObj == null)
                         {
-                            Debug.LogError("[DialogueRunner] Không tìm thấy Player có tag Player.");
+                            Debug.LogError("[DialogueRunner] Khong tim thay Player co tag Player.");
                             return;
                         }
 
-                        gm.EnterMinigame(scene, playerObj.transform);
+                        var host = FindFirstObjectByType<FPTSim.Minigames.CampusMinigameRenderHost>();
+                        if (host == null)
+                        {
+                            Debug.LogError("[DialogueRunner] Khong tim thay CampusMinigameRenderHost trong scene Campus.");
+                            return;
+                        }
+
+                        bool started = host.StartMinigame(scene, playerObj.transform);
+                        if (!started)
+                        {
+                            Debug.LogWarning($"[DialogueRunner] Khong the start minigame scene '{scene}'.");
+                        }
+
                         break;
                     }
 
@@ -218,8 +293,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithBronze();
                         runtimeMessage = ok
-                            ? "OK rồi em nhá"
-                            : "Không đủ huy chương đồng?";
+                            ? "OK roi em nha"
+                            : "Khong du huy chuong dong?";
                         break;
                     }
 
@@ -227,8 +302,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithSilver();
                         runtimeMessage = ok
-                            ? "OK rồi em nhá"
-                            : "Không đủ huy chương bạc";
+                            ? "OK roi em nha"
+                            : "Khong du huy chuong bac";
                         break;
                     }
 
@@ -236,8 +311,8 @@ namespace FPTSim.Dialogue
                     {
                         bool ok = gm != null && gm.TryBuyTimeWithGold();
                         runtimeMessage = ok
-                            ? "OK rồi em nhá"
-                            : "Không đủ huy chương vàng";
+                            ? "OK roi em nha"
+                            : "Khong du huy chuong vang";
                         break;
                     }
 
@@ -245,7 +320,7 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 
@@ -254,8 +329,8 @@ namespace FPTSim.Dialogue
                         {
                             var c = gm.Config;
                             runtimeMessage =
-                                $"❌ Chưa đủ huy chương yêu cầu!\n" +
-                                $"Cần: G{c.requiredGold}  S{c.requiredSilver}  B{c.requiredBronze}";
+                                $"Chua du huy chuong yeu cau!\n" +
+                                $"Can: G{c.requiredGold}  S{c.requiredSilver}  B{c.requiredBronze}";
                         }
                         break;
                     }
@@ -264,14 +339,14 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 
                         string flag = node.actionParam != null ? node.actionParam.Trim() : "";
                         if (string.IsNullOrWhiteSpace(flag))
                         {
-                            runtimeMessage = "Lỗi: SetFlag thiếu actionParam (tên flag).";
+                            runtimeMessage = "Loi: SetFlag thieu actionParam (ten flag).";
                             break;
                         }
 
@@ -283,7 +358,7 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 
@@ -296,7 +371,7 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 
@@ -309,7 +384,7 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 
@@ -322,7 +397,7 @@ namespace FPTSim.Dialogue
                     {
                         if (gm == null)
                         {
-                            runtimeMessage = "Lỗi: GameManager chưa sẵn sàng.";
+                            runtimeMessage = "Loi: GameManager chua san sang.";
                             break;
                         }
 

@@ -8,11 +8,16 @@ namespace FPTSim.NPC
         [Header("Refs")]
         [SerializeField] private Animator animator;
         [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private NPCPatrol patrol;
 
         [Header("Animator Params")]
         [SerializeField] private string speedParam = "Speed";
         [SerializeField] private string performBool = "Perform";
         [SerializeField] private string talkBool = "Talk";
+
+        [Header("Movement")]
+        [SerializeField] private float movingDistanceBuffer = 0.05f;
+        [SerializeField] private float movingVelocityThreshold = 0.05f;
 
         [Header("Face to face")]
         [SerializeField] private Transform facePivot;
@@ -24,14 +29,12 @@ namespace FPTSim.NPC
 
         private Transform lookTarget;
         private bool isTalking;
+        private bool requestedPerforming;
 
         private bool hadAgent;
         private bool wasAgentStopped;
         private Vector3 savedDestination;
         private bool hadDestination;
-
-        private bool wasPerforming;
-        private bool wasMovingBeforeTalk;   // ✅ thêm
 
         private Quaternion savedFacing;
         private bool hasSavedFacing;
@@ -44,19 +47,13 @@ namespace FPTSim.NPC
         {
             if (!animator) animator = GetComponentInChildren<Animator>();
             if (!agent) agent = GetComponent<NavMeshAgent>();
+            if (!patrol) patrol = GetComponent<NPCPatrol>();
             hadAgent = agent != null;
         }
 
         private void Update()
         {
-            if (!isTalking && animator != null && agent != null)
-            {
-                float v = agent.velocity.magnitude;
-                float normalized = (agent.speed <= 0.01f) ? 0f : Mathf.Clamp01(v / agent.speed);
-
-                if (!string.IsNullOrWhiteSpace(speedParam))
-                    animator.SetFloat(speedParam, normalized);
-            }
+            RefreshAnimatorState();
 
             if (isTalking && lookTarget != null)
             {
@@ -85,10 +82,8 @@ namespace FPTSim.NPC
 
         public void SetPerforming(bool performing)
         {
-            wasPerforming = performing;
-
-            if (animator != null && !string.IsNullOrWhiteSpace(performBool))
-                animator.SetBool(performBool, performing);
+            requestedPerforming = performing;
+            RefreshAnimatorState();
         }
 
         public void EnterTalk(Transform player)
@@ -98,9 +93,10 @@ namespace FPTSim.NPC
 
             hasSavedFacing = true;
             savedFacing = Pivot.rotation;
+            isReturningFacing = false;
 
-            // ✅ nhớ xem trước khi talk có đang di chuyển không
-            wasMovingBeforeTalk = false;
+            if (patrol != null)
+                patrol.PausePatrol();
 
             if (hadAgent)
             {
@@ -110,12 +106,6 @@ namespace FPTSim.NPC
                 {
                     savedDestination = agent.destination;
                     hadDestination = true;
-
-                    // Nếu đang có path và chưa tới nơi thì coi như đang đi
-                    if (!agent.pathPending && agent.remainingDistance > agent.stoppingDistance + 0.05f)
-                        wasMovingBeforeTalk = true;
-                    else if (agent.pathPending)
-                        wasMovingBeforeTalk = true;
                 }
                 else
                 {
@@ -126,17 +116,7 @@ namespace FPTSim.NPC
                 agent.velocity = Vector3.zero;
             }
 
-            if (animator != null)
-            {
-                if (!string.IsNullOrWhiteSpace(speedParam))
-                    animator.SetFloat(speedParam, 0f);
-
-                if (!string.IsNullOrWhiteSpace(performBool))
-                    animator.SetBool(performBool, false);
-
-                if (!string.IsNullOrWhiteSpace(talkBool))
-                    animator.SetBool(talkBool, true);
-            }
+            RefreshAnimatorState(0f);
         }
 
         public void ExitTalk()
@@ -147,13 +127,6 @@ namespace FPTSim.NPC
             if (returnToOriginalFacing && hasSavedFacing)
                 isReturningFacing = true;
 
-            if (animator != null)
-            {
-                if (!string.IsNullOrWhiteSpace(talkBool))
-                    animator.SetBool(talkBool, false);
-            }
-
-            // Resume agent trước
             if (hadAgent)
             {
                 agent.isStopped = wasAgentStopped;
@@ -162,14 +135,48 @@ namespace FPTSim.NPC
                     agent.SetDestination(savedDestination);
             }
 
-            // ✅ CHỈ bật lại Perform nếu trước đó KHÔNG phải đang di chuyển
-            if (animator != null && !string.IsNullOrWhiteSpace(performBool))
-            {
-                if (!wasMovingBeforeTalk)
-                    animator.SetBool(performBool, wasPerforming);
-                else
-                    animator.SetBool(performBool, false);
-            }
+            if (patrol != null)
+                patrol.ResumePatrol();
+
+            RefreshAnimatorState();
+        }
+
+        private void RefreshAnimatorState(float? normalizedSpeedOverride = null)
+        {
+            if (animator == null) return;
+
+            float normalizedSpeed = normalizedSpeedOverride ?? GetNormalizedSpeed();
+            bool moving = !isTalking && IsAgentMoving();
+            bool performActive = requestedPerforming && !moving && !isTalking;
+
+            if (!string.IsNullOrWhiteSpace(speedParam))
+                animator.SetFloat(speedParam, isTalking ? 0f : normalizedSpeed);
+
+            if (!string.IsNullOrWhiteSpace(performBool))
+                animator.SetBool(performBool, performActive);
+
+            if (!string.IsNullOrWhiteSpace(talkBool))
+                animator.SetBool(talkBool, isTalking);
+        }
+
+        private float GetNormalizedSpeed()
+        {
+            if (agent == null || !agent.enabled) return 0f;
+            if (agent.speed <= 0.01f) return 0f;
+
+            float speed = agent.velocity.magnitude;
+            return Mathf.Clamp01(speed / agent.speed);
+        }
+
+        private bool IsAgentMoving()
+        {
+            if (agent == null || !agent.enabled || !agent.isOnNavMesh) return false;
+            if (agent.isStopped) return false;
+            if (agent.velocity.magnitude > movingVelocityThreshold) return true;
+            if (agent.pathPending) return true;
+            if (!agent.hasPath) return false;
+
+            return agent.remainingDistance > agent.stoppingDistance + movingDistanceBuffer;
         }
     }
 }

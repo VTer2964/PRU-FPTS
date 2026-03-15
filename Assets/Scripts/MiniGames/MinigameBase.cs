@@ -18,7 +18,7 @@ namespace FPTSim.Minigames
             timeLeft = timeLimit;
             finished = false;
 
-            // Unlock cursor — Campus MouseLook có thể đã lock trước khi load scene
+            // Unlock cursor in minigame mode.
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -59,8 +59,15 @@ namespace FPTSim.Minigames
                 GameManager.I.RegisterMinigameResult(result);
             }
 
-            // Hiển thị kết quả trong minigame scene, sau đó load Campus
-            MinigameResultPanel.Show(result, () => SceneManager.LoadScene(SceneNames.Campus));
+            // Prefer exiting additive minigame host; fallback to old campus reload flow.
+            MinigameResultPanel.Show(result, () =>
+            {
+                var host = FindFirstObjectByType<CampusMinigameRenderHost>();
+                if (host != null && host.IsRunning)
+                    host.ExitMinigame();
+                else
+                    SceneManager.LoadScene(SceneNames.Campus);
+            });
         }
     }
 }

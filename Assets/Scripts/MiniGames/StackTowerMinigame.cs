@@ -10,18 +10,18 @@ namespace FPTSim.Minigames
     /// Gắn script này lên một GameObject trong scene Minigame_StackTower.
     /// Game tự động bắt đầu Level 0 (Level 1 trong game), bỏ qua menu.
     ///
-    /// Medal dựa trên số sao khi Victory:
-    ///   3 sao → Gold
-    ///   2 sao → Silver
-    ///   1 sao → Bronze
-    ///   GameOver (miss block) → None
+    /// Medal dựa trên số tầng xếp được (cả Victory lẫn GameOver):
+    ///   >= goldFloors (10)   → Gold
+    ///   >= silverFloors (7)  → Silver
+    ///   >= bronzeFloors (4)  → Bronze
+    ///   < bronzeFloors       → None
     /// </summary>
     public class StackTowerMinigame : MinigameBase
     {
-        [Header("Medal Thresholds (score = stars × 33)")]
-        [SerializeField] private int goldScore   = 99; // 3 sao = 99
-        [SerializeField] private int silverScore = 66; // 2 sao = 66
-        [SerializeField] private int bronzeScore = 33; // 1 sao = 33
+        [Header("Medal Thresholds (floors stacked)")]
+        [SerializeField] private int goldFloors   = 10; // đạt đủ target
+        [SerializeField] private int silverFloors =  7;
+        [SerializeField] private int bronzeFloors =  4;
 
         [SerializeField] private StackTowerGameManager stackManager;
 
@@ -47,32 +47,34 @@ namespace FPTSim.Minigames
             stackManager.StartGame(0);
         }
 
-        private void HandleVictory(int stars)
+        private void HandleVictory(int _)
         {
-            int score = stars * 33; // 1 sao=33, 2 sao=66, 3 sao=99
-            Medal medal = CalculateMedal(score);
+            // Dùng số tầng thực tế thay vì sao
+            int floors = stackManager.CurrentFloor;
+            Medal medal = CalculateMedal(floors);
 
-            // Ẩn tất cả panel của StackTower, dùng MinigameResultPanel thay thế
             var stackUI = FindFirstObjectByType<StackTowerUIManager>();
             if (stackUI != null) stackUI.HideAllPanels();
 
-            StartCoroutine(FinishAfterDelay(medal, score, 0f));
+            StartCoroutine(FinishAfterDelay(medal, floors, 0f));
         }
 
         private void HandleGameOver()
         {
-            // Ẩn tất cả panel của StackTower, dùng MinigameResultPanel thay thế
+            int floors = stackManager.CurrentFloor;
+            Medal medal = CalculateMedal(floors);
+
             var stackUI = FindFirstObjectByType<StackTowerUIManager>();
             if (stackUI != null) stackUI.HideAllPanels();
 
-            StartCoroutine(FinishAfterDelay(Medal.None, 0, 0f));
+            StartCoroutine(FinishAfterDelay(medal, floors, 0f));
         }
 
-        private Medal CalculateMedal(int score)
+        private Medal CalculateMedal(int floors)
         {
-            if (score >= goldScore)   return Medal.Gold;
-            if (score >= silverScore) return Medal.Silver;
-            if (score >= bronzeScore) return Medal.Bronze;
+            if (floors >= goldFloors)   return Medal.Gold;
+            if (floors >= silverFloors) return Medal.Silver;
+            if (floors >= bronzeFloors) return Medal.Bronze;
             return Medal.None;
         }
 

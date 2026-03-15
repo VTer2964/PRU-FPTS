@@ -51,6 +51,10 @@ namespace CaroGame
             uiManager.ShowMainMenu();
         }
 
+        // ── Keyboard Navigation API ────────────────────────────────────────────
+        public CaroBoardController BoardController => boardController;
+        public bool IsPlayerTurn => currentState == CaroGameStateType.PlayerTurn;
+
         public void SetAiDepth(int depth)
         {
             if (caroAI != null) caroAI.SetDepth(depth);

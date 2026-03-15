@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -67,12 +67,17 @@ namespace FPTSim.UI
             if (panel) panel.SetActive(false);
         }
 
-        public void Open(System.Action<int> choiceCallback, System.Action exitCallback)
+        public void Open(System.Action<int> choiceCallback, System.Action exitCallback, bool allowExit = true)
         {
             onChoiceSelected = choiceCallback;
             onExit = exitCallback;
 
             if (panel) panel.SetActive(true);
+            if (exitButton)
+            {
+                exitButton.interactable = allowExit;
+                exitButton.gameObject.SetActive(allowExit);
+            }
 
             if (crosshair) crosshair.SetActive(false);
             if (interactHintText) interactHintText.text = "";
@@ -86,6 +91,11 @@ namespace FPTSim.UI
             StopTypingImmediate();
 
             if (panel) panel.SetActive(false);
+            if (exitButton)
+            {
+                exitButton.interactable = true;
+                exitButton.gameObject.SetActive(true);
+            }
 
             if (crosshair) crosshair.SetActive(true);
 

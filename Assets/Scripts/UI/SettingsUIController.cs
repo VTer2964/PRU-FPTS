@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using FPTSim.Player;
 using UnityEngine.SceneManagement;
+using FPTSim.Dialogue;
+using FPTSim.Minigames;
 
 namespace FPTSim.UI
 {
@@ -29,7 +31,7 @@ namespace FPTSim.UI
         [SerializeField] private Button quitGameButton;
         [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-        [Header("Confirmation UI (optional)")]
+        [Header("Confirmation UI")]
         [SerializeField] private GameObject confirmRoot;
         [SerializeField] private TMP_Text confirmTitleText;
         [SerializeField] private TMP_Text confirmMessageText;
@@ -40,6 +42,8 @@ namespace FPTSim.UI
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private MonoBehaviour playerMovement;
         [SerializeField] private FPTSim.Player.Interactor playerInteractor;
+        [SerializeField] private DialogueRunner dialogueRunner;
+        [SerializeField] private CampusMinigameRenderHost minigameHost;
 
         private enum PendingAction
         {
@@ -49,11 +53,12 @@ namespace FPTSim.UI
         }
 
         private PendingAction pendingAction;
-        private bool useOnGuiConfirm;
 
         private void Awake()
         {
             AutoBindActionButtons();
+            AutoBindConfirmationUI();
+            TryAutoBindStateRefs();
 
             if (audioTabButton) audioTabButton.onClick.AddListener(() => ShowTab("audio"));
             if (controlsTabButton) controlsTabButton.onClick.AddListener(() => ShowTab("controls"));
@@ -67,8 +72,6 @@ namespace FPTSim.UI
 
             if (settingsRoot) settingsRoot.SetActive(false);
             if (confirmRoot) confirmRoot.SetActive(false);
-
-            useOnGuiConfirm = confirmRoot == null;
         }
 
         public bool IsOpen => settingsRoot != null && settingsRoot.activeSelf;
@@ -77,11 +80,8 @@ namespace FPTSim.UI
         {
             if (settingsRoot) settingsRoot.SetActive(true);
 
-            // m?c d?nh m? Audio
             ShowTab("audio");
-
-            // khóa gameplay + hi?n chu?t
-            LockGameplay(true);
+            ApplyOverlayLock();
         }
 
         public void Close()
@@ -89,11 +89,9 @@ namespace FPTSim.UI
             CancelConfirmation();
             if (settingsRoot) settingsRoot.SetActive(false);
 
-            // m? l?i gameplay + khóa chu?t
-            LockGameplay(false);
+            RestoreGameplayState();
         }
 
-        // Expose for Button OnClick in Inspector
         public void OnMainMenuClicked()
         {
             ShowConfirmation(
@@ -103,7 +101,6 @@ namespace FPTSim.UI
             );
         }
 
-        // Expose for Button OnClick in Inspector
         public void OnQuitClicked()
         {
             ShowConfirmation(
@@ -122,11 +119,18 @@ namespace FPTSim.UI
 
         private void ShowConfirmation(PendingAction action, string title, string message)
         {
+            if (!HasConfirmationUI())
+            {
+                Debug.LogWarning("[SettingsUIController] Missing confirmation panel UI. Create your own confirm panel and assign Yes/No buttons.");
+                pendingAction = PendingAction.None;
+                return;
+            }
+
             pendingAction = action;
 
             if (confirmTitleText) confirmTitleText.text = title;
             if (confirmMessageText) confirmMessageText.text = message;
-            if (confirmRoot) confirmRoot.SetActive(true);
+            confirmRoot.SetActive(true);
         }
 
         private void ConfirmActionInternal()
@@ -168,6 +172,28 @@ namespace FPTSim.UI
                 quitGameButton = FindButtonByNames("QuitButton", "BtnQuit", "ExitButton", "QuitGameButton");
         }
 
+        private void AutoBindConfirmationUI()
+        {
+            if (settingsRoot == null) return;
+
+            if (confirmRoot == null)
+                confirmRoot = FindChildByNames("ConfirmPanel", "ConfirmationPanel", "ConfirmRoot", "QuitConfirmPanel");
+
+            if (confirmRoot == null) return;
+
+            if (confirmYesButton == null)
+                confirmYesButton = FindButtonInRoot(confirmRoot, "YesButton", "BtnYes", "ConfirmYesButton", "Yes");
+
+            if (confirmNoButton == null)
+                confirmNoButton = FindButtonInRoot(confirmRoot, "NoButton", "BtnNo", "ConfirmNoButton", "No", "CancelButton");
+
+            if (confirmTitleText == null)
+                confirmTitleText = FindTextInRoot(confirmRoot, "TitleText", "ConfirmTitle", "HeaderText", "Title");
+
+            if (confirmMessageText == null)
+                confirmMessageText = FindTextInRoot(confirmRoot, "MessageText", "ConfirmMessage", "BodyText", "Message");
+        }
+
         private Button FindButtonByNames(params string[] names)
         {
             Button[] buttons = settingsRoot.GetComponentsInChildren<Button>(true);
@@ -183,38 +209,99 @@ namespace FPTSim.UI
             return null;
         }
 
-        private void LockGameplay(bool locked)
+        private GameObject FindChildByNames(params string[] names)
         {
-            // locked=true => m? chu?t + t?t movement/interact
-            if (mouseLook) mouseLook.LockCursor(!locked);
-            if (playerMovement) playerMovement.enabled = !locked;
-            if (playerInteractor) playerInteractor.enabled = !locked;
+            Transform[] transforms = settingsRoot.GetComponentsInChildren<Transform>(true);
+            for (int i = 0; i < transforms.Length; i++)
+            {
+                string objectName = transforms[i].name;
+                for (int j = 0; j < names.Length; j++)
+                {
+                    if (objectName.Equals(names[j], System.StringComparison.OrdinalIgnoreCase))
+                        return transforms[i].gameObject;
+                }
+            }
+            return null;
         }
 
-        private void OnGUI()
+        private Button FindButtonInRoot(GameObject root, params string[] names)
         {
-            if (!useOnGuiConfirm || !IsOpen || pendingAction == PendingAction.None)
+            if (root == null) return null;
+
+            Button[] buttons = root.GetComponentsInChildren<Button>(true);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                string buttonName = buttons[i].name;
+                for (int j = 0; j < names.Length; j++)
+                {
+                    if (buttonName.Equals(names[j], System.StringComparison.OrdinalIgnoreCase))
+                        return buttons[i];
+                }
+            }
+
+            return null;
+        }
+
+        private TMP_Text FindTextInRoot(GameObject root, params string[] names)
+        {
+            if (root == null) return null;
+
+            TMP_Text[] texts = root.GetComponentsInChildren<TMP_Text>(true);
+            for (int i = 0; i < texts.Length; i++)
+            {
+                string textName = texts[i].name;
+                for (int j = 0; j < names.Length; j++)
+                {
+                    if (textName.Equals(names[j], System.StringComparison.OrdinalIgnoreCase))
+                        return texts[i];
+                }
+            }
+
+            return null;
+        }
+
+        private bool HasConfirmationUI()
+        {
+            return confirmRoot != null &&
+                   confirmYesButton != null &&
+                   confirmNoButton != null;
+        }
+
+        private void TryAutoBindStateRefs()
+        {
+            if (dialogueRunner == null)
+                dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+
+            if (minigameHost == null)
+                minigameHost = FindFirstObjectByType<CampusMinigameRenderHost>();
+        }
+
+        private void ApplyOverlayLock()
+        {
+            if (mouseLook) mouseLook.LockCursor(false);
+            if (playerMovement) playerMovement.enabled = false;
+            if (playerInteractor) playerInteractor.enabled = false;
+        }
+
+        private void RestoreGameplayState()
+        {
+            TryAutoBindStateRefs();
+
+            if (IsOverlayGameplayModeActive())
+            {
+                ApplyOverlayLock();
                 return;
+            }
 
-            const int width = 420;
-            const int height = 160;
-            Rect rect = new Rect(
-                (Screen.width - width) * 0.5f,
-                (Screen.height - height) * 0.5f,
-                width,
-                height
-            );
+            if (mouseLook) mouseLook.LockCursor(true);
+            if (playerMovement) playerMovement.enabled = true;
+            if (playerInteractor) playerInteractor.enabled = true;
+        }
 
-            GUILayout.BeginArea(rect, GUI.skin.window);
-            GUILayout.Label(pendingAction == PendingAction.MainMenu
-                ? "Return to Main Menu?"
-                : "Quit game?");
-            GUILayout.Space(16);
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Yes", GUILayout.Height(32))) ConfirmActionInternal();
-            if (GUILayout.Button("No", GUILayout.Height(32))) CancelConfirmation();
-            GUILayout.EndHorizontal();
-            GUILayout.EndArea();
+        private bool IsOverlayGameplayModeActive()
+        {
+            return (dialogueRunner != null && dialogueRunner.IsRunning) ||
+                   (minigameHost != null && minigameHost.IsRunning);
         }
 
         private void OnDestroy()

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace FPTSim.Player
@@ -54,6 +54,14 @@ namespace FPTSim.Player
             if (cc.isGrounded && velocity.y < 0) velocity.y = -2f;
             velocity.y += gravity * Time.deltaTime;
             cc.Move(velocity * Time.deltaTime);
+        }
+
+        private void OnDisable()
+        {
+            velocity = Vector3.zero;
+
+            if (animator != null)
+                animator.SetFloat("Speed", 0f);
         }
     }
 }
