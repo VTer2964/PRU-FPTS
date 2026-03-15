@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: NPC B2 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "Sinh vi\xEAn n\u0103m 4"
-  text: "N\u0103m nay tr\u01B0\u1EDDng t\u1ED5 ch\u1EE9c ho\xE0nh tr\xE1ng th\u1EADt
-    \u0111\xF3!"
+  speakerName: "V\u0169"
+  text: "C\xF3 ph\u1EA3i c\xF4 b\xE9 l\xF9n l\xF9n mang v\xE1y \u0111en kh\xF4ng?"
   choices: []
   autoAdvance: 1
-  nextAuto: {fileID: 0}
+  nextAuto: {fileID: 11400000, guid: 8906156cd5184744f98b7ee1e0708ac4, type: 2}
   triggerAction: 0
   actionType: 0
   actionParam: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC G7 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC G7
+  speakerName: "Sinh vi\xEAn n\u0103m 3"
   text: "Ch\xE0o anh B\u1EA1n \u0110\u1EB9p trai"
   choices: []
   autoAdvance: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC B1 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC B1
+  speakerName: 'Fan '
   text: "Roses \u0111ang bi\u1EC5u di\u1EC5n k\xECa"
   choices: []
   autoAdvance: 1

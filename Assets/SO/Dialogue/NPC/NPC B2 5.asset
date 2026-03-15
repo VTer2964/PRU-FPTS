@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: NPC B2 5
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "Sinh vi\xEAn n\u0103m 4"
-  text: "N\u0103m nay tr\u01B0\u1EDDng t\u1ED5 ch\u1EE9c ho\xE0nh tr\xE1ng th\u1EADt
-    \u0111\xF3!"
+  speakerName: Anh Trai
+  text: "T\u1EDB c\u1EA3m \u01A1n nh\xE9!"
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

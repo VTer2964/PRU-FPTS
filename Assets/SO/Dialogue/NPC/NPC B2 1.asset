@@ -24,7 +24,7 @@ MonoBehaviour:
     conditionValue: 0
   - text: "C\xF3 ph\u1EA3i c\xF4 b\xE9 v\xE1y \u0111en l\xF9n l\xF9n c\u1EE1 n\xE0y
       hong! "
-    next: {fileID: 0}
+    next: {fileID: 11400000, guid: f0ca69f54fb2e2f4f87cea063a705c63, type: 2}
     requireCondition: 0
     conditionKey: 
     conditionValue: 0

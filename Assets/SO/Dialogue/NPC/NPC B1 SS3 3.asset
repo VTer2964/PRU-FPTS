@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC B1 SS3 3
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC B1 SS3
+  speakerName: "\u0110\u1EA1i Ca H\u1ECDc \u0110\u01B0\u1EDDng"
   text: "C\xFAt m\xE0y "
   choices: []
   autoAdvance: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC G8 2
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC G8
+  speakerName: "Sinh vi\xEAn Campus HN"
   text: "Bi\u1EBFt th\u1EBF h\u1ECDc \u1EDF H\xE0 N\u1ED9i cho s\u01B0\u1EDBng"
   choices: []
   autoAdvance: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC G9 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC G9
+  speakerName: "H\u1ECDc sinh c\u1EA5p 3"
   text: "Tr\xE1nh xa tao ra, th\u1EB1ng WIBU d\u01A1 b\u1EA9n n\xE0y !!!!!!!!!!!!!!!!"
   choices: []
   autoAdvance: 1
