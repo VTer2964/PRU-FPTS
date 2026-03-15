@@ -59,6 +59,9 @@ namespace CountryGuessGame.Managers
             // Hide panels initially
             if (resultPanel != null) resultPanel.SetActive(false);
             if (pausePanel != null) pausePanel.SetActive(false);
+
+            // Hide level text - not used in FPTSim integration
+            if (levelText != null) levelText.gameObject.SetActive(false);
         }
 
         private void SetupButtons()
@@ -100,7 +103,9 @@ namespace CountryGuessGame.Managers
         {
             if (scoreText != null)
             {
-                scoreText.text = $"Score: {score}";
+                scoreText.text =
+                    $"<size=14><color=#88AADD>DIEM SO</color></size>\n" +
+                    $"<size=28><b><color=#FFD700>{score}</color></b></size>";
             }
         }
 
@@ -111,7 +116,10 @@ namespace CountryGuessGame.Managers
         {
             if (questionCounterText != null)
             {
-                questionCounterText.text = $"Question {currentQuestion}/{totalQuestions}";
+                questionCounterText.text =
+                    $"<size=14><color=#88AADD>CAU HOI</color></size>\n" +
+                    $"<size=26><b>{currentQuestion}</b>" +
+                    $"<color=#667799>/{totalQuestions}</color></size>";
             }
         }
 

@@ -14,10 +14,10 @@ namespace CountryGuessGame.Core
         [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI buttonText;
 
-        [Header("Colors")]
-        [SerializeField] private Color normalColor = Color.white;
-        [SerializeField] private Color correctColor = Color.green;
-        [SerializeField] private Color wrongColor = Color.red;
+        // Colors are hardcoded to prevent Inspector overrides causing wrong button colors
+        private readonly Color normalColor  = new Color(0.13f, 0.35f, 0.70f, 1f);   // vivid blue
+        private readonly Color correctColor = new Color(0.12f, 0.76f, 0.32f, 1f);   // green
+        private readonly Color wrongColor   = new Color(0.84f, 0.18f, 0.18f, 1f);   // red
 
         private bool isCorrectAnswer = false;
         private System.Action<bool> onAnswerSelected;
@@ -35,7 +35,14 @@ namespace CountryGuessGame.Core
                 buttonText = GetComponentInChildren<TextMeshProUGUI>();
             }
 
-            buttonImage = GetComponent<Image>();
+            buttonImage = button.targetGraphic as Image;
+            if (buttonImage == null) buttonImage = GetComponentInChildren<Image>();
+
+            // Disable Button's built-in ColorTint transition so it never fights with our manual color management
+            button.transition = Selectable.Transition.None;
+
+            // Reset to normal color
+            if (buttonImage != null) buttonImage.color = normalColor;
 
             // Add click listener
             button.onClick.AddListener(OnButtonClicked);
@@ -128,6 +135,29 @@ namespace CountryGuessGame.Core
         public void DisableButton()
         {
             button.interactable = false;
+        }
+
+        /// <summary>
+        /// Highlight/unhighlight this button as the keyboard cursor selection.
+        /// </summary>
+        public void SetCursorHighlight(bool on)
+        {
+            if (buttonImage == null || !button.interactable) return;
+
+            buttonImage.color = on ? new Color(1f, 0.80f, 0.10f, 1f) : normalColor; // gold / normal blue
+
+            // Bold text khi được chọn bằng bàn phím
+            if (buttonText != null)
+                buttonText.fontStyle = on ? TMPro.FontStyles.Bold : TMPro.FontStyles.Normal;
+        }
+
+        /// <summary>
+        /// Simulate a button click via keyboard (only fires if interactable).
+        /// </summary>
+        public void SimulateClick()
+        {
+            if (button != null && button.interactable)
+                button.onClick.Invoke();
         }
     }
 }

@@ -167,6 +167,23 @@ namespace CaroGame
             }
         }
 
+        // ── Keyboard Navigation API ────────────────────────────────────────────
+
+        /// <summary>Programmatically fire a cell click (keyboard navigation).</summary>
+        public void SimulateCellClick(int row, int col)
+        {
+            if (!IsInBounds(row, col)) return;
+            HandleCellClicked(new Vector2Int(row, col));
+        }
+
+        /// <summary>Show/hide cursor highlight on a cell (keyboard navigation).</summary>
+        public void SetCursorHighlight(int row, int col, bool on)
+        {
+            if (!IsInBounds(row, col) || cells == null) return;
+            if (cells[row, col] != null)
+                cells[row, col].SetHighlight(on);
+        }
+
         private void OnDestroy()
         {
             if (cells == null) return;
