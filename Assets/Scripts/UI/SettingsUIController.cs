@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -53,6 +54,13 @@ namespace FPTSim.UI
         }
 
         private PendingAction pendingAction;
+        private readonly List<Selectable> disabledSelectablesWhileConfirmOpen = new List<Selectable>();
+        private readonly Dictionary<Selectable, bool> selectableInteractableStates = new Dictionary<Selectable, bool>();
+        private bool pauseApplied;
+        private float previousTimeScale = 1f;
+
+        public bool IsOpen => settingsRoot != null && settingsRoot.activeSelf;
+        public bool IsConfirmationOpen => confirmRoot != null && confirmRoot.activeSelf;
 
         private void Awake()
         {
@@ -74,26 +82,36 @@ namespace FPTSim.UI
             if (confirmRoot) confirmRoot.SetActive(false);
         }
 
-        public bool IsOpen => settingsRoot != null && settingsRoot.activeSelf;
-
         public void Open()
         {
+            if (IsOpen) return;
+
             if (settingsRoot) settingsRoot.SetActive(true);
 
+            pendingAction = PendingAction.None;
+            RestoreSelectablesAfterConfirmation();
+            if (confirmRoot) confirmRoot.SetActive(false);
+
             ShowTab("audio");
+            ApplyPause();
             ApplyOverlayLock();
         }
 
         public void Close()
         {
-            CancelConfirmation();
+            if (!IsOpen) return;
+            if (IsConfirmationOpen) return;
+
             if (settingsRoot) settingsRoot.SetActive(false);
 
+            ReleasePause();
             RestoreGameplayState();
         }
 
         public void OnMainMenuClicked()
         {
+            if (IsConfirmationOpen) return;
+
             ShowConfirmation(
                 PendingAction.MainMenu,
                 "Confirm Main Menu",
@@ -103,6 +121,8 @@ namespace FPTSim.UI
 
         public void OnQuitClicked()
         {
+            if (IsConfirmationOpen) return;
+
             ShowConfirmation(
                 PendingAction.Quit,
                 "Confirm Quit",
@@ -112,6 +132,8 @@ namespace FPTSim.UI
 
         private void ShowTab(string tab)
         {
+            if (IsConfirmationOpen) return;
+
             if (audioPanel) audioPanel.SetActive(tab == "audio");
             if (controlsPanel) controlsPanel.SetActive(tab == "controls");
             if (helpPanel) helpPanel.SetActive(tab == "help");
@@ -130,6 +152,8 @@ namespace FPTSim.UI
 
             if (confirmTitleText) confirmTitleText.text = title;
             if (confirmMessageText) confirmMessageText.text = message;
+
+            DisableOtherSelectablesForConfirmation();
             confirmRoot.SetActive(true);
         }
 
@@ -137,10 +161,10 @@ namespace FPTSim.UI
         {
             PendingAction action = pendingAction;
             CancelConfirmation();
+            ReleasePause();
 
             if (action == PendingAction.MainMenu)
             {
-                Time.timeScale = 1f;
                 SceneManager.LoadScene(mainMenuSceneName);
                 return;
             }
@@ -159,6 +183,7 @@ namespace FPTSim.UI
         {
             pendingAction = PendingAction.None;
             if (confirmRoot) confirmRoot.SetActive(false);
+            RestoreSelectablesAfterConfirmation();
         }
 
         private void AutoBindActionButtons()
@@ -283,6 +308,65 @@ namespace FPTSim.UI
             if (playerInteractor) playerInteractor.enabled = false;
         }
 
+        private void ApplyPause()
+        {
+            if (pauseApplied) return;
+
+            previousTimeScale = Time.timeScale;
+            Time.timeScale = 0f;
+            pauseApplied = true;
+        }
+
+        private void ReleasePause()
+        {
+            if (!pauseApplied) return;
+
+            Time.timeScale = previousTimeScale;
+            previousTimeScale = 1f;
+            pauseApplied = false;
+        }
+
+        private void DisableOtherSelectablesForConfirmation()
+        {
+            if (settingsRoot == null) return;
+
+            RestoreSelectablesAfterConfirmation();
+
+            Selectable[] selectables = settingsRoot.GetComponentsInChildren<Selectable>(true);
+            for (int i = 0; i < selectables.Length; i++)
+            {
+                Selectable selectable = selectables[i];
+                if (selectable == null) continue;
+                if (IsConfirmationSelectable(selectable)) continue;
+
+                disabledSelectablesWhileConfirmOpen.Add(selectable);
+                selectableInteractableStates[selectable] = selectable.interactable;
+                selectable.interactable = false;
+            }
+        }
+
+        private void RestoreSelectablesAfterConfirmation()
+        {
+            for (int i = 0; i < disabledSelectablesWhileConfirmOpen.Count; i++)
+            {
+                Selectable selectable = disabledSelectablesWhileConfirmOpen[i];
+                if (selectable == null) continue;
+
+                if (selectableInteractableStates.TryGetValue(selectable, out bool wasInteractable))
+                    selectable.interactable = wasInteractable;
+            }
+
+            disabledSelectablesWhileConfirmOpen.Clear();
+            selectableInteractableStates.Clear();
+        }
+
+        private bool IsConfirmationSelectable(Selectable selectable)
+        {
+            return confirmRoot != null &&
+                   selectable != null &&
+                   selectable.transform.IsChildOf(confirmRoot.transform);
+        }
+
         private void RestoreGameplayState()
         {
             TryAutoBindStateRefs();
@@ -306,6 +390,9 @@ namespace FPTSim.UI
 
         private void OnDestroy()
         {
+            ReleasePause();
+            RestoreSelectablesAfterConfirmation();
+
             if (mainMenuButton) mainMenuButton.onClick.RemoveListener(OnMainMenuClicked);
             if (quitGameButton) quitGameButton.onClick.RemoveListener(OnQuitClicked);
             if (confirmYesButton) confirmYesButton.onClick.RemoveListener(ConfirmActionInternal);
