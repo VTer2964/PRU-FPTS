@@ -3587,21 +3587,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.UI.SettingsUIController
   settingsRoot: {fileID: 5442128807350721986}
-  audioTabButton: {fileID: 0}
-  controlsTabButton: {fileID: 0}
-  helpTabButton: {fileID: 0}
-  audioPanel: {fileID: 0}
-  controlsPanel: {fileID: 0}
-  helpPanel: {fileID: 0}
-  closeButton: {fileID: 0}
-  mainMenuButton: {fileID: 0}
-  quitGameButton: {fileID: 0}
+  audioTabButton: {fileID: 877275807663765553}
+  controlsTabButton: {fileID: 3248984142809817504}
+  helpTabButton: {fileID: 1729809285205206415}
+  audioPanel: {fileID: 295150745441944386}
+  controlsPanel: {fileID: 4831591014451895794}
+  helpPanel: {fileID: 3934523336544696266}
+  closeButton: {fileID: 6329231275832923327}
+  mainMenuButton: {fileID: 8719535154672555863}
+  quitGameButton: {fileID: 7385829987962316282}
   mainMenuSceneName: MainMenu
   confirmRoot: {fileID: 2184723527007683162}
   confirmTitleText: {fileID: 0}
   confirmMessageText: {fileID: 0}
-  confirmYesButton: {fileID: 0}
-  confirmNoButton: {fileID: 0}
+  confirmYesButton: {fileID: 7590798203522724294}
+  confirmNoButton: {fileID: 6140121522507812764}
   mouseLook: {fileID: 0}
   playerMovement: {fileID: 0}
   playerInteractor: {fileID: 0}
