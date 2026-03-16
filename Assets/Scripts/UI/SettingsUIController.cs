@@ -114,7 +114,7 @@ namespace FPTSim.UI
 
             ShowConfirmation(
                 PendingAction.MainMenu,
-                "Confirm Main Menu",
+                "Bạn có chắc trở về màn hình chính không?",
                 "Are you sure you want to return to Main Menu?"
             );
         }
@@ -125,7 +125,7 @@ namespace FPTSim.UI
 
             ShowConfirmation(
                 PendingAction.Quit,
-                "Confirm Quit",
+                "Bạn có chắc muốn thoát game không?",
                 "Are you sure you want to quit the game?"
             );
         }
