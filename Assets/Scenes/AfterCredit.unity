@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.UI.AfterCreditController
   creditsTransform: {fileID: 1426529455}
-  scrollSpeed: 30
+  scrollSpeed: 60
   endY: 1200
   fallbackReturnTime: 60
 --- !u!4 &254614463
@@ -389,8 +389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -630, y: -1}
-  m_SizeDelta: {x: 668.0569, y: 1080}
+  m_AnchoredPosition: {x: -2.0125, y: -8.1528}
+  m_SizeDelta: {x: 1924, y: 1094.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352099586
 MonoBehaviour:
@@ -610,7 +610,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426529454}
   m_LocalRotation: {x: -0.0011447198, y: -0.19539893, z: -0.0016438309, w: 0.9807219}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -618,7 +618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.165, y: -22.536, z: -0.159}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -852}
+  m_AnchoredPosition: {x: -245, y: -856}
   m_SizeDelta: {x: 656.6125, y: 595.3889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426529456
@@ -676,8 +676,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -558.6243, w: -62.702545}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

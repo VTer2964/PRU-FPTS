@@ -2711,15 +2711,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a8292d7c3170a7348accf3d85c0e7359, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ebf9e47b2a26f544aa2fa9cb3a11190b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.01
 --- !u!114 &5357683514816644694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2794,10 @@ PrefabInstance:
     - target: {fileID: 362497100639128763, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_SizeDelta.y
       value: 59.0924
+      objectReference: {fileID: 0}
+    - target: {fileID: 362497100639128763, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1915625
       objectReference: {fileID: 0}
     - target: {fileID: 362497100639128763, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2908,24 +2912,28 @@ PrefabInstance:
       value: ChoiceButtonPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a8292d7c3170a7348accf3d85c0e7359, type: 3}
+      objectReference: {fileID: 21300000, guid: ebf9e47b2a26f544aa2fa9cb3a11190b, type: 3}
     - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6437927526192403197, guid: bcea4095b5b32b844bfe8eef77c2df96, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
