@@ -25,6 +25,10 @@ namespace FPTSim.Audio
 
         private AudioSource audioSource;
         private int currentIndex = -1;
+        private bool systemPaused;
+        private bool stopRequested;
+
+        public AudioSource ManagedAudioSource => audioSource;
 
         private void Awake()
         {
@@ -45,15 +49,18 @@ namespace FPTSim.Audio
 
         private void Start()
         {
-            if (playOnStart)
-            {
+            if (!playOnStart || playlist == null || playlist.Length == 0) return;
+
+            if (randomStartTrack || playlist.Length == 1)
                 PlayNextRandom();
-            }
+            else
+                PlayTrackAtIndex(0);
         }
 
         private void Update()
         {
             if (playlist == null || playlist.Length == 0) return;
+            if (systemPaused || stopRequested) return;
 
             if (!audioSource.isPlaying)
             {
@@ -67,17 +74,13 @@ namespace FPTSim.Audio
             if (playlist == null || playlist.Length == 0) return;
 
             int nextIndex = GetNextRandomIndex();
-            currentIndex = nextIndex;
-
-            AudioClip clip = playlist[currentIndex];
-            if (clip == null) return;
-
-            audioSource.clip = clip;
-            audioSource.Play();
+            PlayTrackAtIndex(nextIndex);
         }
 
         public void StopMusic()
         {
+            stopRequested = true;
+            systemPaused = false;
             if (audioSource != null)
                 audioSource.Stop();
         }
@@ -85,12 +88,21 @@ namespace FPTSim.Audio
         public void PauseMusic()
         {
             if (audioSource != null)
+            {
+                systemPaused = true;
                 audioSource.Pause();
+            }
         }
 
         public void ResumeMusic()
         {
-            if (audioSource != null && !audioSource.isPlaying)
+            if (audioSource == null) return;
+
+            stopRequested = false;
+            if (!systemPaused) return;
+
+            systemPaused = false;
+            if (audioSource.clip != null)
                 audioSource.UnPause();
         }
 
@@ -112,6 +124,22 @@ namespace FPTSim.Audio
                 next = (next + 1) % playlist.Length;
 
             return next;
+        }
+
+        private void PlayTrackAtIndex(int index)
+        {
+            if (playlist == null || playlist.Length == 0) return;
+            if (index < 0 || index >= playlist.Length) return;
+
+            currentIndex = index;
+            stopRequested = false;
+            systemPaused = false;
+
+            AudioClip clip = playlist[currentIndex];
+            if (clip == null) return;
+
+            audioSource.clip = clip;
+            audioSource.Play();
         }
 
 #if UNITY_EDITOR

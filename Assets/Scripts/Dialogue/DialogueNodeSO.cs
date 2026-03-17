@@ -32,6 +32,10 @@ namespace FPTSim.Dialogue
         [TextArea(3, 8)]
         public string text;
 
+        [Header("Voice Over (optional)")]
+        public AudioClip voiceClip;
+        [Range(0f, 1f)] public float voiceVolume = 1f;
+
         [Header("Choices (Nếu có choices thì bắt buộc chọn)")]
         public DialogueChoice[] choices;
 

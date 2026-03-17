@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -33,6 +34,8 @@ namespace FPTSim.Dialogue
         private bool allowManualExit = true;
         private bool forceAutoAdvanceWithoutInput;
         private float forcedAdvanceTimer = -1f;
+        private readonly List<AudioSource> pausedSceneAudioSources = new List<AudioSource>();
+        private readonly List<FPTSim.Audio.BandMusicPlayer> pausedBandMusicPlayers = new List<FPTSim.Audio.BandMusicPlayer>();
 
         public bool IsRunning => currentGraph != null;
 
@@ -61,6 +64,8 @@ namespace FPTSim.Dialogue
 
             ui.Open(OnChoiceSelected, StopDialogue, allowManualExit);
             LockPlayer(true);
+            FPTSim.Audio.AudioManager.I?.PushEnvironmentMute();
+            PauseSceneLocalAudio();
 
             ShowNode(currentNode);
         }
@@ -210,6 +215,8 @@ namespace FPTSim.Dialogue
 
             ui.Close();
             LockPlayer(false);
+            ResumeSceneLocalAudio();
+            FPTSim.Audio.AudioManager.I?.PopEnvironmentMute();
 
             camCtrl?.Clear();
 
@@ -228,6 +235,61 @@ namespace FPTSim.Dialogue
             if (mouseLook) mouseLook.LockCursor(!talking);
             if (playerMovement) playerMovement.enabled = !talking;
             if (playerInteractor) playerInteractor.enabled = !talking;
+        }
+
+        private void PauseSceneLocalAudio()
+        {
+            pausedSceneAudioSources.Clear();
+            pausedBandMusicPlayers.Clear();
+
+            var audioManager = FPTSim.Audio.AudioManager.I;
+            var handledSourceIds = new HashSet<int>();
+            var bandPlayers = FindObjectsByType<FPTSim.Audio.BandMusicPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var player in bandPlayers)
+            {
+                if (player == null) continue;
+
+                var src = player.ManagedAudioSource;
+                if (src != null)
+                    handledSourceIds.Add(src.GetInstanceID());
+
+                if (src == null || (!src.isPlaying && src.time <= 0f)) continue;
+
+                player.PauseMusic();
+                pausedBandMusicPlayers.Add(player);
+            }
+
+            var allSources = FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var src in allSources)
+            {
+                if (src == null || !src.isPlaying) continue;
+                if (audioManager != null && src.transform.IsChildOf(audioManager.transform)) continue;
+                if (handledSourceIds.Contains(src.GetInstanceID())) continue;
+
+                pausedSceneAudioSources.Add(src);
+                src.Pause();
+            }
+        }
+
+        private void ResumeSceneLocalAudio()
+        {
+            foreach (var player in pausedBandMusicPlayers)
+            {
+                if (player == null) continue;
+                player.ResumeMusic();
+            }
+
+            pausedBandMusicPlayers.Clear();
+
+            foreach (var src in pausedSceneAudioSources)
+            {
+                if (src == null) continue;
+                if (src.isPlaying) continue;
+                if (src.clip == null) continue;
+                src.UnPause();
+            }
+
+            pausedSceneAudioSources.Clear();
         }
 
         private void ExecuteAction(DialogueNodeSO node)

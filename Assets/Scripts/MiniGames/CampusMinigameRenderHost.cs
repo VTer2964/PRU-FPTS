@@ -38,7 +38,11 @@ namespace FPTSim.Minigames
         private string loadedMinigameScene;
         private bool transitionBusy;
         private Transform activePlayerTransform;
+        private FPTSim.Audio.AudioManager.AudioSourceState campusMusicState;
+        private FPTSim.Audio.AudioManager.AudioSourceState campusAmbientState;
         private readonly HashSet<int> playingAudioBeforeMinigame = new HashSet<int>();
+        private readonly List<AudioSource> pausedCampusAudioSources = new List<AudioSource>();
+        private readonly List<FPTSim.Audio.BandMusicPlayer> pausedBandMusicPlayers = new List<FPTSim.Audio.BandMusicPlayer>();
 
         public bool IsRunning => !string.IsNullOrWhiteSpace(loadedMinigameScene);
 
@@ -99,6 +103,8 @@ namespace FPTSim.Minigames
         {
             transitionBusy = true;
             CapturePlayingAudioSnapshot();
+            CaptureCampusEnvironmentState();
+            PauseCampusAudioSources();
             SetTabletVisible(true);
             RotatePlayerTowardTablet();
             SetPlayerLock(true);
@@ -108,6 +114,8 @@ namespace FPTSim.Minigames
             if (loadOp == null)
             {
                 Debug.LogError($"[CampusMinigameRenderHost] Cannot load minigame scene '{sceneName}'.");
+                RestoreCampusEnvironmentState();
+                ResumeCampusAudioSources();
                 RestoreCampusCamera();
                 SetTabletVisible(false);
                 SetPlayerLock(false);
@@ -139,6 +147,8 @@ namespace FPTSim.Minigames
             }
 
             StopNewAudioStartedDuringMinigame();
+            RestoreCampusEnvironmentState();
+            ResumeCampusAudioSources();
 
             loadedMinigameScene = null;
             activePlayerTransform = null;
@@ -302,6 +312,24 @@ namespace FPTSim.Minigames
             }
         }
 
+        private void CaptureCampusEnvironmentState()
+        {
+            if (FPTSim.Audio.AudioManager.I == null) return;
+
+            campusMusicState = FPTSim.Audio.AudioManager.I.CaptureMusicState();
+            campusAmbientState = FPTSim.Audio.AudioManager.I.CaptureAmbientState();
+            FPTSim.Audio.AudioManager.I.StopMusic();
+            FPTSim.Audio.AudioManager.I.StopAmbient();
+        }
+
+        private void RestoreCampusEnvironmentState()
+        {
+            if (FPTSim.Audio.AudioManager.I == null) return;
+
+            FPTSim.Audio.AudioManager.I.RestoreMusicState(campusMusicState);
+            FPTSim.Audio.AudioManager.I.RestoreAmbientState(campusAmbientState);
+        }
+
         private void StopAllAudioSourcesInScene(Scene scene)
         {
             if (!scene.IsValid() || !scene.isLoaded) return;
@@ -331,6 +359,61 @@ namespace FPTSim.Minigames
             }
 
             playingAudioBeforeMinigame.Clear();
+        }
+
+        private void PauseCampusAudioSources()
+        {
+            pausedCampusAudioSources.Clear();
+            pausedBandMusicPlayers.Clear();
+
+            var audioManager = FPTSim.Audio.AudioManager.I;
+            var handledSourceIds = new HashSet<int>();
+            var bandPlayers = FindObjectsByType<FPTSim.Audio.BandMusicPlayer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var player in bandPlayers)
+            {
+                if (player == null) continue;
+
+                var src = player.ManagedAudioSource;
+                if (src != null)
+                    handledSourceIds.Add(src.GetInstanceID());
+
+                if (src == null || (!src.isPlaying && src.time <= 0f)) continue;
+
+                player.PauseMusic();
+                pausedBandMusicPlayers.Add(player);
+            }
+
+            var allSources = FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var src in allSources)
+            {
+                if (src == null || !src.isPlaying) continue;
+                if (audioManager != null && src.transform.IsChildOf(audioManager.transform)) continue;
+                if (handledSourceIds.Contains(src.GetInstanceID())) continue;
+
+                pausedCampusAudioSources.Add(src);
+                src.Pause();
+            }
+        }
+
+        private void ResumeCampusAudioSources()
+        {
+            foreach (var player in pausedBandMusicPlayers)
+            {
+                if (player == null) continue;
+                player.ResumeMusic();
+            }
+
+            pausedBandMusicPlayers.Clear();
+
+            foreach (var src in pausedCampusAudioSources)
+            {
+                if (src == null) continue;
+                if (src.isPlaying) continue;
+                if (src.clip == null) continue;
+                src.UnPause();
+            }
+
+            pausedCampusAudioSources.Clear();
         }
 
         private void SetTabletVisible(bool visible)

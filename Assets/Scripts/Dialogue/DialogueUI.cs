@@ -89,6 +89,7 @@ namespace FPTSim.UI
         public void Close()
         {
             StopTypingImmediate();
+            StopVoice();
 
             if (panel) panel.SetActive(false);
             if (exitButton)
@@ -110,6 +111,7 @@ namespace FPTSim.UI
             if (node == null) return;
 
             currentNode = node;
+            StopVoice();
 
             if (speakerText) speakerText.text = node.speakerName;
 
@@ -120,6 +122,7 @@ namespace FPTSim.UI
             if (typingRoutine != null)
                 StopCoroutine(typingRoutine);
 
+            PlayVoice(node);
             typingRoutine = StartCoroutine(TypeTextRoutine(fullText));
         }
 
@@ -151,6 +154,7 @@ namespace FPTSim.UI
         {
             isTyping = true;
             typingSoundTimer = 0f;
+            bool useTypingClip = currentNode == null || currentNode.voiceClip == null;
 
             if (bodyText) bodyText.text = "";
 
@@ -160,7 +164,7 @@ namespace FPTSim.UI
             {
                 if (bodyText) bodyText.text += text[i];
 
-                if (!char.IsWhiteSpace(text[i]) && typingClip && AudioManager.I != null)
+                if (useTypingClip && !char.IsWhiteSpace(text[i]) && typingClip && AudioManager.I != null)
                 {
                     if (typingSoundTimer <= 0f)
                     {
@@ -234,6 +238,18 @@ namespace FPTSim.UI
 
             for (int i = choicesRoot.childCount - 1; i >= 0; i--)
                 Destroy(choicesRoot.GetChild(i).gameObject);
+        }
+
+        private void PlayVoice(DialogueNodeSO node)
+        {
+            if (node == null || node.voiceClip == null || AudioManager.I == null) return;
+            AudioManager.I.PlayDialogueVoice(node.voiceClip, node.voiceVolume);
+        }
+
+        private void StopVoice()
+        {
+            if (AudioManager.I == null) return;
+            AudioManager.I.StopDialogueVoice();
         }
     }
 }

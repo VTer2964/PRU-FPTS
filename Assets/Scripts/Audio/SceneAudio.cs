@@ -31,7 +31,7 @@ namespace FPTSim.Audio
             if (playAmbientOnStart)
             {
                 if (ambient != null) AudioManager.I.PlayAmbient(ambient, 1f, true);
-                else if (stopAmbientIfNull) AudioManager.I.PlayAmbient(null); // không dùng thì bỏ
+                else if (stopAmbientIfNull) AudioManager.I.StopAmbient();
             }
         }
     }
