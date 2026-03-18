@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
   text: " 60 gi\xE2y \u0111\u1ECBnh \u0111o\u1EA1t s\u1ED1 ph\u1EADn... B\u1EAET
     \u0110\u1EA6U!"
+  voiceClip: {fileID: 8300000, guid: d9cd7fb1be210fa428bee53e3576e6bd, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

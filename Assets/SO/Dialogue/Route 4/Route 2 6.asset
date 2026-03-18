@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Ch\xFA Lao C\xF4ng"
   text: "\u0110\u1ED1 ch\xE1u: FPT University c\xF3 bao nhi\xEAu c\u01A1 s\u1EDF
     tr\xEAn to\xE0n qu\u1ED1c?"
+  voiceClip: {fileID: 8300000, guid: 0ea240c7db1d23f41a98cf413fb6ec91, type: 3}
+  voiceVolume: 1
   choices:
   - text: "4 C\u01A1 s\u1EDF"
     next: {fileID: 11400000, guid: 23610ffb96e125e4d986aaad10a7c534, type: 2}

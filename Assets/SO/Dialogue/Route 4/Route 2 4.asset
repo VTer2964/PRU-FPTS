@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Mu\u1ED1n l\u1EA5y m\u1EADt kh\xE2\u1EE7 t\u1EEB ch\xFA th\xEC ph\u1EA3i
     tr\u1EA3 l\u1EDDi \u0111\xFAng c\xE2u h\u1ECFi n\xE0y th\xEC ch\xFA m\u1EDBi
     \u0111\u01B0a! Ch\xE1u \u0111\u1ED3ng \xFD kh\xF4ng?"
+  voiceClip: {fileID: 8300000, guid: 6a79c20ded6307a4d9942f3f9605e9e1, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d3a816b815e6e5345aa433db2abe8132, type: 2}

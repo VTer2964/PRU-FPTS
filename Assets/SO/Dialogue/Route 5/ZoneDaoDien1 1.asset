@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "\u0110\u1EA1o Di\u1EC5n"
   text: " Mic c\u1EE7a ch\u01B0\u01A1ng tr\xECnh b\u1ECB h\u01B0 r\u1ED3i."
+  voiceClip: {fileID: 8300000, guid: 4df48851b59995e44a614610f314a1c1, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

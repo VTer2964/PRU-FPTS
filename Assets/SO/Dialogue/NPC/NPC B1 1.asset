@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: 'Fan '
   text: "L\u1EB9 l\xEAn \xF4ng \u01A1i"
+  voiceClip: {fileID: 8300000, guid: f7a14a0a20ee45943a9da559f77f733d, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 80ebc83132ca12647bcb3bcf1792fba4, type: 2}

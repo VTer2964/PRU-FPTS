@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
   text: "C\xE1i g\xEC? \u0110\u1EBFn t\u1EADn \u0111\xE2y r\u1ED3i m\xE0 b\u1ECF
     cu\u1ED9c \xE1? Em \u0111\xF9a anh \u0111\u1EA5y \xE0? "
+  voiceClip: {fileID: 8300000, guid: e636e7ae2ed3779409a98e8fbf65aac6, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d34f7fb34ecb4a544a47e28e5ac1f564, type: 2}

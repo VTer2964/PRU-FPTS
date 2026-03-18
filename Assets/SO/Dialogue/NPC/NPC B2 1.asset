@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Anh Trai
   text: "C\u1EADu th\u1EA5y em g\xE1i t\xF4i \u0111\xE2u kh\xF4ng? M\u1EDBi quay
     \u0111i \u0111\xE3 ch\u1EA1y m\u1EA5t r\u1ED3i!"
+  voiceClip: {fileID: 8300000, guid: e8943c8d5accc194da2b1f543274b5ed, type: 3}
+  voiceVolume: 1
   choices:
   - text: "T\u1EDB kh\xF4ng bi\u1EBFt n\u1EEFa"
     next: {fileID: 0}

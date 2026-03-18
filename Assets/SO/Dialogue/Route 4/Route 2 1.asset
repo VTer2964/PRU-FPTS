@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 1
   speakerName: "V\u0169"
   text: "Ch\xFA \u01A1i! Ch\xFA cho con h\u1ECFi x\xEDu!"
+  voiceClip: {fileID: 8300000, guid: 09872a61a278fbc44b2fad9e035792c6, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 73ddae529011d50469a9817463998e23, type: 2}

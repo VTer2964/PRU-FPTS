@@ -18,6 +18,8 @@ MonoBehaviour:
     tr\xED nh\u1EDB t\u1ED1t \u0111\u1EA5y. Ho\xE0n th\xE0nh th\u1EED th\xE1ch trong
     th\u1EDDi gian quy \u0111\u1ECBnh, chi\u1EBFc huy ch\u01B0\u01A1ng c\u1EE7a tr\u1EA1m
     s\xE2n kh\u1EA5u s\u1EBD thu\u1ED9c v\u1EC1 em!"
+  voiceClip: {fileID: 8300000, guid: bf567005d2df8bd43a79578726af2836, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 8d086acb8787c104e92ff5efcf44797e, type: 2}

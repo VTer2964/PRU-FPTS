@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Th\u1EED th\xE1ch c\u1EE7a tr\u1EA1m n\xE0y l\xE0 tr\xF2 ch\u01A1i l\u1EADt
     h\xECnh (Memory Flip). Em h\xE3y t\xECm v\xE0 l\u1EADt \u0111\xFAng c\xE1c c\u1EB7p
     logo c\u1EE7a c\xE1c C\xE2u l\u1EA1c b\u1ED9 trong tr\u01B0\u1EDDng."
+  voiceClip: {fileID: 8300000, guid: 7d4173732df09f54c8e2ee533e84d8f7, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 9c7585442cbb47741848246e1cb4da78, type: 2}

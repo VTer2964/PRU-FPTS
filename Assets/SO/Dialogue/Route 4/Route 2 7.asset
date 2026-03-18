@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Ch\xFA Lao C\xF4ng"
   text: "Sai r\u1ED3i nh\xE9! T\xE2n sinh vi\xEAn m\xE0 kh\xF4ng t\xECm hi\u1EC3u
     v\u1EC1 tr\u01B0\u1EDDng \xE0 ch\xE1u!"
+  voiceClip: {fileID: 8300000, guid: 825fcd47184915342baf8c3e9c9b7aee, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

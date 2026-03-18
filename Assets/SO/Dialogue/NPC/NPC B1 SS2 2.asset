@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "T\xE2n Sinh Vi\xEAn"
   text: "B\u1EA1n C\u0169ng l\xE0 t\xE2n Sinh VI\xEAn \xE0 "
+  voiceClip: {fileID: 8300000, guid: bb82fac2073c4154fa5c51d49b5dc298, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: a55a8c11508cc6641bb2697b02280fbb, type: 2}

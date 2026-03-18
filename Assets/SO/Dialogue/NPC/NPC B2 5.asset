@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Anh Trai
   text: "T\u1EDB c\u1EA3m \u01A1n nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 3021cfa507444bc4c8a4bf7ddc7e4147, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

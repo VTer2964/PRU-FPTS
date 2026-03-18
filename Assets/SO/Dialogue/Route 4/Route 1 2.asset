@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Kh\xF4ng nhanh th\u1EBF \u0111\xE2u, V\u0169! \u0110\u1EC3 c\xF3 quy\u1EC1n
     ch\u01A1i tr\xF2 ch\u01A1i c\u1EE7a th\u1EA7y, em ph\u1EA3i t\xECm \u0111\u01B0\u1EE3c
     ng\u01B0\u1EDDi lao c\xF4ng! "
+  voiceClip: {fileID: 8300000, guid: ee15fa413ffa9b843ab48842bb5e0997, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 5446e9e3de94da74fa360fee75db6f77, type: 2}

@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Excellent attitude! Let's see if you are a true Global Citizen.me, V\u0169!(Th\xE1i
     \u0111\u1ED9 tuy\u1EC7t v\u1EDDi! H\xE3y xem b\u1EA1n c\xF3 ph\u1EA3i l\xE0 m\u1ED9t
     C\xF4ng d\xE2n To\xE0n c\u1EA7u th\u1EF1c th\u1EE5 kh\xF4ng, V\u0169!)"
+  voiceClip: {fileID: 8300000, guid: 4f5859e67ffd6ca4ba8bc67ce5a10518, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

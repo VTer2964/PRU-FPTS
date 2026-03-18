@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "\u0110\u1EA1i Ca H\u1ECDc \u0110\u01B0\u1EDDng"
-  text: "C\xFAt m\xE0y "
+  text: "Bi\u1EBFn li\u1EC1n \u0111i cho tao !!!"
+  voiceClip: {fileID: 8300000, guid: 335c2f28fab0ec3438f672779d08ea92, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

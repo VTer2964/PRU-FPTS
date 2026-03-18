@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "\u0110\u1EA1i Ca H\u1ECDc \u0110\u01B0\u1EDDng"
   text: 'What''s up, Cuzzzzz !!!! '
+  voiceClip: {fileID: 8300000, guid: 8ce5f51b5b1ae484b97d825cfb935c02, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 556e2acbffbf73e418cb198a76abcc76, type: 2}

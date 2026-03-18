@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Th\u1EA7y David b\u1EA3o ch\xE1u \u0111i t\xECm ch\xFA \u0111\u1EC3 xin
     m\u1EADt kh\u1EA9u c\u1EE7a v\xF2ng th\u1EED th\xE1ch. Ch\xFA cho ch\xE1u xin
     m\u1EADt kh\u1EA9u v\u1EDBi \u1EA1!"
+  voiceClip: {fileID: 8300000, guid: d94a2e6ada4dfd0448c19202f0dcf090, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: de9855f59bca20d40bba4901f1ccd8b7, type: 2}

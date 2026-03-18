@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: MC
   text: "T\xF4i chu\u1EA9n b\u1ECB l\xEAn d\u1EABn ch\u01B0\u01A1ng tr\xECnh r\u1ED3i!!
     Th\u1EADt h\xE0o h\u1EE9ng qu\xE1 \u0111i!!"
+  voiceClip: {fileID: 8300000, guid: 45611cb745ebc4a49b77376846dc84af, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}
