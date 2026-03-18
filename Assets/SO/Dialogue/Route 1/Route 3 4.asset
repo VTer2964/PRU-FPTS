@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Ch\u1ECB Leader"
   text: "Kh\xE1 l\u1EAFm! Ch\u1ECB th\xEDch s\u1EF1 t\u1EF1 tin n\xE0y c\u1EE7a sinh
     vi\xEAn n\u0103m nh\u1EA5t. "
+  voiceClip: {fileID: 8300000, guid: 3baded72e5d85b74486bf7c8259686e7, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: dde99e5a68f199a479e6ad2b4c9b6bc9, type: 2}

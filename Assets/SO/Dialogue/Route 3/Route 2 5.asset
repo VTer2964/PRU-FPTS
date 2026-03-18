@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: Shipper
-  text: "\xD4i may qu\xE1! C\u1EA7m gi\xFAp anh nh\xE9, \u0111\u01A1n n\xE0y anh
-    'paid' (tr\u1EA3 ti\u1EC1n) r\u1ED3i. C\u1EA9n th\u1EADn \u0111\u1ED5 nha em!"
+  text: "\xD4i may qu\xE1! C\u1EA7m gi\xFAp anh nh\xE9, \u0111\u01A1n n\xE0y tr\u1EA3
+    ti\u1EC1n r\u1ED3i. C\u1EA9n th\u1EADn \u0111\u1ED5 nha em!"
+  voiceClip: {fileID: 8300000, guid: a92851dfde609a84d96135db531906e9, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2e49bfcfb9182054c9994604dd7d7759, type: 2}

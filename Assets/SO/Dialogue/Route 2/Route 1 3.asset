@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Anh PT
   text: " \u0110\xF3i l\u1EA3 th\u1EBF n\xE0y anh s\u1EAFp kh\xF4ng c\xF2n s\u1EE9c
     t\u1ED5 ch\u1EE9c th\xEAm game r\u1ED3i \u0111\xE2y."
+  voiceClip: {fileID: 8300000, guid: 9adfde40c1fbcb94d8e0ceb79b9c8971, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d83eed0519798d2459e08901bf685fac, type: 2}

@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Shipper
   text: "\u0110\u01A1n h\xE0ng c\u1EE7a b\u1EA1n l\xE0 g\xEC th\u1EBF ?"
+  voiceClip: {fileID: 8300000, guid: fa6570f9f94789f4b8707e95a8bd6af3, type: 3}
+  voiceVolume: 1
   choices:
   - text: "Kh\xF4ng c\xF3 g\xEC"
     next: {fileID: 11400000, guid: 19eb56a0676fbbc49afbe93c40b37844, type: 2}

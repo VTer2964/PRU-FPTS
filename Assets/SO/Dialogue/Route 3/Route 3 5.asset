@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Th\u1EE7 Th\u01B0"
   text: "Th\u1EBF th\xEC \u0111i ra ngo\xE0i gi\xF9m c\xF4, \u0111\u1EC3 c\xF4 th\u01B0\u1EDFng
     th\u1EE9c n\u1ED1t ly c\xE0 ph\xEA trong y\xEAn b\xECnh. "
+  voiceClip: {fileID: 8300000, guid: 9509377889cfe4e4e9fb18da90dcb9f6, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: c2fa31b3b7b22af469d75b30a9c7ce6b, type: 2}

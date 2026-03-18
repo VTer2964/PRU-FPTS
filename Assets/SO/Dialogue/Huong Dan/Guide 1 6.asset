@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Sinh Vi\xEAn N\u0103m 4"
   text: "Em mu\u1ED1n \u0111i xem S\u1EA3nh Tr\u1ED1ng \u0110\u1ED3ng n\u1ED5i ti\u1EBFng
     c\u1EE7a \u0110\u1EA1i h\u1ECDc FPT kh\xF4ng?"
+  voiceClip: {fileID: 8300000, guid: 20130f64455921b40a8772e0d4de75fe, type: 3}
+  voiceVolume: 1
   choices:
   - text: "Anh d\u1EABn em tham quan v\u1EDBi!!!"
     next: {fileID: 11400000, guid: ce5b45ba13ca0ee429bff97ad513518c, type: 2}

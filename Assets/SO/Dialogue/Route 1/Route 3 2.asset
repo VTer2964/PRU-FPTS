@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "\u0110\u01B0\u1EE3c, t\xE1c phong nhanh nh\u1EB9n \u0111\u1EA5y. Nh\u01B0ng
     mu\u1ED1n l\u1EA5y huy ch\u01B0\u01A1ng th\xEC ph\u1EA3i th\u1EAFng ch\u1ECB
     v\xE1n Caro \u0111\xE3. "
+  voiceClip: {fileID: 8300000, guid: 4957a98b95bf3354ba15edb9adf677a8, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 6e82a8938c1bde44f8e3c77a637baeb1, type: 2}

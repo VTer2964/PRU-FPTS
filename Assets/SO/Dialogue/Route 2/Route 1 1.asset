@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 1
   speakerName: "V\u0169"
-  text: "D\u1EA1 em ch\xE0o anh! Anh cho em \u0111\u0103ng k\xFD tham gia th\u1EED
+  text: "D\u1EA1 em ch\xE0o anh ! Anh cho em \u0111\u0103ng k\xFD tham gia th\u1EED
     th\xE1ch Ti\u1EBFng Anh \u0111\u1EC3 l\u1EA5y m\xE3 QR s\u1ED1 2 v\u1EDBi \u1EA1!"
+  voiceClip: {fileID: 8300000, guid: 2f9d6420591d7874db5585713a2a2db9, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d037d76bbcf2e5a488d3cc2bd08aff99, type: 2}

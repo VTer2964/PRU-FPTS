@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "\xC0!! \u0110\u01A1n 'B\u1EA1c X\u1EC9u nhi\u1EC1u s\u1EEFa' cho c\xF4 th\u1EE7
     th\u01B0 \u0111\xFAng kh\xF4ng? Anh g\u1ECDi \u0111i\u1EC7n c\xF4 \u1EA5y kh\xF4ng
     nghe m\xE1y.  "
+  voiceClip: {fileID: 8300000, guid: f096a1a36ed587d4698cb63b1ee1cb23, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b4d9dafadf95a8145a90800fde91d88f, type: 2}

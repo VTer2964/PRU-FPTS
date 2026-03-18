@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "Ch\u1ECB Tuy\u1EC3n Sinh  "
   text: "V\xE0o ti\u1EBFp trong \u0111\xE2y."
+  voiceClip: {fileID: 8300000, guid: 2fa9301ea71cb914a8f23dc24272aea9, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

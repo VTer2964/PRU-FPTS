@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Shipper
   text: "Anh l\xE0 h\u1ED9i tr\u01B0\u1EDFng clb shipper FPT."
+  voiceClip: {fileID: 8300000, guid: 7604c86dd2e5c9a42a128e8afea14491, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: e00c34c26409c344ca9798b9da291c01, type: 2}

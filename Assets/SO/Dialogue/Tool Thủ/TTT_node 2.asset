@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Thu \"t\u1EE7n\""
   text: "T\u1EA5m g\u01B0\u01A1ng m\u1EABu \u0111\u1EA5y th\u01B0\u1EDFng cho cu
     em c\xE1i huy ch\u01B0\u01A1ng v\xE0ng"
+  voiceClip: {fileID: 8300000, guid: 405746c3bf21de34eb3ad8ff045c4a9a, type: 3}
+  voiceVolume: 1
   choices:
   - text: thay david o dau
     next: {fileID: 0}

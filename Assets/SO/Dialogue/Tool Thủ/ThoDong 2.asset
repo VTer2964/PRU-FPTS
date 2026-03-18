@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: NPC
-  text: "V th\xF4i bye nh\xE1"
+  text: "V\u1EADy th\xF4i bye nh\xE1"
+  voiceClip: {fileID: 8300000, guid: d666744cefa33b94cb42bd3e0e5f4b11, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "\xD4i V\u0169 \xE0, xin l\u1ED7i em nh\xE9. N\xE3y gi\u1EDD anh t\u1ED5
     ch\u1EE9c game cho c\xE1c b\u1EA1n ch\u01A1i h\u0103ng qu\xE1, hoa h\u1EBFt c\u1EA3
     m\u1EAFt r\u1ED3i."
+  voiceClip: {fileID: 8300000, guid: 931bb390daf07bb4f8626625538422c6, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 941f9868cfddab342872d386125bd329, type: 2}

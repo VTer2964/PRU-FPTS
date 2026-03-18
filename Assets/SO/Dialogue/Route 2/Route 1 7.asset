@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "V\u0169"
   text: "D\u1EA1 v\xE2ng, anh \u0111\u1EE3i em m\u1ED9t l\xE1t \u1EA1!"
+  voiceClip: {fileID: 8300000, guid: 8b00da33e1c15094090049fba500bd97, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: '?'
   text: "M\u1ECDi ng\u01B0\u1EDDi c\xF9ng ch\u01A1i tr\xF2 ch\u01A1i l\u1EA5y huy
     ch\u01B0\u01A1ng V\xE0ng n\xE0o!!!"
+  voiceClip: {fileID: 8300000, guid: 4157d9174adf9354e8170cd0803fc329, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: ba5057ee947f86f4d9dbff77fe588598, type: 2}

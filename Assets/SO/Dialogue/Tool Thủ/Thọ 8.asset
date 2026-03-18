@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "\u0110\u01B0a anh huy ch\u01B0\u01A1ng b\u1EA1c th\xEC anh add cho 4 ph\xFAt.
     C\xF2n huy ch\u01B0\u01A1ng \u0111\u1ED3ng th\xEC \u0111\u01B0\u1EE3c 2 ph\xFAt."
+  voiceClip: {fileID: 8300000, guid: 3dbb62fbe81a0ef4098ee3cfa5279dd0, type: 3}
+  voiceVolume: 1
   choices:
   - text: "Tr\u1EA3 huy ch\u01B0\u01A1ng b\u1EA1c"
     next: {fileID: 11400000, guid: 9ff7080893d34d74a9367da9eacfde21, type: 2}

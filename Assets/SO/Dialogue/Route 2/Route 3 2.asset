@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Ngon qu\xE1! C\u1EE9u tinh c\u1EE7a anh \u0111\xE2y r\u1ED3i. Kh\xF4 g\xE0
     nhi\u1EC1u protein, \u0103n v\xE0o l\xE0 c\u01A1 b\u1EAFp l\u1EA1i 'pumping'
     ngay. C\u1EA3m \u01A1n em nhi\u1EC1u nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 87f7cf95aa222774fa1d07f57257a2e0, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 6d6d68b491d857d478dcf573e1d990ec, type: 2}

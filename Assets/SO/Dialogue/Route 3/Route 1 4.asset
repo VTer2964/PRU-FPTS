@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Kh\xF4ng c\u1EA7n mua, c\xF4 \u0111\u1EB7t r\u1ED3i. L\xE0 c\u1EADu Shipper
     \u0111ang \u0111\u1EE9ng ngo\xE0i gian h\xE0ng MIXI FOOD kia k\xECa. Em ra l\u1EA5y
     ly n\u01B0\u1EDBc v\xE0o \u0111\xE2y gi\xFAp c\xF4 v\u1EDBi!"
+  voiceClip: {fileID: 8300000, guid: 8f44f14915a34a548af24ffbc55c5292, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

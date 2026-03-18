@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Ch\u1ECB Tuy\u1EC3n Sinh  "
   text: "\u0110\u1EA5y em c\u1EE9 tham quan tr\u01B0\u1EDDng. C\u1EA7n g\xEC th\xEC
     c\u1EE9 h\u1ECFi ch\u1ECB nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 618567726052ec54ead6f5a4048d1fb7, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

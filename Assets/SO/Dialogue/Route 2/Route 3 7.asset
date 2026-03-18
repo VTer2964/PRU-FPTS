@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Anh s\u1EB5n s\xE0ng r\u1ED3i! Gi\u1EDD th\xEC h\xE3y ch\u1EE9ng minh sinh
     vi\xEAn tr\u01B0\u1EDDng m\xECnh kh\xF4ng ch\u1EC9 ng\u1ED3i m\xE1y t\xEDnh gi\u1ECFi
     m\xE0 c\xF2n r\u1EA5t am hi\u1EC3u v\u1EC1 th\u1EC3 ch\u1EA5t nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 7ed70c0a805d2f8498a338956d1f3205, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: d997528fd36891f458600f769cce7f06, type: 2}

@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Ch\u1ECB Leader"
   text: "Th\xF4i \u0111i v\u1EC1 \u0111i cho ng\u01B0\u1EDDi kh\xE1c c\xF2n ch\u01A1i.
     M\u1EA5t th\u1EDDi gian qu\xE1!"
+  voiceClip: {fileID: 8300000, guid: 7f564f8e00e4bdb4b81bd1747b57348a, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

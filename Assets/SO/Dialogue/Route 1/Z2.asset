@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: '?'
   text: "V\xE0o tr\u01B0\u1EDDng ph\u1EA3i nh\u1EDB check in nh\xE9 c\xE1c t\xE2n
     sinh vi\xEAn FPT"
+  voiceClip: {fileID: 8300000, guid: 4cae284ee24d1c04abbfa2fdac9f8619, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: da58383e4cc9cac40a361c887319fae9, type: 2}

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "Sinh Vi\xEAn N\u0103m 4"
-  text: "\u0110\xE2y l\xE0 th\u01B0 vi\u1EC7n c\u1EE7a FPTU! Em th\u1EA5y to kh\xF4ng!"
+  text: "\u0110\xE2y l\xE0 th\u01B0 vi\u1EC7n c\u1EE7a FPTU! Em th\u1EA5y l\u1EDBn
+    kh\xF4ng!"
+  voiceClip: {fileID: 8300000, guid: b2fbf80f66ffda74aa8f1f249bdd4156, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 92e3efc02972b84409e9349d56d6d0ac, type: 2}
