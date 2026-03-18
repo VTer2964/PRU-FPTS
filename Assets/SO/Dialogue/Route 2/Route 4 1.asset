@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Route 4 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "B\u1EA1n N\u1EEF "
+  speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng "
   text: "B\u1EA1n mu\u1ED1n \u0103n g\xEC kh\xF4ng ??"
+  voiceClip: {fileID: 0}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}
