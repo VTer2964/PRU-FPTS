@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Th\u1EBF th\xEC t\u1ED1t qu\xE1! Em nh\xECn ra ch\u1ED7 b\u1EA1n n\u1EEF
     \u0111ang ng\u1ED3i \u1EDF s\u1EA1p \u0111\u1EB1ng kia k\xECa. B\u1EA1n \u1EA5y
     hay b\xE1n \u0111\u1ED3 \u0103n v\u1EB7t \u1EDF s\xE2n t\u1EADp. "
+  voiceClip: {fileID: 8300000, guid: 014d894a2b2959e44a4c3ac8e7b6c6b3, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b8c1df0520aa1354daa5d3b3b836fa09, type: 2}

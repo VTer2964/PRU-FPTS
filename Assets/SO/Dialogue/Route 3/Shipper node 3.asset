@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Nghe n\xF3i em c\u0169ng l\xE0 sinh vi\xEAn IT. Anh t\u1EB7ng em 1 t\u1EA5m
     huy ch\u01B0\u01A1ng b\u1EA1c. H\xE3y ngh\u0129 t\u1EDBi CLB n\xE0y \u0111\u1EA7u
     ti\xEAn khi em kh\xF3 kh\u0103n"
+  voiceClip: {fileID: 8300000, guid: 226ab53f29b3fbd41a22a8b0a7b01907, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

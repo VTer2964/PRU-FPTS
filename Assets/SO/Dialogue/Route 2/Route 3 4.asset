@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Anh PT
   text: "LIGHT WEIGHT BABY! Tinh th\u1EA7n t\u1ED1t l\u1EAFm! "
+  voiceClip: {fileID: 8300000, guid: 41a1263ea129dc94493b43f9db1da3ad, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: ec6e6be6316dad844bbfab12806b36ce, type: 2}

@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: MC
   text: "M\u1ED9t ng\u01B0\u1EDDi \u0111\u01B0\u1EE3c tham gia m\u1ED9t l\u1EA7n
     th\xF4i nh\xE9 em!! H\u1EB9n g\u1EB7p em l\u1EA7n sau nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 1961b9f3a335b984782aae2ca6cc9825, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

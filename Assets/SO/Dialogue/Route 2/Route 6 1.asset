@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Anh PT
   text: "Anh ngh\u0129 em n\xEAn v\u1EC1 t\u1EADp luy\u1EC7n th\xEAm r\u1ED3i h\xE3y
     quay l\u1EA1i \u0111\xE2y nh\xE9!!"
+  voiceClip: {fileID: 8300000, guid: d5fece21a1f8d854b9d5ed8b2c08ad57, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

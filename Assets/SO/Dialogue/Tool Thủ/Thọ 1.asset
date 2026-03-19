@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Thu
   text: "Anh l\xE0 Thu. Th\u1EA5y ch\xFA em h\u01A1i ho\u1EA3ng ch\u1EAFc s\u1EAFp
     h\u1EBFt th\u1EDDi gian r\u1ED3i ch\u1EE9 g\xEC"
+  voiceClip: {fileID: 8300000, guid: 5029a7798d19e2045b5cd80ea8132d51, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: ad4e4bf591ea0a34fa3c1e304d2cc01c, type: 2}

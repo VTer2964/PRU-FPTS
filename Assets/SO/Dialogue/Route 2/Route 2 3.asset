@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
   speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng"
-  text: "S\u1EA1p m\xECnh c\xF3 nhi\u1EC1u m\xF3n ngon l\u1EAFm!! X\xF4i g\xE0, tr\xE0
-    chanh,..."
+  text: "M\xECnh c\xF3 nhi\u1EC1u m\xF3n ngon l\u1EAFm!! X\xF4i g\xE0 , tr\xE0 chanh
+    , b\xE1nh m\xEC ..."
+  voiceClip: {fileID: 8300000, guid: 2e5df6a279de2b54fb660e0ade830dc9, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 4819225c0d84b774c90cccf6b62eac23, type: 2}

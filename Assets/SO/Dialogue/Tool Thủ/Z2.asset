@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: '?'
   text: "E cu ra \u0111\xE2y b\u1EA3o"
+  voiceClip: {fileID: 8300000, guid: 43c1569f8afbb3448a2460467a054820, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 898baeec3bf88184ca8027c349a52f65, type: 2}

@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 2
   speakerName: "V\u0169"
   text: "Thanks nh\xE9! Bye C\xF3c!"
+  voiceClip: {fileID: 8300000, guid: a7ab304673870bf44850f0f3663b9100, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

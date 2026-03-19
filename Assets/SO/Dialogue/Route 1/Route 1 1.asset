@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Ch\u1ECB \u01A1i cho em v\xE0o khu v\u1EF1c game Caro \u0111\u1EC3 l\u1EA5y
     huy ch\u01B0\u01A1ng v\u1EDBi ch\u1ECB!"
+  voiceClip: {fileID: 8300000, guid: 179044ee80ac7e443a4608df1440ef89, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: fff2dbb3a4b13c949838ce274e11066e, type: 2}

@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "Ch\u1ECB Leader"
   text: "Kh\xF4ng \u0111\u01B0\u1EE3c! Em ch\u01B0a c\xF3 'V\xF2ng Tay Check-in'. "
+  voiceClip: {fileID: 8300000, guid: 781d6000cc88e154d9c3469f3d6a7b6f, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: c78a46fc77be1774480a383b60f253ad, type: 2}

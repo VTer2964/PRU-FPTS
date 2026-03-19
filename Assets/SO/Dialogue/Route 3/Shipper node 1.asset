@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Shiper
   text: "V\xEC AI ph\xE1t tri\u1EC3n qu\xE1 nhanh n\xEAn c\xE1c b\u1EA1n IT ph\u1EA3i
     c\xF3 ph\u01B0\u01A1ng \xE1n d\u1EF1 ph\xF2ng"
+  voiceClip: {fileID: 8300000, guid: 15a23d29459918246ae9419aeca4122e, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 1354fe81680a9514390e8e329e471c1b, type: 2}

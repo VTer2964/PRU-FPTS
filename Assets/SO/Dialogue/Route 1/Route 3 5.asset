@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "Ch\u1ECB Leader"
   text: "Tr\u1EDDi \u0111\u1EA5t, \u0111\xE0n \xF4ng con trai m\xE0 nh\xE1t th\u1EBF? "
+  voiceClip: {fileID: 8300000, guid: b0e8400a55a00f6459da79d85a8ec94e, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 8fc72f01132e57144b034974e92c637a, type: 2}

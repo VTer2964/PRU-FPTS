@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Anh PT
   text: "Th\xF4i xong! Ch\u01B0a t\u1EADp \u0111\xE3 'x\u1EA3 c\u01A1' r\u1ED3i \xE0?
     Y\u1EBFu \u0111u\u1ED1i qu\xE1! "
+  voiceClip: {fileID: 8300000, guid: 95ee33d9a07cc1a4bbefd26c23ef5ffe, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 88f8e92978570944cae0173cf5f3e7c8, type: 2}

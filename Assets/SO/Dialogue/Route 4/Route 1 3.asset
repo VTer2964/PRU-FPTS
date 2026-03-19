@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Ch\xFA \u1EA5y gi\u1EEF m\u1EADt kh\u1EA9u b\xED m\u1EADt, gi\u1EA3i c\xE2u
     \u0111\u1ED1 c\u1EE7a ch\xFA \u1EA5y v\xE0 mang m\u1EADt kh\u1EA9u v\u1EC1 \u0111\xE2y
     cho th\u1EA7y"
+  voiceClip: {fileID: 8300000, guid: 708aabf79c494a54b97ef510e8d6727d, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}

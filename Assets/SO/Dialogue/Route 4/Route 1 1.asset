@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 1
   speakerName: "V\u0169"
   text: Hello Sir! I want the Gold Medal!!
+  voiceClip: {fileID: 8300000, guid: e8089c5b2a4a5224da864471bd9c46a9, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 89cc6e73d8ff39a4ea7963b1b5ca865b, type: 2}

@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: Thu
   text: "Ng\u01B0\u1EDDi ta hay g\u1ECDi anh l\xE0 anh Thu \"T\u1EE7n\""
+  voiceClip: {fileID: 8300000, guid: 4076277282e84724d98c3e4cf9abd5cb, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 3fd067f5c006cba4195a4ef8b64bfe1f, type: 2}

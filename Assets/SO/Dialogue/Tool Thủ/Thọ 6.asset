@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Thu \"T\u1EE7n\""
   text: "Kh\xF4ng ai bi\u1EBFt th\xEC kh\xF4ng t\xEDnh l\xE0 gian l\u1EADn \u0111\xE2u
     cu"
+  voiceClip: {fileID: 8300000, guid: ac0af07981e92df40bcabe6212a67f6b, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 13e7a58c64003fe46a6d23b7e3f012b3, type: 2}

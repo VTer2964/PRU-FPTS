@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Route 3 6
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: Anh PT
+  speakerName: "V\u0169"
   text: "D\u1EA1 kh\xF4ng c\xF3 g\xEC \u1EA1. V\u1EADy gi\u1EDD anh \u0111\xE3 kh\u1ECFe
     l\u1EA1i \u0111\u1EC3 b\u1EAFt \u0111\u1EA7u th\u1EED th\xE1ch ch\u01B0a \u1EA1?"
+  voiceClip: {fileID: 8300000, guid: dc6c4cbaf19cb5a4cb6ad2c1fa2b32ec, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 803bcea4da846354a97fcbd8f6bf1d69, type: 2}

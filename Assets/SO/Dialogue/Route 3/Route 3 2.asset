@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "\xD4i b\u1EEBng t\u1EC9nh s\u1EE9c s\u1ED1ng! C\u1EA3m \u01A1n em. \u0110\u01B0\u1EE3c
     r\u1ED3i, game n\xE0y c\u1EA7n s\u1EF1 t\u1EADp trung cao \u0111\u1ED9. X\u1EBFp
     ch\u1ED3ng s\xE1ch n\xE0y l\xEAn cao m\xE0 kh\xF4ng \u0111\u1ED5 nh\xE9!"
+  voiceClip: {fileID: 8300000, guid: 62f51e104d8634c46abaffee9df833dc, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 239aaa08eeee53142b23d02f154db3cd, type: 2}

@@ -15,7 +15,9 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "V\u0169"
   text: "T\u1EDB \u0111\u1EBFn \u0111\u1EC3 mua \u0111\u1ED3 \u0103n h\u1ED9 cho
-    anh PT. S\u1EA1p c\u1EADu c\xF3 b\xE1n g\xEC ngon kh\xF4ng?"
+    anh PT. C\u1EADu c\xF3 b\xE1n g\xEC ngon kh\xF4ng?"
+  voiceClip: {fileID: 8300000, guid: ae98e2a64a0396f48b4070afa0a05015, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 1856f41bfb68c104689c03d0bd6bef6a, type: 2}

@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Sinh Vi\xEAn N\u0103m 4"
   text: "Em l\xE0 t\xE2n sinh vi\xEAn \xE0? Th\u1EBF bi\u1EBFt h\u1EBFt v\u1EC1 tr\u01B0\u1EDDng
     ch\u01B0a? "
+  voiceClip: {fileID: 8300000, guid: 8988d371529eb0745a77a9da9e632c4f, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 6f2da7de19e652e44a306710a15a1e38, type: 2}

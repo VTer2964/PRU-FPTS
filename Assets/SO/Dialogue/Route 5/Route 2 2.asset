@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Toang r\u1ED3i em \u01A1i! T\xED n\u1EEFa l\xEAn c\xF4ng b\u1ED1 gi\u1EA3i
     Nh\u1EA5t m\xE0 Mic t\u1ECBt ng\xF3m. Anh b\u1EADt On/Off ch\u1EE5c l\u1EA7n
     r\u1ED3i kh\xF4ng l\xEAn. Ch\u1EAFc anh b\u1ECB \u0111u\u1ED5i vi\u1EC7c m\u1EA5t!"
+  voiceClip: {fileID: 8300000, guid: 45224957d43faab428efd8297bdd31d7, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: b41bcc8f0c036034ba2a45a7424beadd, type: 2}

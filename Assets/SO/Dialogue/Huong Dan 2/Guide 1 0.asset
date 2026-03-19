@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f18312f7bec73745aee34c4b8d623c7, type: 3}
+  m_Name: Guide 1 0
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
+  speakerType: 1
+  speakerName: "V\u0169"
+  text: "Cho em h\u1ECFi tr\u01B0\u1EDDng m\xECnh c\xF3 s\xE2n b\xF3ng kh\xF4ng ?"
+  voiceClip: {fileID: 8300000, guid: c606585c2e53b404e93b1a800483bba7, type: 3}
+  voiceVolume: 1
+  choices: []
+  autoAdvance: 1
+  nextAuto: {fileID: 11400000, guid: f6aa9ab855b4f7c419a6df7a15c1c434, type: 2}
+  triggerAction: 0
+  actionType: 0
+  actionParam: 
+  actionValue: 0

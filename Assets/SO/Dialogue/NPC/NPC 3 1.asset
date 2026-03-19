@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "U\u1EA7y tr\u01B0\u1EDDng FPTU to th\u1EADt \u0111\u1EA5y! \u01AF\u1EDBc
     g\xEC m\xECnh \u0111\u01B0\u1EE3c h\u1ECDc \u1EDF ng\xF4i tr\u01B0\u1EDDng to
     nh\u01B0 n\xE0y!"
+  voiceClip: {fileID: 8300000, guid: 2fdec4cc2651b154e86e65877a4a5203, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

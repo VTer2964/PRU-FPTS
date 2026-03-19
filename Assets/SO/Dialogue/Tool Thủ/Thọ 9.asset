@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "Th\u1ECD 9"
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: "V\u0169"
+  speakerName: "Th\u1ECD"
   text: Bye em
+  voiceClip: {fileID: 8300000, guid: 2542845728b17f849a1b8a8c188e2ad8, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

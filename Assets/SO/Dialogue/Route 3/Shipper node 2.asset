@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: Shipper
   text: "V\xE0 \u0111\xF3 ch\xEDnh l\xE0 CLB n\xE0y. CLB ph\u1EE5c v\u1EE5 c\xF4ng
     ty v\u1EADn chuy\u1EC3n \u0111a qu\u1ED1c gia. FPT Grab."
+  voiceClip: {fileID: 8300000, guid: 329774dc59e244c4fae87edcc33f3136, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 2eccf167b96656344a92f18f3ce8d708, type: 2}

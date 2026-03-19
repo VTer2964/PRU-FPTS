@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Route 3 3
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 2
-  speakerName: SYSTEN
+  speakerName: SYSTEM
   text: "Th\u1EE7 th\u01B0 \u0111\xE3 n\u1EA1p \u0111\u1EE7 Cafein. Th\u1EED th\xE1ch
     X\xE2y Th\xE1p \u0111\xE3 s\u1EB5n s\xE0ng. Ch\u01A1i kh\xF4ng?"
+  voiceClip: {fileID: 0}
+  voiceVolume: 1
   choices:
   - text: "X\u1EBEP NGAY"
     next: {fileID: 11400000, guid: e1135c69754be50428e4c8cffa07758d, type: 2}

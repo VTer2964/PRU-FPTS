@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "M\u1EE5c ti\xEAu h\xF4m nay kh\xF4ng ph\u1EA3i l\xE0 \u0111i d\u1EA1o, m\xE0
     l\xE0 ph\u1EA3i qu\xE9t s\u1EA1ch h\u1EBFt voucher \u0103n u\u1ED1ng mi\u1EC5n
     ph\xED c\u1EE7a c\xE1c gian h\xE0ng!"
+  voiceClip: {fileID: 8300000, guid: 12a1ee79f887c704ea5eb19744c4b581, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

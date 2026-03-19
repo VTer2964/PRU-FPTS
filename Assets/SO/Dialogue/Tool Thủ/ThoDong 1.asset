@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: ThoDong 1
   m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Dialogue.DialogueNodeSO
   speakerType: 0
-  speakerName: NPC
+  speakerName: "Thu \"t\u1EE7n\""
   text: Ok Thanks Em
+  voiceClip: {fileID: 8300000, guid: 7fa737ece877d40458dec20d9454f8d4, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

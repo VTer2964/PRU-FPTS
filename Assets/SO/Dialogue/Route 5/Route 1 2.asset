@@ -16,8 +16,10 @@ MonoBehaviour:
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
   text: "Ch\xE0o em! Ng\xE0y h\u1ED9i C\xE2u l\u1EA1c b\u1ED9 \u0111ang chu\u1EA9n
     b\u1ECB \u0111\u1EBFn ph\u1EA7n giao l\u01B0u quan tr\u1ECDng m\xE0 c\xE1i micro
-    c\u1EE7a MC l\u1EA1i d\u1EDF ch\u1EE9ng r\u1ED3i, kh\xF4ng c\xF4ng b\u1ED1 \u0111\u01B0\u1EE3c
+    c\u1EE7a MC l\u1EA1i b\u1ECB h\u01B0 r\u1ED3i, kh\xF4ng c\xF4ng b\u1ED1 \u0111\u01B0\u1EE3c
     g\xEC c\u1EA3."
+  voiceClip: {fileID: 8300000, guid: 6ad5c7cdf4f9ffa4b8e808bac0c86858, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: a81e207086bccbe4ca657b974fa4270c, type: 2}

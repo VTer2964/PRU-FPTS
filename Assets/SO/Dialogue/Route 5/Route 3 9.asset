@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
   text: "Th\xF4i xu\u1ED1ng s\xE2n kh\u1EA5u \u0111i, ph\xED c\u1EA3 c\xE1i Micro
     v\u1EEBa s\u1EEDa!"
+  voiceClip: {fileID: 8300000, guid: de8ab3d0e945c0d4ea6883100b664708, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

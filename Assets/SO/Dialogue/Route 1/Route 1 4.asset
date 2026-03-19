@@ -17,6 +17,8 @@ MonoBehaviour:
   text: "Em nh\xECn th\u1EA5y con C\xF3c V\xE0ng \u0111ang \u0111\u1EE9ng c\u1EA1nh
     c\xE1i Standee to \u0111\xF9ng kia kh\xF4ng? N\xF3 l\xE0 AI check-in \u0111\u1EA5y.
     Ra \u0111\xF3 check-in \u0111i"
+  voiceClip: {fileID: 8300000, guid: 490bb9a99d829a245956e19b11c0ea78, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: '?'
   text: "Ra \u0111\xE2y anh n\xF3i c\xE1i n\xE0y c\xE1i."
+  voiceClip: {fileID: 8300000, guid: 2f32c4a221a45b94ba16bb13908d20ab, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "T\u1ED1t qu\xE1! v\u1EADy c\u1EADu cho t\u1EDB m\u1ED9t h\u1ED9p kh\xF4
     g\xE0 l\xE1 chanh nha!"
+  voiceClip: {fileID: 8300000, guid: 60b9bc09b1d68d142b9e9898052a9414, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 88d31db8ab268c84696c87f01e7e8eae, type: 2}

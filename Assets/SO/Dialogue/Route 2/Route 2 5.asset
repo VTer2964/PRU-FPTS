@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "B\u1EA1n N\u1EEF B\xE1n H\xE0ng"
   text: "KH\xD4 G\xC0 L\xC1 CHANHHHHHH!!!!!!!!!!!!!"
+  voiceClip: {fileID: 8300000, guid: d4e5885442cf9e143b5849700fbe5758, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 8a456c151a9887a4aabdf3cba2339bad, type: 2}

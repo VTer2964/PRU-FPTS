@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "Sinh Vi\xEAn N\u0103m 4"
   text: "Ch\xFAc em vui v\u1EBB nh\xE1!"
+  voiceClip: {fileID: 8300000, guid: c7fbab1c9f22a8e4987cf1c000dbec18, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 0}

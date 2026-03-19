@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "T\u1ED5ng \u0110\u1EA1o Di\u1EC5n"
   text: "H\u1EA3o h\xE1n! Nh\u1EA1c l\xEAn! \xC1nh s\xE1ng t\u1EADp trung v\xE0o
     th\xED sinh n\xE0y cho t\xF4i! "
+  voiceClip: {fileID: 8300000, guid: 1c48461debd86a446b50b76028a94f27, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 0a08b605180c9794daf9a04862ef083c, type: 2}

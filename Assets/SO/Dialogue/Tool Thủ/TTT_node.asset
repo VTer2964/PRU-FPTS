@@ -15,6 +15,8 @@ MonoBehaviour:
   speakerType: 0
   speakerName: "Thu \"t\u1EE7n\""
   text: "Cu em \xE0. Anh bi\u1EBFt em t\u1ED1 c\xE1o anh m r\u1ED3i."
+  voiceClip: {fileID: 8300000, guid: 0d2805faca8d3644cb3522661fe6b2ee, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: e657a83225363184285747ea47fcd02e, type: 2}

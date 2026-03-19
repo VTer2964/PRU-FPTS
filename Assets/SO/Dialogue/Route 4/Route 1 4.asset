@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "Th\u1EA7y David"
   text: "Th\u1EA7y s\u1EBD \u0111\u1EE9ng \u0111\u1EE3i em \u1EDF C\u1ED5ng ph\u1EE5
     b\xE3i g\u1EEDi xe!"
+  voiceClip: {fileID: 8300000, guid: 3ff7d5ec6b3fff743a26fa9c902a1ddf, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: 77f063d75eb362c43a4dfdaa1ceb6eb5, type: 2}

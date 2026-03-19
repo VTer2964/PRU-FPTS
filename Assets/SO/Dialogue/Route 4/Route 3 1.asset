@@ -16,6 +16,8 @@ MonoBehaviour:
   speakerName: "V\u0169"
   text: "Th\u01B0a th\u1EA7y, em c\xF3 m\u1EADt kh\u1EA9u r\u1ED3i! \u0110\xF3 l\xE0
     'Future Forward \u2013 Global Ready' \u1EA1!"
+  voiceClip: {fileID: 8300000, guid: e010c5b4f96813147ad06d2556c546e3, type: 3}
+  voiceVolume: 1
   choices: []
   autoAdvance: 1
   nextAuto: {fileID: 11400000, guid: c7765036e45a51848a5622446d53bb70, type: 2}
