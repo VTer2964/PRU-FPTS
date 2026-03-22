@@ -31,12 +31,18 @@ namespace FPTSim.Audio
         private AudioSource runtimeDialogueVoiceSource;
         private int environmentMuteDepth;
 
+        private float currentMusicBaseVolume = 1f;
+        private float musicVolumeMultiplier = 1f;
+
         private void Awake()
         {
             if (I != null && I != this) { Destroy(gameObject); return; }
             I = this;
             DontDestroyOnLoad(gameObject);
+        }
 
+        private void Start()
+        {
             LoadVolumes();
         }
 
@@ -44,10 +50,20 @@ namespace FPTSim.Audio
         public void PlayMusic(AudioClip clip, float volume = 1f, bool loop = true)
         {
             if (!musicSource || clip == null) return;
+            currentMusicBaseVolume = volume;
             musicSource.clip = clip;
-            musicSource.volume = volume;
+            musicSource.volume = currentMusicBaseVolume * musicVolumeMultiplier;
             musicSource.loop = loop;
             musicSource.Play();
+        }
+
+        public void SetMusicVolumeMultiplier(float multiplier)
+        {
+            musicVolumeMultiplier = Mathf.Clamp01(multiplier);
+            if (musicSource)
+            {
+                musicSource.volume = currentMusicBaseVolume * musicVolumeMultiplier;
+            }
         }
 
         public void StopMusic()
