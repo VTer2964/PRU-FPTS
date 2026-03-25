@@ -13,23 +13,26 @@ namespace FPTSim.Player
         [SerializeField] private TMP_Text hintText;
         [SerializeField] private Key interactKey = Key.E;
 
-        private IInteractable current;
+        private IInteractable[] currentInteractables;
 
         private void Update()
         {
             Scan();
 
-            if (current != null &&
+            if (currentInteractables != null && currentInteractables.Length > 0 &&
                 Keyboard.current != null &&
                 Keyboard.current[interactKey].wasPressedThisFrame)
             {
-                current.Interact();
+                foreach (var it in currentInteractables)
+                {
+                    it.Interact();
+                }
             }
         }
 
         private void Scan()
         {
-            current = null;
+            currentInteractables = null;
 
             if (!cam)
             {
@@ -41,11 +44,24 @@ namespace FPTSim.Player
 
             if (Physics.Raycast(ray, out RaycastHit hit, distance, mask, QueryTriggerInteraction.Collide))
             {
-                var it = hit.collider.GetComponentInParent<IInteractable>();
-                if (it != null)
+                var interactables = hit.collider.GetComponentsInParent<IInteractable>();
+                if (interactables != null && interactables.Length > 0)
                 {
-                    current = it;
-                    SetHint($"{it.GetPromptText()} (E)");
+                    currentInteractables = interactables;
+                    
+                    // Nối tất cả các prompt text lại với nhau nếu có nhiều IInteractable
+                    string prompt = "";
+                    foreach (var it in interactables)
+                    {
+                        string text = it.GetPromptText();
+                        if (!string.IsNullOrEmpty(text))
+                        {
+                            if (prompt.Length > 0) prompt += " / ";
+                            prompt += text;
+                        }
+                    }
+                    
+                    SetHint($"{prompt} (E)");
                     return;
                 }
             }

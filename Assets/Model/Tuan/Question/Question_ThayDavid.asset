@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1f64675c6b35843bfd05f2c0426b90, type: 3}
+  m_Name: Question_ThayDavid
+  m_EditorClassIdentifier: Assembly-CSharp::FPTSim.Core.QuestSO
+  questName: "L\u1EA5y m\u1EADt kh\u1EA9u"
+  description: "B\u1EA1n h\xE3y \u0111i l\u1EA1i B\xE1c Lao C\xF4ng \u0111\u1EC3
+    l\u1EA5y m\u1EADt kh\u1EA9u"
