@@ -23,10 +23,17 @@ namespace FPTSim.Audio
         [Header("Optional Mixer Route")]
         [SerializeField] private UnityEngine.Audio.AudioMixerGroup outputGroup;
 
+        [Header("BGM Ducking")]
+        [SerializeField] private bool duckBGM = true;
+        [SerializeField] private float duckMinDistance = 5f;
+        [SerializeField] private float duckMaxDistance = 25f;
+        [SerializeField][Range(0f, 1f)] private float minBGMVolumeMultiplier = 0.1f;
+
         private AudioSource audioSource;
         private int currentIndex = -1;
         private bool systemPaused;
         private bool stopRequested;
+        private Transform listenerTransform;
 
         public AudioSource ManagedAudioSource => audioSource;
 
@@ -59,6 +66,8 @@ namespace FPTSim.Audio
 
         private void Update()
         {
+            UpdateBGMDucking();
+
             if (playlist == null || playlist.Length == 0) return;
             if (systemPaused || stopRequested) return;
 
@@ -66,6 +75,37 @@ namespace FPTSim.Audio
             {
                 if (loopPlaylist)
                     PlayNextRandom();
+            }
+        }
+
+        private void UpdateBGMDucking()
+        {
+            if (!duckBGM || AudioManager.I == null) return;
+
+            if (listenerTransform == null)
+            {
+                var listener = Object.FindFirstObjectByType<AudioListener>();
+                if (listener != null) listenerTransform = listener.transform;
+            }
+
+            if (listenerTransform != null && audioSource != null && audioSource.isPlaying)
+            {
+                float dist = Vector3.Distance(transform.position, listenerTransform.position);
+                float t = Mathf.InverseLerp(duckMinDistance, duckMaxDistance, dist);
+                float targetMultiplier = Mathf.Lerp(minBGMVolumeMultiplier, 1f, t);
+                AudioManager.I.SetMusicVolumeMultiplier(targetMultiplier);
+            }
+            else
+            {
+                AudioManager.I.SetMusicVolumeMultiplier(1f);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (duckBGM && AudioManager.I != null)
+            {
+                AudioManager.I.SetMusicVolumeMultiplier(1f);
             }
         }
 
